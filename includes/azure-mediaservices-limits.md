@@ -1,5 +1,5 @@
 >[!NOTE]
->Pro prostředky, které nejsou opravit může požádat o toobe kvóty hello vyvolá otevřením lístku podpory. Proveďte **není** vytvořit další účty Azure Media Services ve snaze tooobtain vyšší limity.
+>U prostředků, které nejsou pevné, je možné prostřednictvím lístku podpory požádat o zvýšení kvóty. **Nevytvářejte** další účty služby Azure Media Services ve snaze zajistit vyšší limity.
 
 | Prostředek | Výchozí omezení | 
 | --- | --- | 
@@ -18,28 +18,28 @@
 | Jednotky streamování na jeden koncový bod streamování |10 |
 | Účty úložiště | 1 000<sup>(5)</sup> (pevné) |
 | Zásady | 1 000 000<sup>(6)</sup> |
-| Velikost souboru| V některých případech je limit na hello maximální podporovaná velikost souboru ke zpracování ve službě Media Services. <sup>7</sup> |
+| Velikost souboru| V některých případech je limit na maximální velikost souboru pro zpracování ve službě Media Services podporována. <sup>7</sup> |
   
-<sup>1</sup> Jednotky RU S3 nejsou dostupné v oblasti Indie – západ. maximální omezení RU Hello získat obnovit, pokud zákazník hello změní hello typu (například z S2 tooS1). 
+<sup>1</sup> Jednotky RU S3 nejsou dostupné v oblasti Indie – západ. Pokud změníte typ (například z S2 k S1), se obnoví maximální RU omezení.
 
-<sup>2</sup> Tato hodnota zahrnuje úlohy zařazené do fronty a dokončené, aktivní a zrušené úlohy. Nezahrnuje odstraněné úlohy. Můžete odstranit staré úloh hello pomocí **IJob.Delete** nebo hello **odstranit** požadavek HTTP.
+<sup>2</sup> Tato hodnota zahrnuje úlohy zařazené do fronty a dokončené, aktivní a zrušené úlohy. Nezahrnuje odstraněné úlohy. K odstranění starých úloh můžete použít **IJob.Delete** nebo požadavek HTTP **DELETE**.
 
-Od 1. dubna 2017 záznam všechny úlohy ve vašem účtu, který je starší než 90 dní se automaticky odstraní, společně s jeho přidružené záznamy úloh i v případě, že hello celkový počet záznamů je nižší než maximální kvóty hello. Pokud potřebujete tooarchive hello úloh informací, můžete použít kód hello popsané [zde](../articles/media-services/media-services-dotnet-manage-entities.md).
+Od 1. dubna 2017 záznam všechny úlohy ve vašem účtu, který je starší než 90 dní se automaticky odstraní, společně s jeho přidružené záznamy úloh i v případě, že celkový počet záznamů je nižší než maximální kvótu. Pokud potřebujete informace o úlohách/úkolech archivovat, můžete použít kód popsaný [tady](../articles/media-services/media-services-dotnet-manage-entities.md).
 
-<sup>3</sup> při vytváření požadavku toolist úlohy entity, maximálně 1 000 vrátí na žádost. Pokud je třeba tookeep zaznamenávat všechny odeslání úlohy, můžete použít horní/skip, jak je popsáno v [možností dotazu systému OData](http://msdn.microsoft.com/library/gg309461.aspx).
+<sup>3</sup> při vytváření požadavku na seznam úloh entity, se maximálně 1000 úloh vrátí na žádost. Pokud potřebujete sledovat všechny odeslané úlohy, můžete použít parametry top/skip popsané v tématu věnovaném [možnostem dotazů pro systém OData](http://msdn.microsoft.com/library/gg309461.aspx).
 
-<sup>4</sup> Lokátory nejsou určené ke správě řízení přístupu pro jednotlivé uživatele. Uživatelé s právy tooindividual toogive různý přístup, použijte řešení pro správu digitálních práv (DRM). Další informace najdete v [tomto](../articles/media-services/media-services-content-protection-overview.md) oddílu.
+<sup>4</sup> Lokátory nejsou určené ke správě řízení přístupu pro jednotlivé uživatele. Pokud chcete konkrétním uživatelům poskytnout různá přístupová práva, použijte řešení pro správu digitálních práv (DRM). Další informace najdete v [tomto](../articles/media-services/media-services-content-protection-overview.md) oddílu.
 
-<sup>5</sup> hello účtů úložiště musí být z hello stejného předplatného Azure.
+<sup>5</sup> Účty úložiště musí být ze stejného předplatného Azure.
 
 <sup>6</sup> Je stanovený limit 1 000 000 různých zásad AMS (třeba zásady lokátoru nebo ContentKeyAuthorizationPolicy). 
 
 >[!NOTE]
-> Měli byste použít hello stejné ID zásad, pokud vždy používáte hello stejné dny / přístupová oprávnění / atd. Informace a příklad najdete v [tomto](../articles/media-services/media-services-dotnet-manage-entities.md#limit-access-policies) oddílu.
+> Pokud vždycky používáte stejné dny, přístupová oprávnění atd., měli byste používat stejné ID zásad. Informace a příklad najdete v [tomto](../articles/media-services/media-services-dotnet-manage-entities.md#limit-access-policies) oddílu.
 
-<sup>7</sup>Pokud nahráváte obsahu tooan Asset v Azure Media Services s úmyslem tooprocess hello ji můžete jedním hello procesory médií v naší službě (tj. kodéry jako Media Encoder Standard a pracovní postup Premium kodér médií nebo analysis moduly jako vzhled detektor) pak byste měli být vědomi hello omezení maximální velikosti hello. 
+<sup>7</sup>Pokud nahráváte obsah pro prostředek služby Azure Media Services zpracovat s jedním z procesory médií v rámci služby (to znamená, kodéry jako Media Encoder Standard a Media Encoder Premium pracovního postupu nebo analysis motorů třeba vzhled detektor) pak musí být vědomi omezení na maximální velikosti podporované. 
 
-Od 15. května 2017 hello maximální velikost podporovaná pro jeden objekt blob je 195 TB - s largers souboru než tento limit, nebude možné úlohu. Oprava tooaddress pracujeme toto omezení. Kromě toho hello omezení maximální velikosti hello hello Asset je následující.
+Maximální velikost podporovaná pro jeden objekt blob je aktuálně až 5 TB ve službě Azure Blob Storage. Další omezení však použít v závislosti na velikosti virtuálních počítačů, které používají službu Azure Media Services. Následující tabulka uvádí omezení na jednotlivých jednotek rezervovaných média (S1 S2, S3.) Pokud váš zdrojový soubor je větší než omezení definovaná v tabulce, se nezdaří vaše úlohy kódování. Pokud jsou kódování 4K rozlišení zdroje dlouhou dobu, je nutné použít k dosažení výkonu potřebné jednotky rezervované pro média S3. Pokud máte 4K obsahu, který je větší než limit 260 GB na jednotky rezervované pro média S3, kontaktujte nás na adrese amshelp@microsoft.com pro potenciální jejich zmírnění pro podporu váš scénář.
 
 | Typ rezervovaných jednotek médií | Maximální velikost vstupní (GB)| 
 | --- | --- | 

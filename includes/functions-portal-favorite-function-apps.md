@@ -1,17 +1,17 @@
-## <a name="add-function-apps-tooyour-portal-favorites"></a>Přidání funkce aplikace tooyour portálu Oblíbené 
+## <a name="favorite-functions-in-the-portal"></a>Oblíbené funkce na portálu 
 
-Pokud jste tak již neučinili, přidejte Oblíbené tooyour funkce aplikace v hello portálu Azure. Díky tomu je snazší toofind funkce aplikací. Pokud jste to již provedli, toohello další část přeskočte. 
+Pokud jste to ještě neudělali, přidejte si aplikace Function App mezi oblíbené položky na webu Azure Portal. Díky tomu pak svoje aplikace Function App snadněji najdete. Pokud jste to už udělali, přejděte k další části. 
 
-1. Přihlaste se toohello [portál Azure](https://portal.azure.com/).
+1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com/).
 
-2. Klikněte na šipku hello v levém tooexpand dolní hello všechny služby, typ `Functions` v hello **filtru** pole a potom klikněte na hvězdičky hello vedle příliš**funkce aplikace**.  
+2. Kliknutím na šipku vlevo dole rozbalte všechny služby, do pole **Filtr** zadejte `Functions` a potom klikněte na hvězdičku vedle možnosti **Aplikace Function App**.  
  
-    ![Vytvoření aplikace pro funkce v hello portálu Azure](./media/functions-portal-favorite-function-apps/functions-favorite-function-apps.png)
+    ![Vytvoření aplikace Function App na webu Azure Portal](./media/functions-portal-favorite-function-apps/functions-favorite-function-apps.png)
 
-    Tento postup přidá hello funkce ikonu toohello nabídky na levé straně hello hello portálu.
+    Tím přidáte do nabídky na levé straně portálu ikonu Funkce.
 
-3. Zavřete hello nabídce a potom přejděte dolů toohello dolní toosee hello funkce ikonu. Kliknutím na tuto ikonu toosee seznam všechny funkce aplikace. Klikněte na tlačítko vaší aplikace toowork funkce s funkcí v této aplikaci. 
+3. Zavřete nabídku a potom přejděte úplně dolů, kde uvidíte ikonu Funkce. Kliknutím na tuto ikonu zobrazíte seznam všech aplikací Function App. Po kliknutí na určitou aplikaci Function App můžete pracovat s funkcemi této aplikace. 
  
-    ![](./media/functions-portal-favorite-function-apps/functions-function-apps-hub.png)
+    ![Funkce aplikací v oblíbených položek](./media/functions-portal-favorite-function-apps/functions-function-apps-hub.png)
  
      

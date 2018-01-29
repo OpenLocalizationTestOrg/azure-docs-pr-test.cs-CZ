@@ -1,31 +1,27 @@
-1. V novém okně přihlásit toohello [portál Azure](https://portal.azure.com/).
-2. V levém podokně hello, klikněte na **nový**, klikněte na tlačítko **databáze**a potom v části **Azure Cosmos DB**, klikněte na tlačítko **vytvořit**.
+1. V nové okno prohlížeče, přihlaste se k [portál Azure](https://portal.azure.com/).
+
+2. Klikněte na tlačítko **nové** > **databáze** > **Azure Cosmos DB**.
    
-   ![Podokno databází portálu Azure Portal](./media/cosmos-db-create-dbaccount-graph/create-nosql-db-databases-json-tutorial-1.png)
+   ![Azure podokně portálu "Databázi"](./media/cosmos-db-create-dbaccount-graph/create-nosql-db-databases-json-tutorial-1.png)
 
-3. V hello **nový účet** okno, zadejte hello konfigurace, který chcete použít pro tento účet Azure Cosmos DB. 
-
-    Ve službě Azure Cosmos DB můžete vybrat jeden ze čtyř programovacích modelů: Gremlin (graf), MongoDB, SQL (DocumentDB) a Tabulka (klíč-hodnota). Každý z nich aktuálně vyžaduje samostatný účet.
-       
-    V tomto článku úvodní jsme programu proti hello rozhraní Graph API, takže zvolte **Gremlin (grafu)** při vyplňování formuláře hello. Pokud máte data dokumentu z aplikace katalogu, data typu klíč/hodnota (tabulka) nebo data migrovaná z aplikace MongoDB, je dobré si uvědomit, že databáze Azure Cosmos může poskytnout vysoce dostupnou a globálně distribuovanou platformu databázové služby pro všechny důležité podnikové aplikace.
-
-    Vyplňte pole hello na hello **nový účet** okno, pomocí informací o hello v hello následující snímek obrazovky jako vodítko – vaše hodnoty se liší od hodnoty hello hello snímku obrazovky.
- 
-    ![Hello nové okno účtu pro Azure Cosmos DB](./media/cosmos-db-create-dbaccount-graph/create-nosql-db-databases-json-tutorial-2.png)
+3. V **nový účet** zadejte nastavení pro nový účet Azure Cosmos DB. 
 
     Nastavení|Navrhovaná hodnota|Popis
     ---|---|---
-    ID|*Jedinečná hodnota*|Jedinečný název, který identifikuje tento účet Azure Cosmos DB. Protože *documents.azure.com* je připojením toohello ID ID zadejte toocreate váš identifikátor URI, použití a jedinečné, ale osobní. Hello ID musí obsahovat jenom malá písmena, číslice a znak hello pomlčku (-) a musí obsahovat od 3 too50 znaky.
-    Rozhraní API|Gremlin (graf)|Jsme programu proti hello [rozhraní Graph API](../articles/cosmos-db/graph-introduction.md) dále v tomto článku.|
-    Předplatné|*Vaše předplatné*|předplatné Azure, které chcete pro tento účet Azure Cosmos DB toouse Hello. 
-    Skupina prostředků|*Hello stejnou hodnotu jako ID*|Hello nový název skupiny prostředků pro váš účet. Pro jednoduchost můžete použít hello stejný název jako vaše ID. 
-    Umístění|*Hello oblast nejbližší tooyour uživatelů*|Hello zeměpisného umístění, ve které toohost účtu Azure Cosmos DB. Vyberte umístění hello nejbližší uživatelé tooyour toogive je hello nejrychlejší přístup k datům toohello.
+    ID|*Zadejte jedinečný název*|Zadejte jedinečný název pro identifikaci tohoto účtu Azure Cosmos DB. Jelikož je řetězec *documents.azure.com* připojený k ID, které poskytnete k vytvoření identifikátoru URI, použijte jedinečné, ale snadno rozpoznatelné ID.<br><br>Toto ID může obsahovat pouze malá písmena, číslice a znak spojovníku (-) a musí se skládat ze 3 až 50 znaků.
+    Rozhraní API|Gremlin (graf)|Rozhraní API Určuje typ účtu chcete-li vytvořit. Poskytuje Azure Cosmos DB pět rozhraní API pro vyhovuje potřebám vaší aplikace: SQL (databáze dokumentu), Gremlin (grafu databáze), MongoDB (databáze dokumentu), Azure Table a Cassandra, každý, které aktuálně vyžadují samostatný účet. <br><br>Vyberte **Gremlin (grafu)** vzhledem k tomu, že v tento rychlý start vytváříte graf, který je dotazovatelný pomocí syntaxe Gremlin.<br><br>[Další informace o rozhraní Graph API](../articles/cosmos-db/graph-introduction.md)
+    Předplatné|*Vaše předplatné*|Vyberte předplatné Azure, který chcete použít pro tento účet Azure Cosmos DB. 
+    Skupina prostředků|*Zadejte stejný jedinečný název, který výše uvedeného v ID*|Zadejte nový název skupiny prostředků pro váš účet. V zájmu jednoduchosti můžete použít název, který se shoduje s vaším ID. 
+    Umístění|*Vyberte oblast nejbližší uživatelům.*|Vyberte zeměpisné umístění, ve kterém k hostování účtu Azure Cosmos DB. Použijte umístění, které je nejblíže k uživatelům poskytnout nejrychlejší přístup k datům.
+    Povolit geografickou redundanci| Ponechte prázdné | Tím se vytvoří replikované verzi databáze v druhé (spárované) oblasti. Nechte prázdné.  
+    Připnutí na řídicí panel | Vyberte | Zaškrtněte toto políčko, aby nový databázový účet se přidá do řídicího panelu portálu pro snadný přístup.
 
-4. Klikněte na tlačítko **vytvořit** toocreate hello účtu.
-5. Na horním panelu nástrojů hello, klikněte na tlačítko hello **oznámení** ikonu ![ikonu oznámení hello](./media/cosmos-db-create-dbaccount-graph/notification-icon.png) procesu nasazení toomonitor hello.
+    Poté klikněte na **Vytvořit**.
 
-    ![Hello Azure podokně portálu oznámení](./media/cosmos-db-create-dbaccount-graph/notification.png)
+    ![Okno Nový účet pro službu Azure Cosmos DB](./media/cosmos-db-create-dbaccount-graph/create-nosql-db-databases-json-tutorial-2.png)
 
-6.  Když okna oznámení hello označuje hello nasazení hello úspěšně, zavřít okno s upozorněním a otevřete hello nový účet z hello **všechny prostředky** dlaždici na řídicím panelu hello. 
+4. Vytvoření účtu trvá několik minut. Během účet vytvoření portálu zobrazí **nasazení Azure DB Cosmos** dlaždici na pravé straně, budete muset přejděte přímo na řídicím panelu zobrazíte dlaždici. Je také zobrazí v horní části obrazovky indikátor průběhu. Můžete sledovat průběh buď oblasti.
 
-    ![Účet DocumentDB na hello dlaždici všechny prostředky](./media/cosmos-db-create-dbaccount-graph/azure-documentdb-all-resources.png)
+    ![Podokno Oznámení portálu Azure Portal](./media/cosmos-db-create-dbaccount-graph/deploying-cosmos-db.png)
+
+    Po vytvoření účtu **Blahopřejeme! Byl vytvořen účet Azure Cosmos DB** zobrazí se stránka. 

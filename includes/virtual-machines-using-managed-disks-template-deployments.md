@@ -1,10 +1,10 @@
 # <a name="using-managed-disks-in-azure-resource-manager-templates"></a>Pomocí spravovaného disky v šablonách Azure Resource Manageru
 
-Tento dokument vás provede hello rozdíly mezi spravovanými a nespravovanými disky pomocí Azure Resource Manager šablony tooprovision virtuálních počítačů. To vám pomůže tooupdate existujících šablon, které používají nespravovaná disky toomanaged disky. Pro referenci používáme hello [101-vm jednoduché – windows](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows) šablony jako vodítko. Uvidíte hello šablony pomocí obou [discích spravovaných](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows/azuredeploy.json) a předchozí verze pomocí [nespravované disky](https://github.com/Azure/azure-quickstart-templates/tree/93b5f72a9857ea9ea43e87d2373bf1b4f724c6aa/101-vm-simple-windows/azuredeploy.json) budete-li toodirectly porovnat.
+Tento dokument vás provede rozdíly mezi spravovanými a nespravovanými disky při zřizování virtuálních počítačů pomocí šablony Azure Resource Manager. To vám pomůže aktualizovat existující šablony, které používají disků nespravované na spravované disky. Pro referenci používáme [101-vm jednoduché – windows](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows) šablony jako vodítko. Můžete zobrazit šablonu pomocí obou [discích spravovaných](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows/azuredeploy.json) a předchozí verze pomocí [nespravované disky](https://github.com/Azure/azure-quickstart-templates/tree/93b5f72a9857ea9ea43e87d2373bf1b4f724c6aa/101-vm-simple-windows/azuredeploy.json) Pokud byste chtěli přímo jejich porovnání.
 
 ## <a name="unmanaged-disks-template-formatting"></a>Nespravované disky šablony, formátování
 
-toobegin, jsme se podívejte na tom, jak nespravované disky jsou nasazeny. Při vytváření nespravované disků, je třeba souborů virtuálního pevného disku hello toohold účet úložiště. Můžete vytvořit nový účet úložiště nebo použít jednu, která již existuje. Tento článek vám ukáže, jak toocreate nový účet úložiště. tooaccomplish, budete potřebovat prostředek účet úložiště v bloku hello prostředky, jak je uvedeno níže.
+Pokud chcete začít, budeme se podívejte na tom, jak nespravované disky jsou nasazeny. Při vytváření nespravované disky, potřebujete účet úložiště pro soubory virtuálního pevného disku. Můžete vytvořit nový účet úložiště nebo použít jednu, která již existuje. Tento článek vám ukáže, jak vytvořit nový účet úložiště. K tomu musíte prostředek účet úložiště v bloku prostředků, jak je uvedeno níže.
 
 ```
 {
@@ -20,7 +20,7 @@ toobegin, jsme se podívejte na tom, jak nespravované disky jsou nasazeny. Při
 }
 ```
 
-V rámci hello objektu virtuálního počítače potřebujeme závislost na hello tooensure účet úložiště, vytvořené před hello virtuálního počítače. V rámci hello `storageProfile` tématu, potom zadejte hello úplný identifikátor URI hello umístění virtuálního pevného disku, který odkazuje na účet úložiště hello a je potřebná pro disk hello operačního systému a všech datových disků. 
+V rámci objektu virtuálního počítače potřebujeme závislost na účtu úložiště a ověřte, že je vytvořen před virtuální počítač. V rámci `storageProfile` části, jsme pak zadejte úplný identifikátor URI umístění virtuálního pevného disku, který odkazuje na účet úložiště a je potřebná pro disk operačního systému a všech datových disků. 
 
 ```
 {
@@ -70,16 +70,16 @@ V rámci hello objektu virtuálního počítače potřebujeme závislost na hell
 
 ## <a name="managed-disks-template-formatting"></a>Spravované disky šablony formátování
 
-S Azure spravované disky hello disku se změní na nejvyšší úrovni prostředků a už vyžaduje toobe účet úložiště vytvořené uživatelem hello. Spravované disky nejprve byly vystaveny v hello `2016-04-30-preview` verze rozhraní API, jsou k dispozici ve všech dalších verzích rozhraní API a se teď typ disku výchozí hello. Hello následující části provede hello výchozí nastavení a podrobností, jak přizpůsobit toofurther vaše disky.
+S Azure spravované disky disk stane nejvyšší úrovně prostředků a už vyžaduje účet úložiště, který být vytvořený uživatelem. Spravované disky nejprve byly vystaveny v `2016-04-30-preview` verze rozhraní API, jsou k dispozici ve všech dalších verzích rozhraní API a se teď výchozí typ disku. Následující části provede výchozí nastavení a jsou upřesněny postupy k dalšímu přizpůsobení vaše disky.
 
 > [!NOTE]
-> Je doporučeno toouse rozhraní API verze pozdější než `2016-04-30-preview` jako došlo k narušující změny mezi `2016-04-30-preview` a `2017-03-30`.
+> Doporučujeme použít verzi rozhraní API pozdější než `2016-04-30-preview` jako došlo k narušující změny mezi `2016-04-30-preview` a `2017-03-30`.
 >
 >
 
 ### <a name="default-managed-disk-settings"></a>Výchozí nastavení spravovaného disku
 
-toocreate virtuální počítač s spravovaných disků, je už potřebovat toocreate hello úložiště účet prostředků a následujícím způsobem můžete aktualizovat prostředek virtuálního počítače. Specificky Upozorňujeme, že hello `apiVersion` odráží `2017-03-30` a hello `osDisk` a `dataDisks` už odkazovat tooa konkrétní identifikátor URI pro hello virtuálního pevného disku. Pokud nasazujete bez zadání dalších vlastností, bude používat hello disku [úložiště LRS standardní](../articles/storage/common/storage-redundancy.md). Pokud není zadán žádný název, jak dlouho trvá hello formát `<VMName>_OsDisk_1_<randomstring>` pro disk hello operačního systému a `<VMName>_disk<#>_<randomstring>` pro každý datový disk. Ve výchozím nastavení je Azure disk encryption zakázaný. ukládání do mezipaměti je pro čtení a zápis pro disk hello operačního systému a jeden pro datové disky. Můžete si povšimnout v následujícím příkladu hello, že je stále závislost účtu úložiště, i když toto je pouze pro úložiště diagnostiky a není potřeba ukládání na disk.
+Pokud chcete vytvořit virtuální počítač s spravované disky, už musíte vytvořit úložiště účtu prostředků a následujícím způsobem můžete aktualizovat prostředek virtuálního počítače. Specificky Upozorňujeme, že `apiVersion` odráží `2017-03-30` a `osDisk` a `dataDisks` nadále odkazovat na konkrétní identifikátoru URI virtuálního pevného disku. Při nasazování bez zadání dalších vlastností, bude disk používat [úložiště LRS standardní](../articles/storage/common/storage-redundancy.md). Pokud není zadán žádný název, jak dlouho trvá formát `<VMName>_OsDisk_1_<randomstring>` pro disk operačního systému a `<VMName>_disk<#>_<randomstring>` pro každý datový disk. Ve výchozím nastavení je Azure disk encryption zakázaný. ukládání do mezipaměti je pro čtení a zápis pro disk operačního systému a jeden pro datové disky. Můžete si povšimnout v následujícím příkladu, že je stále závislost účtu úložiště, i když toto je pouze pro úložiště diagnostiky a není potřeba ukládání na disk.
 
 ```
 {
@@ -120,7 +120,7 @@ toocreate virtuální počítač s spravovaných disků, je už potřebovat tooc
 
 ### <a name="using-a-top-level-managed-disk-resource"></a>Použití spravovaných disků na nejvyšší úrovni prostředků
 
-Jako alternativní toospecifying hello konfiguraci disku v objektu hello virtuálního počítače můžete vytvořit nejvyšší úrovně diskový prostředek a připojte ji jako součást hello vytvoření virtuálního počítače. Například můžeme vytvořit prostředek disku takto toouse jako datový disk.
+Jako alternativu k určení konfiguraci disku v objektu virtuálního počítače můžete vytvořit nejvyšší úrovně diskový prostředek a připojte ji jako součást vytvoření virtuálního počítače. Například můžeme vytvořit prostředek disku takto chcete použít jako datový disk.
 
 ```
 {
@@ -140,7 +140,7 @@ Jako alternativní toospecifying hello konfiguraci disku v objektu hello virtuá
 }
 ```
 
-V rámci hello objekt virtuálního počítače jsme pak můžete odkazovat toobe objekt tento disk připojit. Zadání ID prostředku hello hello spravované disk, který jsme vytvořili v hello `managedDisk` vlastnost umožňuje hello připojení disku hello jako hello vytvoří virtuální počítač. Všimněte si, že hello `apiVersion` hello prostředků virtuálního počítače je příliš nastavený`2017-03-30`. Všimněte si také, že vytvořili jsme závislost na hello disku prostředků tooensure, které je úspěšně vytvořen před vytvořením virtuálních počítačů. 
+V rámci objekt virtuálního počítače jsme pak můžete odkazovat tento objekt disku má být přiřazena. Určení Identifikátoru zdroje spravovaného disku jsme vytvořili v `managedDisk` vlastnost umožňuje připojení disku při vytváření virtuálního počítače. Všimněte si, že `apiVersion` pro virtuální počítač zdroj je nastaven pro `2017-03-30`. Všimněte si také, že vytvořili jsme závislost na prostředku disku, ujistěte se, že je úspěšně vytvořen před vytvořením virtuálních počítačů. 
 
 ```
 {
@@ -185,7 +185,7 @@ V rámci hello objekt virtuálního počítače jsme pak můžete odkazovat toob
 
 ### <a name="create-managed-availability-sets-with-vms-using-managed-disks"></a>Vytvoření skupiny dostupnosti spravované s virtuálními počítači pomocí spravovaných disků
 
-toocreate spravované dostupnost sady s virtuálními počítači pomocí spravovaných disků, přidejte hello `sku` objekt toohello dostupnosti prostředků a nastavte a hello `name` vlastnost příliš`Aligned`. Tím se zajistí hello disky pro jednotlivé virtuální počítače dostatečně izolované od sebe navzájem tooavoid jediný bod selhání. Všimněte si, že hello `apiVersion` pro prostředek skupiny dostupnosti hello je nastaven příliš`2017-03-30`.
+K vytvoření spravovaného dostupnost sady s virtuálními počítači pomocí spravovaných disků, přidejte `sku` objektu na dostupnost prostředků a nastavte a `name` vlastnost `Aligned`. Tím se zajistí disky pro jednotlivé virtuální počítače dostatečně od sebe navzájem oddělené k Vyhýbejte se jediným bodů selhání. Všimněte si také, že `apiVersion` pro dostupnost nastavení prostředku je nastaven na `2017-03-30`.
 
 ```
 {
@@ -205,15 +205,15 @@ toocreate spravované dostupnost sady s virtuálními počítači pomocí spravo
 
 ### <a name="additional-scenarios-and-customizations"></a>Další scénáře a přizpůsobení
 
-úplné informace toofind na specifikacích hello REST API, přečtěte si hello [vytvoření spravovaného disku dokumentace k REST API](/rest/api/manageddisks/disks/disks-create-or-update). Zjistíte další scénáře, a také výchozí a přijatelných hodnot, které mohou být odeslaná toohello rozhraní API prostřednictvím šablony nasazení. 
+K vyhledání úplné informace o specifikacích REST API, přečtěte si [vytvoření spravovaného disku dokumentace k REST API](/rest/api/manageddisks/disks/disks-create-or-update). Zjistíte další scénáře, a také výchozí a přijatelných hodnot, které se dají odeslat do rozhraní API prostřednictvím šablony nasazení. 
 
 ## <a name="next-steps"></a>Další kroky
 
-* Úplné šablony, které používají spravovaných disků na adrese hello následující odkazy úložišti Azure rychlý start.
+* Pro úplnou šablony, které používají spravovaný disky získáte pomocí následujících odkazů v úložišti Azure rychlý start.
     * [Virtuální počítač s Windows spravované disku](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows)
     * [Virtuální počítač s Linuxem pomocí spravovaného disku](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-linux)
     * [Úplný seznam spravovaných disků na šablony](https://github.com/Azure/azure-quickstart-templates/blob/master/managed-disk-support-list.md)
-* Navštivte hello [přehled disky spravované Azure](../articles/virtual-machines/windows/managed-disks-overview.md) dokumentu toolearn Další informace o discích spravovaných.
-* Zkontrolujte hello šablony referenční dokumentaci pro prostředky virtuálního počítače návštěvou hello [odkaz na šablonu Microsoft.Compute/virtualMachines](/templates/microsoft.compute/virtualmachines) dokumentu.
-* Zkontrolujte hello šablony referenční dokumentaci pro prostředky disku návštěvou hello [odkaz na šablonu Microsoft.Compute/disks](/templates/microsoft.compute/disks) dokumentu.
+* Přejděte [přehled disky spravované Azure](../articles/virtual-machines/windows/managed-disks-overview.md) dokumentu další informace o spravovaných disky.
+* Zkontrolujte šablonu referenční dokumentaci pro prostředky virtuálního počítače navštivte stránky [odkaz na šablonu Microsoft.Compute/virtualMachines](/azure/templates/microsoft.compute/virtualmachines) dokumentu.
+* Zkontrolujte šablonu referenční dokumentaci pro prostředky disku navštivte stránky [odkaz na šablonu Microsoft.Compute/disks](/azure/templates/microsoft.compute/disks) dokumentu.
  

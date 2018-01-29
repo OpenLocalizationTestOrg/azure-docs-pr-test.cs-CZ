@@ -33,8 +33,7 @@ Každý datový disk může mít velikost až 1 TB. Počet datových disků, kte
 ## <a name="which-virtual-hard-disk-types-can-i-use"></a>Jaké typy virtuálních pevných disků můžu použít?
 Azure podporuje pouze virtuální pevné disky s pevnou velikostí a ve formátu VHD. Pokud máte disk ve formátu VHDX, který chcete použít v Azure, musíte ho nejprve převést pomocí Správce technologie Hyper-V nebo rutiny [convert-VHD](http://go.microsoft.com/fwlink/p/?LinkId=393656). Až to uděláte, pomocí rutiny [Add-AzureVHD](https://msdn.microsoft.com/library/azure/dn495173.aspx) (v režimu správy služby) nahrajte disk VHD do účtu úložiště v Azure, abyste ho mohli použít s virtuálními počítači.
 
-* Pokyny pro Linux najdete v tématu [Vytvoření a nahrání virtuálního pevného disku obsahujícího operační systém Linux](../articles/virtual-machines/linux/classic/create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json).
-* Pokyny pro Windows najdete v tématu [Vytvoření a nahrání virtuálního pevného disku s Windows Serverem do Azure](../articles/virtual-machines/windows/classic/createupload-vhd.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
+* Pokyny pro Linux najdete v tématu [Vytvoření a nahrání virtuálního pevného disku obsahujícího operační systém Linux](../articles/virtual-machines/linux/classic/create-upload-vhd-classic.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json).
 
 ## <a name="are-these-virtual-machines-the-same-as-hyper-v-virtual-machines"></a>Jsou tyto virtuální počítače stejné jako virtuální počítače Hyper-V?
 V mnoha ohledech jsou podobné 1. generaci virtuálních počítačů Hyper-V, ale nejsou úplně stejné. Oba typy poskytují virtualizovaný hardware a virtuální pevné disky ve formátu VHD jsou kompatibilní. To znamená, že je můžete přesouvat mezi Hyper-V a Azure. Tři hlavní rozdíly, které někdy překvapí uživatele Hyper-V, jsou:
@@ -58,7 +57,7 @@ Pokud máte problémy se Vzdálenou plochou nebo SSH, nainstalujte rozšíření
 
 Pro virtuální počítače s Windows další možnosti zahrnují:
 
-* Na portálu Azure Classic vyhledejte virtuální počítač a potom klikněte na **Resetovat vzdálený přístup** na panelu příkazů.
+* Na portálu Azure najít virtuálního počítače a pak klikněte na **resetovat vzdálený přístup** z řádku nabídek.
 * Přečtěte si článek [Řešení problémů s připojením ke vzdálené ploše na virtuálním počítači Azure s Windows](../articles/virtual-machines/windows/troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 * Připojte se k virtuálnímu počítači prostřednictvím vzdálené komunikace prostředí Windows PowerShell nebo vytvořte další koncové body, aby se k virtuálnímu počítači mohly připojit další prostředky. Podrobnosti najdete v článku [Nastavení koncových bodů pro virtuální počítač](../articles/virtual-machines/windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 
@@ -85,7 +84,7 @@ Pokud jste uživatelské jméno nebo heslo zapomněli a máte nainstalovaného a
 
 Další podrobnosti:
 
-* Pro image Linuxu se při použití portálu Azure Classic jako výchozí uživatelské jméno přidělí azureuser, ale to můžete změnit použitím způsobu vytvoření virtuálního počítače Z galerie místo možnosti Rychlé vytvoření. Při použití možnosti Z galerie se také můžete rozhodnout, jestli se k přihlášení má používat heslo, klíč SSH nebo obojí. Uživatelský účet je neprivilegovaný uživatel s přístupem k příkazu sudo pro spouštění privilegovaných příkazů. Účet root je zakázaný.
+* Pro Linux Image Pokud používáte portál Azure, 'azureuser' je zadána jako výchozí uživatelské jméno, ale toto můžete změnit pomocí 'Galerie z' místo 'Vytvořit' jako způsob, jak vytvořit virtuální počítač. Při použití možnosti Z galerie se také můžete rozhodnout, jestli se k přihlášení má používat heslo, klíč SSH nebo obojí. Uživatelský účet je neprivilegovaný uživatel s přístupem k příkazu sudo pro spouštění privilegovaných příkazů. Účet root je zakázaný.
 * V případě imagí Windows bude potřeba zadat uživatelské jméno a heslo při vytváření virtuálního počítače. Účet se přidá do skupiny Administrators.
 
 ## <a name="can-azure-run-anti-virus-on-my-virtual-machines"></a>Může Azure na mém virtuálním počítači spouštět antivirové produkty?
@@ -96,7 +95,7 @@ Azure nabízí několik možností antivirových řešení, ale jejich správa j
 * [Nasazování antimalwarových řešení na virtuálních počítačích Azure](https://azure.microsoft.com/blog/2014/05/13/deploying-antimalware-solutions-on-azure-virtual-machines/)
 
 ## <a name="what-are-my-options-for-backup-and-recovery"></a>Jaké mám možnosti zálohování a obnovení?
-V určitých oblastech je dostupná služba Azure Backup jako verze Preview. Podrobnosti najdete v článku [Zálohování virtuálních počítačů Azure](../articles/backup/backup-azure-vms.md). Další řešení jsou k dispozici od certifikovaných partnerů. Pokud chcete zjistit, co je právě k dispozici, prohledejte web Azure Marketplace.
+V určitých oblastech je dostupná služba Azure Backup jako verze Preview. Podrobnosti najdete v článku [Zálohování virtuálních počítačů Azure](../articles/backup/backup-azure-arm-vms.md). Další řešení jsou k dispozici od certifikovaných partnerů. Pokud chcete zjistit, co je právě k dispozici, prohledejte web Azure Marketplace.
 
 Další možností je využít možnosti snímků úložiště objektů blob. Pokud to chcete provést, před každou operací, která se spoléhá na snímek objektu blob, budete muset vypnout virtuální počítač. Tím se uloží probíhající zápisy dat a systém souborů přejde do konzistentního stavu.
 
@@ -105,7 +104,7 @@ Azure účtuje hodinovou cenu na základě velikosti virtuálního počítače a
 
 Virtuální počítač se vám účtuje ve spuštěném nebo zastaveném stavu, ale ne ve stavu Zastaveno (přidělení zrušeno). Pokud chcete změnit stav virtuálního počítače na Zastaveno (přidělení zrušeno), proveďte jednu z následujících akcí:
 
-* Vypněte nebo odstraňte virtuální počítač na portálu Azure Classic.
+* Vypnutí nebo odstranění virtuálního počítače z portálu Azure.
 * Použijte rutinu Stop-AzureVM, která je dostupná v modulu Azure PowerShellu.
 * Použijte operaci Shutdown Role (Vypnutí role) v rozhraní REST API pro správu služeb a pro element PostShutdownAction zadejte StoppedDeallocated.
 
@@ -118,11 +117,11 @@ K neplánovaným událostem údržby může docházet, když Azure zjistí záva
 
 U každého samostatného virtuálního počítače (tj. virtuální počítače, které nejsou součástí žádné sady dostupnosti) Azure e-mailem upozorní správce služeb předplatného alespoň týden před plánovanou údržbou, protože během aktualizace může dojít k restartování virtuálních počítačů. U aplikací spouštěných na virtuálních počítačích může dojít k výpadku.
 
-Pokud dojde k restartování z důvodu plánované údržby, pomocí portálu Azure Classic nebo Azure PowerShellu můžete také zobrazit protokoly restartování. Podrobnosti najdete v tématu [Zobrazení protokolů restartování virtuálního počítače](https://azure.microsoft.com/blog/2015/04/01/viewing-vm-reboot-logs/).
+Také můžete portál Azure nebo Azure PowerShell k zobrazení protokolů restartování při restartování došlo k chybě z důvodu plánované údržby. Podrobnosti najdete v tématu [Zobrazení protokolů restartování virtuálního počítače](https://azure.microsoft.com/blog/2015/04/01/viewing-vm-reboot-logs/).
 
 Pokud chcete zajistit redundanci, umístěte do stejné skupiny dostupnosti dva nebo více podobně nakonfigurovaných virtuálních počítačů. Tím pomůžete zajistit, že během plánované nebo neplánované údržby bude dostupný alespoň jeden virtuální počítač. Azure pro tuto konfiguraci zaručuje určité úrovně dostupnosti virtuálních počítačů. Podrobnosti najdete v článku [Správa dostupnosti virtuálních počítačů](../articles/virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další zdroje informací:
 [Informace o virtuálních počítačích Azure](../articles/virtual-machines/virtual-machines-linux-about.md)
 
 [Vytvoření a správa virtuálních počítačů s Linuxem pomocí Azure CLI](../articles/virtual-machines/linux/tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)

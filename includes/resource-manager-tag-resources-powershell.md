@@ -1,24 +1,12 @@
-Verze 3.0 hello AzureRm.Resources modulu součástí práce se značky významné změny. Než budete pokračovat, zkontrolujte svoji verzi:
+V příkladech v tomto článku vyžadují verze 3.0 nebo novější prostředí Azure PowerShell. Pokud nemáte verze 3.0 nebo novější, [aktualizujte verzi](/powershell/azureps-cmdlets-docs/) pomocí Galerie prostředí PowerShell nebo webové platformy.
 
-```powershell
-Get-Module -ListAvailable -Name AzureRm.Resources | Select Version
-```
-
-Pokud výsledky zobrazit verze 3.0 nebo novější, hello příklady v tomto tématu fungovat s vaším prostředím. Pokud nemáte verzi 3.0 nebo novější, než budete v tomto tématu pokračovat, [aktualizujte verzi](/powershell/azureps-cmdlets-docs/) pomocí Galerie prostředí PowerShell nebo Instalace webové platformy.
-
-```powershell
-Version
--------
-3.5.0
-```
-
-toosee hello stávající značky pro *skupiny prostředků*, použijte:
+Pokud chcete zobrazit existující značky pro *skupinu prostředků*, použijte:
 
 ```powershell
 (Get-AzureRmResourceGroup -Name examplegroup).Tags
 ```
 
-Tento skript vrátí hello následující formát:
+Výstup tohoto skriptu bude v následujícím formátu:
 
 ```powershell
 Name                           Value
@@ -27,39 +15,39 @@ Dept                           IT
 Environment                    Test
 ```
 
-toosee hello stávající značky pro *prostředek, který má zadaný prostředek ID*, použijte:
+Pokud chcete zobrazit existující značky pro *prostředek s konkrétním ID prostředku*, použijte:
 
 ```powershell
 (Get-AzureRmResource -ResourceId {resource-id}).Tags
 ```
 
-Nebo toosee hello stávající značky pro *prostředek, který má zadaný název a prostředků skupinu*, použijte:
+Nebo, pokud chcete zobrazit existující značky pro *prostředek se zadaným názvem a skupinou prostředků*, použijte:
 
 ```powershell
 (Get-AzureRmResource -ResourceName examplevnet -ResourceGroupName examplegroup).Tags
 ```
 
-tooget *skupin prostředků, které mají s konkrétní značkou tag*, použijte:
+Pokud chcete získat *skupiny prostředků s konkrétní značkou*, použijte:
 
 ```powershell
-(Find-AzureRmResourceGroup -Tag @{ Dept="Finance" }).Name 
+(Find-AzureRmResourceGroup -Tag @{ Dept="Finance" }).Name
 ```
 
-tooget *prostředky, které mají s konkrétní značkou tag*, použijte:
+Pokud chcete získat *prostředky s konkrétní značkou*, použijte:
 
 ```powershell
 (Find-AzureRmResource -TagName Dept -TagValue Finance).Name
 ```
 
-Pokaždé, když použijete značky tooa prostředek nebo skupina zdrojů, můžete přepsat hello existující značek pro daný prostředek nebo skupina prostředků. Proto je nutné použít jiný přístup na základě toho, jestli hello prostředek nebo skupina prostředků má stávající značky. 
+Pokaždé, když použijete značky na prostředek nebo skupinu prostředků, přepíšete pro daný prostředek nebo skupinu prostředků existující značky. Proto je nutné použít jiný přístup na základě toho, jestli prostředek nebo skupina prostředků má existující značky.
 
-tooadd značky tooa *skupiny prostředků bez existující značky*, použijte:
+Pokud chcete přidat značky ke *skupině prostředků bez existujících značek*, použijte:
 
 ```powershell
 Set-AzureRmResourceGroup -Name examplegroup -Tag @{ Dept="IT"; Environment="Test" }
 ```
 
-tooadd značky tooa *skupinu prostředků, který má existující značky*, načtení hello existující značky, přidejte novou značku hello a znovu zásadu použijte hello značky:
+Pokud chcete přidat značky ke *skupině prostředků s existujícími značkami*, načtěte existující značky, přidejte novou značku a znovu tyto značky použijte:
 
 ```powershell
 $tags = (Get-AzureRmResourceGroup -Name examplegroup).Tags
@@ -67,57 +55,52 @@ $tags += @{Status="Approved"}
 Set-AzureRmResourceGroup -Tag $tags -Name examplegroup
 ```
 
-tooadd značky tooa *prostředku bez existující značky*, použijte:
+Pokud chcete přidat značky k *prostředku bez existujících značek*, použijte:
 
 ```powershell
-Set-AzureRmResource -Tag @{ Dept="IT"; Environment="Test" } -ResourceName examplevnet -ResourceGroupName examplegroup
+$r = Get-AzureRmResource -ResourceName examplevnet -ResourceGroupName examplegroup
+Set-AzureRmResource -Tag @{ Dept="IT"; Environment="Test" } -ResourceId $r.ResourceId -Force
 ```
 
-tooadd značky tooa *prostředek, který má existující značky*, použijte:
+Pokud chcete přidat značky k *prostředku s existujícími značkami*, použijte:
 
 ```powershell
-$tags = (Get-AzureRmResource -ResourceName examplevnet -ResourceGroupName examplegroup).Tags
-$tags += @{Status="Approved"}
-Set-AzureRmResource -Tag $tags -ResourceName examplevnet -ResourceGroupName examplegroup
+$r = Get-AzureRmResource -ResourceName examplevnet -ResourceGroupName examplegroup
+$r.tags += @{Status="Approved"}
+Set-AzureRmResource -Tag $r.Tags -ResourceId $r.ResourceId -Force
 ```
 
-tooapply všechny značky ze zdroje tooits skupiny prostředků, a *není zachována stávající značky na prostředcích hello*, použijte hello následující skript:
+Pokud chcete použít všechny značky ze skupiny prostředků na prostředky a *nezachovat existující značky u prostředků*, použijte tento skript:
 
 ```powershell
 $groups = Get-AzureRmResourceGroup
-foreach ($g in $groups) 
+foreach ($g in $groups)
 {
-    Find-AzureRmResource -ResourceGroupNameEquals $g.ResourceGroupName | ForEach-Object {Set-AzureRmResource -ResourceId $_.ResourceId -Tag $g.Tags -Force } 
+    Find-AzureRmResource -ResourceGroupNameEquals $g.ResourceGroupName | ForEach-Object {Set-AzureRmResource -ResourceId $_.ResourceId -Tag $g.Tags -Force }
 }
 ```
 
-tooapply všechny značky ze zdroje tooits skupiny prostředků, a *zachovat stávající značky na prostředcích, které nebudou duplikáty*, použijte hello následující skript:
+Pokud chcete použít všechny značky ze skupiny prostředků na prostředky a *zachovat existující značky u prostředků, které nejsou duplikáty*, použijte tento skript:
 
 ```powershell
-$groups = Get-AzureRmResourceGroup
-foreach ($g in $groups) 
-{
-    if ($g.Tags -ne $null) {
-        $resources = Find-AzureRmResource -ResourceGroupNameEquals $g.ResourceGroupName 
-        foreach ($r in $resources)
+$group = Get-AzureRmResourceGroup "examplegroup"
+if ($group.Tags -ne $null) {
+    $resources = $group | Find-AzureRmResource
+    foreach ($r in $resources)
+    {
+        $resourcetags = (Get-AzureRmResource -ResourceId $r.ResourceId).Tags
+        foreach ($key in $group.Tags.Keys)
         {
-            $resourcetags = (Get-AzureRmResource -ResourceId $r.ResourceId).Tags
-            foreach ($key in $g.Tags.Keys)
-            {
-                if ($resourcetags.ContainsKey($key)) { $resourcetags.Remove($key) }
-            }
-            $resourcetags += $g.Tags
-            Set-AzureRmResource -Tag $resourcetags -ResourceId $r.ResourceId -Force
+            if (($resourcetags) -AND ($resourcetags.ContainsKey($key))) { $resourcetags.Remove($key) }
         }
+        $resourcetags += $group.Tags
+        Set-AzureRmResource -Tag $resourcetags -ResourceId $r.ResourceId -Force
     }
 }
 ```
 
-tooremove všechny značky, předejte prázdný zatřiďovací tabulku:
+Pokud chcete odebrat všechny značky, předejte prázdnou zatřiďovací tabulku:
 
 ```powershell
 Set-AzureRmResourceGroup -Tag @{} -Name examplegroup
 ```
-
-
-

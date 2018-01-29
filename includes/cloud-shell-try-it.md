@@ -1,21 +1,12 @@
 
 ## <a name="launch-azure-cloud-shell"></a>Spuštění služby Azure Cloud Shell
 
-Hello cloudové prostředí Azure je bezplatná prostředí Bash, který můžete spustit přímo v rámci hello portálu Azure. Má hello rozhraní příkazového řádku Azure předinstalována a nakonfigurované toouse s vaším účtem. Klikněte na tlačítko hello **cloudové prostředí** tlačítko v hello nabídce v pravé horní hello Dobrý den [portál Azure](https://portal.azure.com).
+Prostředí cloudové služby Azure je bezplatná interaktivní prostředí, který můžete použít ke spuštění kroky v tomto článku. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem. Stačí kliknout na **kopie** zkopírujte kód, vložte jej do prostředí cloudu a stiskněte klávesu enter ji spustit.  Existuje několik způsobů, jak spustit prostředí cloudu:
 
-[![Cloud Shell](./media/cloud-shell-try-it/cloud-shell-menu.png)](https://portal.azure.com)
-
-tlačítko Hello spustí interaktivní prostředí, který můžete použít toorun všechny hello kroky v tomto tématu:
-
-[![Snímek obrazovky znázorňující hello cloudové prostředí okna portálu hello](./media/cloud-shell-try-it/cloud-shell-safari.png)](https://portal.azure.com)
-
-
-
-
-
-
-
-
-
-
+|  |   |
+|-----------------------------------------------|---|
+| Klikněte na tlačítko **zkuste ho** v pravém horním rohu bloku kódu. | ![Cloudové prostředí v tomto článku](./media/cloud-shell-try-it/cli-try-it.png) |
+| Otevřete prostředí cloudu v prohlížeči. | [![https://shell.azure.com/bash](./media/cloud-shell-try-it/launchcloudshell.png)](https://shell.azure.com/bash) |
+| Klikněte **cloudové prostředí** tlačítko v nabídce v pravé horní části [portál Azure](https://portal.azure.com). |    ![Prostředí cloudu na portálu](./media/cloud-shell-try-it/cloud-shell-menu.png) |
+|  |  |
 

@@ -1,84 +1,105 @@
 
-Hello předchozí příklad ukázal u standardní přihlášení, které vyžaduje klient toocontact hello obou hello identity zprostředkovatele a hello back-end služby Azure při každém spuštění aplikace hello. Tato metoda je neefektivní a může mít problémy související s využití, pokud mnoho zákazníků zkuste toostart aplikace současně. Lepším řešením je, že toocache hello autorizační token vrácený hello služby Azure a zkuste to toouse to před použitím nejprve u založenou na poskytovateli přihlášení.
+Předchozí příklad ukázal standardní přihlášení, která vyžaduje, aby klient kontaktovat poskytovatele identit a back-end služby Azure při každém spuštění aplikace. Tato metoda je neefektivní a může mít problémy související s využití, pokud mnoho zákazníků, pokuste se spustit aplikaci současně. Lepší přístup je ukládat do mezipaměti autorizační token vrácený služby Azure a pokuste se použít tento první před použitím u založenou na poskytovateli přihlášení.
 
 > [!NOTE]
-> Můžete mezipaměti hello token vystavený hello back-end služby Azure bez ohledu na to, jestli používáte ověřování klienta spravovat nebo spravované služby. Tento kurz používá službu spravovat ověřování.
+> Můžete mezipaměti token vystavený back-end služby Azure bez ohledu na to, jestli používáte ověřování klienta spravovat nebo spravované služby. Tento kurz používá službu spravovat ověřování.
 >
 >
 
-1. Otevřete soubor ToDoActivity.java hello a přidejte následující příkazy pro import hello:
+1. Otevřete soubor ToDoActivity.java a přidejte následující příkazy pro import:
 
-        import android.content.Context;
-        import android.content.SharedPreferences;
-        import android.content.SharedPreferences.Editor;
-2. Přidejte následující členy toohello hello `ToDoActivity` třídy.
+    ```java
+    import android.content.Context;
+    import android.content.SharedPreferences;
+    import android.content.SharedPreferences.Editor;
+    ```
 
-        public static final String SHAREDPREFFILE = "temp";    
-        public static final String USERIDPREF = "uid";    
-        public static final String TOKENPREF = "tkn";    
-3. V souboru ToDoActivity.java hello, přidejte následující definice hello hello `cacheUserToken` metoda.
+2. Přidejte následující členy `ToDoActivity` třídy.
 
-        private void cacheUserToken(MobileServiceUser user)
-        {
-            SharedPreferences prefs = getSharedPreferences(SHAREDPREFFILE, Context.MODE_PRIVATE);
-            Editor editor = prefs.edit();
-            editor.putString(USERIDPREF, user.getUserId());
-            editor.putString(TOKENPREF, user.getAuthenticationToken());
-            editor.commit();
-        }    
+    ```java
+    public static final String SHAREDPREFFILE = "temp";
+    public static final String USERIDPREF = "uid";
+    public static final String TOKENPREF = "tkn";
+    ```
 
-    Tato metoda ukládá v souboru předvoleb, která je označena privátní hello ID uživatele a token. To by měla chránit mezipaměti toohello přístup tak, aby jiné aplikace na zařízení hello nemají toohello tokenu přístupu. Hello předvoleb je v izolovaném prostoru pro aplikace hello. Ale pokud někdo získá přístup toohello zařízení, je možné, že získají přístup toohello tokenu mezipaměti jinými způsoby.
+3. V souboru ToDoActivity.java, přidejte následující definice pro `cacheUserToken` metoda.
+
+    ```java
+    private void cacheUserToken(MobileServiceUser user)
+    {
+        SharedPreferences prefs = getSharedPreferences(SHAREDPREFFILE, Context.MODE_PRIVATE);
+        Editor editor = prefs.edit();
+        editor.putString(USERIDPREF, user.getUserId());
+        editor.putString(TOKENPREF, user.getAuthenticationToken());
+        editor.commit();
+    }
+    ```
+
+    Tato metoda ukládá ID uživatele a token v souboru předvoleb, která je označena privátní. To by měla chránit přístup k mezipaměti, aby další aplikace v zařízení nebudete mít přístup k tokenu. Předvolba je v izolovaném prostoru pro aplikace. Ale pokud někdo získá přístup k zařízení, je možné, že získají přístup k tokenu mezipaměti jinými způsoby.
 
    > [!NOTE]
-   > Dále je možné chránit hello token s šifrování, pokud data tooyour tokenu přístupu jsou považovány za vysoce citlivé a někdo může získat přístup k toohello zařízení. Zcela bezpečné řešení je nad rámec tohoto návodu, hello však a závisí na požadavky na zabezpečení.
+   > Token s šifrování, jde dál chránit, pokud token přístup k datům se považuje za vysoce citlivé a někdo může získat přístup k zařízení. Zcela bezpečné řešení je nad rámec tohoto kurzu, ale a závisí na požadavky na zabezpečení.
    >
    >
-4. V souboru ToDoActivity.java hello, přidejte následující definice hello hello `loadUserTokenCache` metoda.
 
-        private boolean loadUserTokenCache(MobileServiceClient client)
+4. V souboru ToDoActivity.java, přidejte následující definice pro `loadUserTokenCache` metoda.
+
+    ```java
+    private boolean loadUserTokenCache(MobileServiceClient client)
+    {
+        SharedPreferences prefs = getSharedPreferences(SHAREDPREFFILE, Context.MODE_PRIVATE);
+        String userId = prefs.getString(USERIDPREF, null);
+        if (userId == null)
+            return false;
+        String token = prefs.getString(TOKENPREF, null);
+        if (token == null)
+            return false;
+
+        MobileServiceUser user = new MobileServiceUser(userId);
+        user.setAuthenticationToken(token);
+        client.setCurrentUser(user);
+
+        return true;
+    }
+    ```
+
+5. V *ToDoActivity.java* souboru, nahraďte `authenticate` a `onActivityResult` metody následující těmi, které používá mezipamětí tokenů. Zprostředkovatel přihlášení změňte, pokud chcete použít účet, než Google.
+
+    ```java
+    private void authenticate() {
+        // We first try to load a token cache if one exists.
+        if (loadUserTokenCache(mClient))
         {
-            SharedPreferences prefs = getSharedPreferences(SHAREDPREFFILE, Context.MODE_PRIVATE);
-            String userId = prefs.getString(USERIDPREF, null);
-            if (userId == null)
-                return false;
-            String token = prefs.getString(TOKENPREF, null);
-            if (token == null)
-                return false;
-
-            MobileServiceUser user = new MobileServiceUser(userId);
-            user.setAuthenticationToken(token);
-            client.setCurrentUser(user);
-
-            return true;
+            createTable();
         }
-5. V hello *ToDoActivity.java* souboru, nahraďte hello `authenticate` metoda s hello následující metody, která používá mezipamětí tokenů. Změnit zprostředkovatele přihlášení hello, pokud chcete, aby toouse účtu než Google.
+        // If we failed to load a token cache, login and create a token cache
+        else
+        {
+            // Login using the Google provider.
+            mClient.login(MobileServiceAuthenticationProvider.Google, "{url_scheme_of_your_app}", GOOGLE_LOGIN_REQUEST_CODE);
+        }
+    }
 
-        private void authenticate() {
-            // We first try tooload a token cache if one exists.
-            if (loadUserTokenCache(mClient))
-            {
-                createTable();
-            }
-            // If we failed tooload a token cache, login and create a token cache
-            else
-            {
-                // Login using hello Google provider.    
-                ListenableFuture<MobileServiceUser> mLogin = mClient.login(MobileServiceAuthenticationProvider.Google);
-
-                Futures.addCallback(mLogin, new FutureCallback<MobileServiceUser>() {
-                    @Override
-                    public void onFailure(Throwable exc) {
-                        createAndShowDialog("You must log in. Login Required", "Error");
-                    }           
-                    @Override
-                    public void onSuccess(MobileServiceUser user) {
-                        createAndShowDialog(String.format(
-                                "You are now logged in - %1$2s",
-                                user.getUserId()), "Success");
-                        cacheUserToken(mClient.getCurrentUser());
-                        createTable();    
-                    }
-                });
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        // When request completes
+        if (resultCode == RESULT_OK) {
+            // Check the request code matches the one we send in the login request
+            if (requestCode == GOOGLE_LOGIN_REQUEST_CODE) {
+                MobileServiceActivityResult result = mClient.onActivityResult(data);
+                if (result.isLoggedIn()) {
+                    // login succeeded
+                    createAndShowDialog(String.format("You are now logged in - %1$2s", mClient.getCurrentUser().getUserId()), "Success");
+                    cacheUserToken(mClient.getCurrentUser());
+                    createTable();
+                } else {
+                    // login failed, check the error message
+                    String errorMessage = result.getErrorMessage();
+                    createAndShowDialog(errorMessage, "Error");
+                }
             }
         }
-6. Sestavte aplikaci a test ověřování hello pomocí platného účtu. Spusťte alespoň dvakrát. Při prvním spuštění hello by se zobrazit výzva toosign v a vytvořte mezipamětí tokenů hello. Potom pokusí každé spuštění tooload hello tokenu mezipaměti pro ověřování. By neměl být požadované toosign v.
+    }
+    ```
+
+6. Sestavení aplikace a testovací ověření pomocí platného účtu. Spusťte alespoň dvakrát. Při prvním spuštění mělo by se zobrazit výzva k přihlášení a vytvoření mezipamětí tokenů. Potom každé spuštění pokusí načíst mezipamětí tokenů pro ověřování. Nesmí se budete muset přihlásit.

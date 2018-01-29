@@ -1,18 +1,22 @@
-Teď můžete použít nástroj Průzkumník dat hello v hello Azure portálu toocreate databáze a kolekce. 
+Teď můžete pomocí nástroje Průzkumník dat na webu Azure Portal vytvořit databázi a kolekci. 
 
-1. V hello portál Azure, v nabídce hello navigaci vlevo, klikněte na **Data Explorer (Preview)**. 
+1. Klikněte na **Průzkumník dat** > **Nová kolekce**. 
+    
+    Úplně vpravo se zobrazí oblast **Přidat kolekci**. Pokud ji nevidíte, možná se budete muset posunout doprava.
 
-2. Na hello **Data Explorer (Preview)** okně klikněte na tlačítko **nové kolekce**a pak zadejte hello následující informace:
+    ![Průzkumník dat na webu Azure Portal – okno Přidat kolekci](./media/cosmos-db-create-collection/azure-cosmosdb-data-explorer.png)
 
-    ![Hello okno Průzkumníku dat Azure portálu](./media/cosmos-db-create-collection/azure-cosmosdb-data-explorer.png)
+2. Na stránce **Přidat kolekci** zadejte nastavení pro novou kolekci.
 
     Nastavení|Navrhovaná hodnota|Popis
     ---|---|---
-    ID databáze|Úlohy|Hello název pro novou databázi. Názvy databází musí mít délku 1 až 255 znaků a nesmí obsahovat znaky /, \\, #, ? ani koncové mezery.
-    ID kolekce|Items|Hello název nové kolekce. Kolekce názvy mají hello stejné požadavky jako databáze ID znak.
-    Kapacita úložiště| Pevná (10 GB)|Použijte výchozí hodnotu hello. Tato hodnota je kapacita úložiště hello hello databáze.
-    Propustnost|400 RU|Použijte výchozí hodnotu hello. Pokud chcete tooreduce latence, můžete postupně škálovat propustnost hello později.
-    Klíč oddílu|/kategorie|Klíč oddílu, která distribuuje data rovnoměrně tooeach oddílu. Klíč výběru správné oddílu hello je důležité při vytváření kolekce původce. Další, najdete v části toolearn [návrh a vytváření oddílů](../articles/cosmos-db/partition-data.md#designing-for-partitioning).    
-3. Po dokončení hello formuláře, klikněte na tlačítko **OK**.
+    ID databáze|Úlohy|Jako název nové databáze zadejte *Tasks*. Názvy databází musí mít délku 1 až 255 znaků a nesmí obsahovat znaky /, \\, #, ? ani koncové mezery.
+    ID kolekce|Items|Jako název nové kolekce zadejte *Items*. ID kolekcí mají stejné požadavky na znaky jako názvy databází.
+    Kapacita úložiště| Pevná (10 GB)|Změňte hodnotu na **Pevná (10 GB)**. Tato hodnota je kapacita úložiště databáze.
+    Propustnost|400 RU|Změňte propustnost na 400 jednotek žádostí za sekundu (RU/s). Abyste mohli propustnost nastavit na 400 RU/s, kapacita úložiště musí být nastavená na **Pevná (10 GB)**. Pokud budete chtít snížit latenci, můžete propustnost později navýšit. 
+    
+    Klikněte na **OK**.
 
-Zobrazuje Průzkumníka data hello nové databáze a kolekce. 
+    Průzkumník dat zobrazí novou databázi a kolekci.
+
+    ![Průzkumník dat na webu Azure Portal zobrazující novou databázi a kolekci](./media/cosmos-db-create-collection/azure-cosmos-db-new-collection.png)

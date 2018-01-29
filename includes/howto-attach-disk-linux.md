@@ -4,20 +4,20 @@ Další informace o discích najdete v tématu věnovaném [diskům a virtuáln�
 <a id="attachempty"></a>
 
 ## <a name="attach-an-empty-disk"></a>Připojení prázdného disku
-1. Otevřete Azure CLI 1.0 a [připojit tooyour předplatné](../articles/xplat-cli-connect.md). Zkontrolujte, že jste v režimu Azure Service Management (`azure config mode asm`).
-2. Zadejte `azure vm disk attach-new` toocreate a připojit nový disk, jak ukazuje následující příklad hello. Nahraďte *Můjvp* s názvem hello systému Linux virtuálního počítače a zadejte velikost hello hello disku v GB, což je *100GB* v tomto příkladu:
+1. Otevřete Azure CLI 1.0 a [připojte se k předplatnému Azure](/cli/azure/authenticate-azure-cli). Zkontrolujte, že jste v režimu Azure Service Management (`azure config mode asm`).
+2. Zadáním příkazu `azure vm disk attach-new` vytvořte a připojte nový disk, jak ukazuje následující příklad. Místo *myVM* použijte názve vašeho linuxového virtuálního počítače a zadejte velikost v GB (v tomto příkladu je to *100 GB*):
 
     ```azurecli
     azure vm disk attach-new myVM 100
     ```
 
-3. Jakmile hello datový disk se vytvoří a připojené, je uvedena ve výstup hello `azure vm disk list <virtual-machine-name>` jak ukazuje následující příklad hello:
+3. Jakmile se datový disk vytvoří a připojí, zobrazí se ve výstupu příkazu `azure vm disk list <virtual-machine-name>`, jak ukazuje následující příklad:
    
     ```azurecli
     azure vm disk list TestVM
     ```
 
-    Hello výstup je podobné toohello následující ukázka:
+    Výstup se podobá následujícímu příkladu:
 
     ```bash
     info:    Executing command vm disk list
@@ -37,14 +37,14 @@ Další informace o discích najdete v tématu věnovaném [diskům a virtuáln�
 ## <a name="attach-an-existing-disk"></a>Připojení stávajícího disku
 Připojení stávajícího disku vyžaduje, aby v účtu úložiště byl dostupný soubor .vhd.
 
-1. Otevřete Azure CLI 1.0 a [připojit tooyour předplatné](../articles/xplat-cli-connect.md). Zkontrolujte, že jste v režimu Azure Service Management (`azure config mode asm`).
-2. Zkontrolujte, pokud hello virtuálního pevného disku, které chcete tooattach, je již nahrán tooyour předplatné Azure:
+1. Otevřete Azure CLI 1.0 a [připojte se k předplatnému Azure](/cli/azure/authenticate-azure-cli). Zkontrolujte, že jste v režimu Azure Service Management (`azure config mode asm`).
+2. Zkontrolujte, jestli virtuální pevný disk, který chcete připojit, už je nahraný v předplatném Azure:
    
     ```azurecli
     azure vm disk list
     ```
 
-    Hello výstup je podobné toohello následující ukázka:
+    Výstup se podobá následujícímu příkladu:
 
     ```azurecli
      info:    Executing command vm disk list
@@ -58,13 +58,13 @@ Připojení stávajícího disku vyžaduje, aby v účtu úložiště byl dostup
      info:    vm disk list command OK
     ```
 
-3. Pokud nenajdete hello disku, při němž toouse, místní předplatné tooyour virtuální pevný disk může odeslat pomocí `azure vm disk create` nebo `azure vm disk upload`. Příklad `disk create` by jako hello následující ukázka:
+3. Pokud se nepodařilo najít disk, který chcete použít, můžete k nahrání místního virtuálního pevného disku do předplatného použít `azure vm disk create` nebo `azure vm disk upload`. Použití příkazu `disk create` se bude podobat následujícímu příkladu:
    
     ```azurecli
     azure vm disk create myVhd .\TempDisk\test.VHD -l "East US" -o Linux
     ```
 
-    Hello výstup je podobné toohello následující ukázka:
+    Výstup se podobá následujícímu příkladu:
 
     ```azurecli
     info:    Executing command vm disk create
@@ -78,23 +78,23 @@ Připojení stávajícího disku vyžaduje, aby v účtu úložiště byl dostup
     info:    vm disk create command OK
     ```
    
-   Můžete také používat `azure vm disk upload` tooupload účet virtuálního pevného disku tooa konkrétní úložiště. Přečtěte si další informace o hello příkazy toomanage vaše datových disků virtuálního počítače Azure [přes zde](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2).
+   Můžete také použít `azure vm disk upload` a virtuální pevný disk nahrát do konkrétního účtu úložiště. Víc si o příkazech pro správu datových disků virtuálních počítačů Azure můžete přečíst [tady](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2).
 
-4. Teď můžete připojit hello potřeby virtuálního pevného disku tooyour virtuálního počítače:
+4. Teď připojíte požadovaný virtuální pevný disk k virtuálnímu počítači:
    
     ```azurecli
     azure vm disk attach myVM myVhd
     ```
    
-   Ujistěte se, že tooreplace *Můjvp* s názvem hello virtuálního počítače, a *myVHD* s vaší požadované virtuální pevný disk.
+   Nezapomeňte nahradit *myVM* názvem virtuálního počítače a *myVHD* požadovaným virtuálním pevným diskem.
 
-5. Můžete ověřit hello disk je připojený toohello virtuální počítač s `azure vm disk list <virtual-machine-name>`:
+5. K ověření toho, že disk je připojený k virtuálnímu počítači, můžete použít příkaz `azure vm disk list <virtual-machine-name>`:
    
     ```azurecli
     azure vm disk list myVM
     ```
 
-    Hello výstup je podobné toohello následující ukázka:
+    Výstup se podobá následujícímu příkladu:
 
     ```azurecli
      info:    Executing command vm disk list
@@ -111,7 +111,7 @@ Připojení stávajícího disku vyžaduje, aby v účtu úložiště byl dostup
     ```
 
 > [!NOTE]
-> Po přidání datový disk, budete potřebovat toolog toohello virtuálního počítače a inicializaci hello disku, aby hello virtuálního počítače můžete použít hello disku pro úložiště (viz hello následující kroky pro další informace o tom, jak toodo inicializovat hello disk).
+> Po přidání datového disku se musíte přihlásit k virtuálnímu počítači a disk inicializovat, aby ho virtuální počítač mohl využívat jako úložiště (další informace o postupu při inicializaci disku najdete v následujících krocích).
 > 
 > 
 

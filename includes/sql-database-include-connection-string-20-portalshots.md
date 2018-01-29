@@ -8,22 +8,26 @@ Latest Freshness check:  2015-09-02 , GeneMi.
 -->
 
 
-### <a name="obtain-hello-connection-string-from-hello-azure-portal"></a>Získat připojovací řetězec hello z hello portálu Azure
-Použití hello [portál Azure](https://portal.azure.com/) tooobtain hello připojovací řetězec potřebné pro váš klientský program toointeract s Azure SQL Database: 
+### <a name="obtain-the-connection-string-from-the-azure-portal"></a>Získání připojovacího řetězce z portálu Azure
+Použití [portál Azure](https://portal.azure.com/) k získání připojovacího řetězce, které je nezbytné pro váš klientský program pro interakci s Azure SQL Database. 
 
-1. Klikněte na tlačítko **Procházet** > **databází SQL**.
-2. Zadejte název hello databáze do hello filtru textovém poli téměř hello levém hello **databází SQL** okno.
-3. Klikněte na tlačítko hello řádek pro vaši databázi.
-4. Po hello okno se zobrazí pro vaši databázi, minimalizujte hello standardní pro visual užitečný můžete kliknout na ovládací prvky toocollapse hello okna, které jste použili pro procházení a filtrování databáze. 
-   
-    ![Filtrovat tooisolate databáze][10-FilterDatabase]
-5. V okně hello pro vaši databázi, klikněte na tlačítko **zobrazit databázové připojovací řetězce**.
-6. Pokud máte v úmyslu toouse hello ADO.NET připojení knihovny, zkopírujte hello řetězec s názvem bez přípony **ADO**. 
-   
-    ![Zkopírujte hello ADO připojovací řetězec pro vaši databázi][20-CopyAdoConnectionString]
-7. Do jednoho formátu nebo jiné vložte informace o připojovacím řetězci hello do váš klientský program kód.
+1. Vyberte **Procházet vše** > **databází SQL**.
 
-Další informace naleznete v tématu:<br/>[Připojovací řetězce a konfigurační soubory](http://msdn.microsoft.com/library/ms254494.aspx).
+2. Zadejte název vaší databáze do textového pole filtru v levém horním rohu **databází SQL** okno.
+
+3. Vyberte řádek pro vaši databázi.
+
+4. Jakmile se objeví v okně pro vaši databázi, vyberte visual pohodlí **minimalizaci** tlačítka na Sbalit okna, které jste použili pro procházení a filtrování databáze. 
+   
+    ![Filtr izolovat vaše databáze][10-FilterDatabase]
+5. V okně vaší databáze, vyberte **zobrazit databázové připojovací řetězce**.
+
+6. Pokud máte v úmyslu použít knihovnu připojení ADO.NET, zkopírujte řetězec s názvem bez přípony **ADO**. 
+   
+    ![Zkopírujte připojovací řetězec pro vaši databázi ADO][20-CopyAdoConnectionString]
+7. Do jednoho formátu nebo jiné vložte informace o připojovacím řetězci do váš klientský kód programu.
+
+Další informace najdete v tématu [připojovací řetězce a konfigurační soubory](http://msdn.microsoft.com/library/ms254494.aspx).
 
 <!-- Image references. -->
 

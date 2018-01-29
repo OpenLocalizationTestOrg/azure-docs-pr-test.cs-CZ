@@ -1,40 +1,40 @@
-## <a name="view-device-telemetry-in-hello-dashboard"></a>Zobrazení telemetrie zařízení na řídicím panelu hello
-řídicí panel Hello v hello vzdálené monitorování umožňuje řešení můžete tooview hello telemetrie zařízení odesílat tooIoT rozbočovače.
+## <a name="view-device-telemetry"></a>Zobrazení telemetrie zařízení
 
-1. V prohlížeči, návratový toohello vzdálené monitorování řídicí panel řešení, klikněte na tlačítko **zařízení** v hello levém panelu toonavigate toohello **seznam zařízení**.
-2. V hello **seznam zařízení**, měli byste vidět, že hello stav zařízení je **systémem**. Pokud ne, klikněte na tlačítko **povolit zařízení** v hello **podrobnosti o zařízení** panelu.
-   
-    ![Zobrazení stavu zařízení][18]
-3. Klikněte na tlačítko **řídicí panel** tooreturn toohello řídicí panel, vyberte příslušné zařízení v hello **zařízení tooView** tooview rozevíracího seznamu jeho telemetrie. Hello telemetrie z ukázkové aplikace hello je 50 jednotky pro interní teploty, 55 jednotky pro externí teplotu a 50 jednotky pro vlhkosti.
-   
-    ![Zobrazení telemetrie zařízení][img-telemetry]
+Můžete zobrazit telemetrická data odesílaná ze zařízení **zařízení** stránky v řešení.
 
-## <a name="invoke-a-method-on-your-device"></a>Volání metody na zařízení
-Hello řídicího panelu řešení vzdáleného monitorování hello umožňuje tooinvoke metody zařízení prostřednictvím služby IoT Hub. Například v hello řešení vzdáleného sledování můžete vyvolat metodu toosimulate, restartování zařízení.
+1. Vyberte zařízení, které jsou zřízené v seznamu zařízení na **zařízení** stránky. Panelu se zobrazí informace o vašem zařízení, včetně vykreslení telemetrie zařízení:
 
-1. V hello vzdálené monitorování řídicí panel řešení, klikněte na **zařízení** v hello levém panelu toonavigate toohello **seznam zařízení**.
-2. Klikněte na tlačítko **ID zařízení** pro zařízení v hello **seznam zařízení**.
-3. V hello **podrobnosti o zařízení** panelu, klikněte na tlačítko **metody**.
-   
-    ![Metody zařízení][13]
-4. V hello **metoda** rozevíracího seznamu, vyberte **InitiateFirmwareUpdate**a potom v **FWPACKAGEURI** zadejte fiktivní adresu URL. Klikněte na tlačítko **vyvolání metody** toocall hello metodu hello zařízení.
-   
-    ![Vyvolání metody zařízení][14]
-   
+    ![Najdete v části Podrobnosti o zařízení](media/iot-suite-visualize-connecting/devicesdetail.png)
 
-5. Zobrazí se zpráva v konzole hello spuštění kódu vašeho zařízení, když zařízení hello zpracovává metoda hello. výsledky Hello hello metody přidají toohello historie hello řešení portálu:
+1. Zvolte **přetížení** ke změně zobrazení telemetrie:
 
-    ![Zobrazení historie metod][img-method-history]
+    ![Zobrazení telemetrie přetížení](media/iot-suite-visualize-connecting/devicespressure.png)
+
+1. Chcete-li zobrazit diagnostické informace o vašem zařízení, přejděte dolů na **diagnostiky**:
+
+    ![Zobrazení zařízení diagnostiky](media/iot-suite-visualize-connecting/devicesdiagnostics.png)
+
+## <a name="act-on-your-device"></a>Fungovat na zařízení
+
+Chcete-li volat metody na zařízení, použijte **zařízení** stránky v řešení vzdáleného monitorování. Například v řešení vzdáleného monitorování **chladič** zařízení implementovat **restartovat** metoda.
+
+1. Zvolte **zařízení** přejděte na **zařízení** stránky v řešení.
+
+1. Vyberte zařízení, které jsou zřízené v seznamu zařízení na **zařízení** stránky:
+
+    ![Vyberte fyzické zařízení](media/iot-suite-visualize-connecting/devicesselect.png)
+
+1. Chcete-li zobrazit seznam metod, můžete volat na vašem zařízení, zvolte **plán**. Při plánování metodu pro spuštění na několika zařízeních, můžete vybrat více zařízení v seznamu. **Plán** panelu zobrazí požadované typy metoda společné pro všechny vámi vybraná zařízení.
+
+1. Zvolte **restartovat**, nastavte název úlohy na **RebootPhysicalChiller**a zvolte **použít**:
+
+    ![Plánování restartování](media/iot-suite-visualize-connecting/deviceschedule.png)
+
+1. Zobrazí se zpráva v konzole pro spuštění kódu vašeho zařízení, když zařízení zpracovává metodu.
+
+> [!NOTE]
+> Chcete-li sledovat stav úlohy v řešení, zvolte **zobrazení**.
 
 ## <a name="next-steps"></a>Další kroky
-článek Hello [přizpůsobení předkonfigurovaných řešení] [ lnk-customize] popisuje několik způsobů, jak můžete rozšířit této ukázce. Mezi možná rozšíření patří skutečné senzory a implementace dalších příkazů.
 
-Další informace o hello [oprávnění na webu azureiotsuite.com hello][lnk-permissions].
-
-[13]: ./media/iot-suite-visualize-connecting/suite4.png
-[14]: ./media/iot-suite-visualize-connecting/suite7-1.png
-[18]: ./media/iot-suite-visualize-connecting/suite10.png
-[img-telemetry]: ./media/iot-suite-visualize-connecting/telemetry.png
-[img-method-history]: ./media/iot-suite-visualize-connecting/history.png
-[lnk-customize]: ../articles/iot-suite/iot-suite-guidance-on-customizing-preconfigured-solutions.md
-[lnk-permissions]: ../articles/iot-suite/iot-suite-permissions.md
+Článek [přizpůsobení předkonfigurovaného řešení vzdáleného monitorování](../articles/iot-suite/iot-suite-remote-monitoring-customize.md) popisuje několik způsobů, jak přizpůsobit předkonfigurovaného řešení.

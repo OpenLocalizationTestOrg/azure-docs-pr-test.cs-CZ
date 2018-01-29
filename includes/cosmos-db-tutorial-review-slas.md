@@ -1,7 +1,11 @@
-Teď, když vaše aplikace je spuštěná, budete muset tooensure obchodní kontinuitu a sledovat uživatele přístupu tooensure vysokou dostupnost. Můžete použít hello Azure portálu tooreview hello dostupnosti, latenci, propustnosti a konzistence vaší kolekce. 
+Propustnost, úložiště, dostupnosti, latence a konzistence prostředků ve vašem účtu jsou monitorovány na portálu Azure. Podívejme se rychlé na tyto metriky. 
 
-Každý graf, který je spojen s hello [Azure Cosmos DB smlouvy o úrovni služeb (SLA)](https://azure.microsoft.com/support/legal/sla/documentdb/) poskytuje řádek, ukazuje hello kvóty požadované toomeet hello SLA a vaše skutečné využívání, budete zrušte pohled na výkon vaší databáze. Další metriky, například využití úložiště a počet požadavků za minutu, jsou také uvedené v portálu hello.
+1. Klikněte na tlačítko **metriky** v navigační nabídce.
 
-* V hello portálu Azure, v hello levé podokno, v části **monitorování**, klikněte na tlačítko **metriky**.
+   ![Metriky na portálu Azure](./media/cosmos-db-tutorial-review-slas/metrics.png)
 
-   ![Aplikace seznamu úkolů s ukázkovými daty](./media/cosmos-db-tutorial-review-slas/azure-cosmosdb-portal-metrics-slas.png)
+2. Klikněte na tlačítko prostřednictvím karty, takže jste vědět metriky, které poskytuje Azure Cosmos DB. 
+
+    Každý graf, který je přidružen [Azure Cosmos DB smlouvy o úrovni služeb (SLA)](https://azure.microsoft.com/support/legal/sla/cosmos-db/) poskytuje řádek, který ukazuje, pokud byla porušena kterákoli z smluv SLA. Díky Azure Cosmos DB je monitorování vaší transparentní s této sady metriky SLA. 
+
+   ![Sada metrik Azure Cosmos DB](./media/cosmos-db-tutorial-review-slas/metrics-suite.png)

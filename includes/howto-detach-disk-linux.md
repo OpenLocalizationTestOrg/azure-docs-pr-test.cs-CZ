@@ -1,19 +1,19 @@
-Pokud již nepotřebujete datový disk, který je připojený tooa virtuální počítač (VM), můžete ho snadno odpojit. Při odpojení disku z hello virtuálního počítače není hello disk odebrat z úložiště. Pokud chcete toouse hello existující data na disku hello znovu, můžete ji můžete opět připojit toohello stejného virtuálního počítače nebo jiný.  
+Když už nepotřebujete datový disk připojený k virtuálnímu počítači, můžete jej jednoduše odpojit. Při odpojení disku od virtuálního počítače nedojde k odebrání disku z úložiště. Pokud znovu chcete použít existující data na disku, můžete jej znovu připojit ke stejnému nebo jinému virtuálnímu počítači.  
 
 > [!NOTE]
-> Virtuální počítač v Azure používá různé typy disků – disk operačního systému, místní dočasný disk a volitelné datové disky. Podrobnosti najdete v tématu [Disky a virtuální pevné disky (VHD) pro virtuální počítače](../articles/virtual-machines/linux/about-disks-and-vhds.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Pokud odstraníte hello virtuálních počítačů, nelze odpojit disk operačního systému.
+> Virtuální počítač v Azure používá různé typy disků – disk operačního systému, místní dočasný disk a volitelné datové disky. Podrobnosti najdete v tématu [Disky a virtuální pevné disky (VHD) pro virtuální počítače](../articles/virtual-machines/linux/about-disks-and-vhds.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Disk operačního systému nelze odpojit bez odstranění virtuálního počítače.
 
-## <a name="find-hello-disk"></a>Najít hello disk
-Než můžete odpojit disk z virtuálního počítače je třeba toofind out hello číslo logické jednotky, které je identifikátor pro toobe disku hello odpojit. toodo, postupujte takto:
+## <a name="find-the-disk"></a>Vyhledání disku
+Než budete moci odpojit disk od virtuálního počítače, musíte zjistit číslo logické jednotky (LUN), což je identifikátor disku, který se má odpojit. Provedete to podle těchto kroků:
 
-1. Otevřete rozhraní příkazového řádku Azure a [připojit tooyour předplatné](../articles/xplat-cli-connect.md). Zkontrolujte, že jste v režimu Azure Service Management (`azure config mode asm`).
-2. Zjistěte, které disky jsou připojené tooyour virtuálních počítačů. Hello následující příklad vypíše disky pro virtuální počítač s názvem hello `myVM`:
+1. Otevřete rozhraní příkazového řádku Azure a [připojte se k předplatnému Azure](/cli/azure/authenticate-azure-cli). Zkontrolujte, že jste v režimu Azure Service Management (`azure config mode asm`).
+2. Zjistěte, které disky jsou připojené k virtuálnímu počítači. Následující příklad zobrazí seznam disků pro virtuální počítač `myVM`:
 
     ```azurecli
     azure vm disk list myVM
     ```
 
-    Hello výstup je podobné toohello následující ukázka:
+    Výstup se podobá následujícímu příkladu:
 
     ```azurecli
     * Fetching disk images
@@ -26,12 +26,12 @@ Než můžete odpojit disk z virtuálního počítače je třeba toofind out hel
       info:    vm disk list command OK
     ```
 
-3. Poznámka: hello logické jednotky nebo hello **číslo logické jednotky** hello disku, které chcete toodetach.
+3. Poznamenejte si **logickou jednotku** (LUN) disku, který chcete odpojit.
 
-## <a name="remove-operating-system-references-toohello-disk"></a>Odeberte disk toohello odkazy operačního systému
-Před odpojením hello disku z hello Linux hosta, měli byste si ověřit, že všechny oddíly v hello disku nejsou používány. Ujistěte se, že hello operační systém nebude pokoušet tooremount je po restartování systému. Tyto kroky vrátit zpět konfigurace hello pravděpodobně jste vytvořili při [připojení](../articles/virtual-machines/linux/classic/attach-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json) hello disku.
+## <a name="remove-operating-system-references-to-the-disk"></a>Odebrání odkazů operačního systému na disk
+Před odpojením disku od hostitele s Linuxem se ujistěte, že se nepoužívají žádné oddíly disku. Zajistěte, aby se je operační systém po restartu nepokusil znovu připojit. Tyto kroky vrátí zpět konfiguraci, kterou jste pravděpodobně vytvořili při [připojení](../articles/virtual-machines/linux/classic/attach-disk-classic.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json) disku.
 
-1. Použití hello `lsscsi` identifikátoru příkazu toodiscover hello disku. `lsscsi` můžete nainstalovat pomocí příkazu `yum install lsscsi` (v distribucích založených na Red Hat) nebo `apt-get install lsscsi` (v distribucích založených na Debian). Můžete najít identifikátor disku hello, hledaný pomocí hello číslo logické jednotky. Poslední číslo hello řazené kolekce členů v jednotlivých řádcích Hello je hello logické jednotky. V následující ukázka z hello `lsscsi`, logickou jednotku LUN 0 mapuje příliš  */dev/sdc*
+1. Pomocí příkazu `lsscsi` zjistěte identifikátor disku. `lsscsi` můžete nainstalovat pomocí příkazu `yum install lsscsi` (v distribucích založených na Red Hat) nebo `apt-get install lsscsi` (v distribucích založených na Debian). Hledaný identifikátor disku najdete pomocí čísla logické jednotky (LUN). Poslední číslo v řazené kolekci členů na každém řádku je logická jednotka (LUN). V následujícím příkladu výstupu z příkazu `lsscsi` se logická jednotka LUN 0 mapuje na */dev/sdc*.
 
     ```bash
     [1:0:0:0]    cd/dvd  Msft     Virtual CD/ROM   1.0   /dev/sr0
@@ -40,7 +40,7 @@ Před odpojením hello disku z hello Linux hosta, měli byste si ověřit, že v
     [5:0:0:0]    disk    Msft     Virtual Disk     1.0   /dev/sdc
     ```
 
-2. Použití `fdisk -l <disk>` oddíly hello toodiscover přidružené toobe disku hello odpojit. Hello následující příklad ukazuje výstup hello `/dev/sdc`:
+2. Pomocí příkazu `fdisk -l <disk>` najděte oddíly přidružené k disku, který se má odpojit. Následující příklad zobrazí výstup pro `/dev/sdc`:
 
     ```bash
     Disk /dev/sdc: 1098.4 GB, 1098437885952 bytes, 2145386496 sectors
@@ -54,13 +54,13 @@ Před odpojením hello disku z hello Linux hosta, měli byste si ověřit, že v
     /dev/sdc1            2048  2145386495  1072692224   83  Linux
     ```
 
-3. Odpojte každý oddíl uvedené pro hello disk. Odpojí technologie Hello následující příklad `/dev/sdc1`:
+3. Odpojte všechny oddíly uvedené u disku. Následující příklad odpojí `/dev/sdc1`:
 
     ```bash
     sudo umount /dev/sdc1
     ```
 
-4. Použití hello `blkid` příkaz toodiscovery hello identifikátory UUID pro všechny oddíly. Hello výstup je podobné toohello následující ukázka:
+4. Pomocí příkazu `blkid` zjistěte identifikátory UUID pro všechny oddíly. Výstup se podobá následujícímu příkladu:
 
     ```bash
     /dev/sda1: UUID="11111111-1b1b-1c1c-1d1d-1e1e1e1e1e1e" TYPE="ext4"
@@ -68,7 +68,7 @@ Před odpojením hello disku z hello Linux hosta, měli byste si ověřit, že v
     /dev/sdc1: UUID="33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e" TYPE="ext4"
     ```
 
-5. Odebrat položky v hello **/etc/fstab** soubor přidružený hello zařízení cesty nebo identifikátory UUID pro všechny oddíly pro toobe disku hello odpojit.  Záznamy pro tento příklad můžou být:
+5. V souboru **/etc/fstab** odeberte záznamy související s cestami zařízení nebo s identifikátory UUID pro všechny oddíly disku, který se má odpojit.  Záznamy pro tento příklad můžou být:
 
     ```sh  
    UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults   1   2
@@ -80,23 +80,23 @@ Před odpojením hello disku z hello Linux hosta, měli byste si ověřit, že v
    /dev/sdc1   /datadrive   ext4   defaults   1   2
    ```
 
-## <a name="detach-hello-disk"></a>Odpojte hello disk
-Po nalezení číslo logické jednotky hello hello disku a odkazy na odebrané hello operačního systému jste připravené toodetach ho:
+## <a name="detach-the-disk"></a>Odpojení disku
+Po zjištění čísla logické jednotky (LUN) disku a odebrání odkazů operačního systému jste připraveni disk odpojit:
 
-1. Odpojit hello vybraný disk z virtuálního počítače hello spuštěním příkazu hello `azure vm disk detach
-   <virtual-machine-name> <LUN>`. Hello následující příklad odpojí LUN `0` z hello virtuálního počítače s názvem `myVM`:
+1. Odpojte vybraný disk od virtuálního počítače spuštěním příkazu `azure vm disk detach
+   <virtual-machine-name> <LUN>`. Následující příklad odpojí logickou jednotku (LUN) `0` od virtuálního počítače `myVM`:
    
     ```azurecli
     azure vm disk detach myVM 0
     ```
 
-2. Můžete zkontrolovat, pokud tu spuštěním odpojit hello disk `azure vm disk list` znovu. Následující příklad kontroly Hello hello virtuálního počítače s názvem `myVM`:
+2. Odpojení disku můžete ověřit opětovným spuštěním příkazu `azure vm disk list`. Následující příklad zkontroluje virtuální počítač `myVM`:
    
     ```azurecli
     azure vm disk list myVM
     ```
 
-    Hello výstup je podobné toohello následující příklad, který ukazuje, že je již připojen hello datový disk:
+    Výstup bude vypadat podobně jako v následujícím příkladu, který ukazuje, že datový disk už není připojen:
 
     ```azurecli
     info:    Executing command vm disk list
@@ -110,5 +110,5 @@ Po nalezení číslo logické jednotky hello hello disku a odkazy na odebrané h
      info:    vm disk list command OK
     ```
 
-Hello odpojit disk zůstane v úložišti, ale je už připojené tooa virtuální počítač.
+Odpojený disk zůstává v úložišti, ale už není připojen k virtuálnímu počítači.
 

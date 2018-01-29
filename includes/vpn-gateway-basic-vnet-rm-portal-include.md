@@ -1,24 +1,26 @@
-toocreate virtuální sítě v modelu nasazení Resource Manager hello pomocí hello portál Azure, postupujte podle následujících kroků hello. snímky obrazovky Hello jsou uvedeny jako příklady. Být jisti tooreplace hello hodnoty vlastními. Další informace o práci s virtuálními sítěmi najdete v tématu hello [Přehled virtuálních sítí](../articles/virtual-network/virtual-networks-overview.md).
+Pokud chcete vytvořit virtuální síť v modelu nasazení Resource Manageru pomocí webu Azure Portal, postupujte podle následujících kroků. Snímky obrazovek slouží pouze jako příklady. Nezapomeňte hodnoty nahradit vlastními. Další informace o práci s virtuálními sítěmi najdete v článku [Přehled virtuálních sítí](../articles/virtual-network/virtual-networks-overview.md).
 
-1. V prohlížeči přejděte toohello [portál Azure](http://portal.azure.com) a v případě potřeby, přihlaste se pomocí účtu Azure.
-2. Klikněte na **+**. V hello **vyhledávání hello marketplace** pole, zadejte "Virtuální sítě". Vyhledejte **virtuální sítě** z hello vrátil seznamu a klikněte na tlačítko tooopen hello **virtuální sítě** stránky.
+>[!NOTE]
+>Aby se tato virtuální síť připojila k místnímu umístění, budete se muset domluvit se správcem vaší místní sítě a vyčlenit rozsah IP adres, který můžete použít speciálně pro tuto virtuální síť. Pokud existuje duplicitní rozsah adres na obou stranách připojení VPN, provoz se nemusí směrovat očekávaným způsobem. Pokud navíc chcete připojit tuto virtuální síť k jiné virtuální síti, adresní prostor se nesmí překrývat s jinou virtuální sítí. Podle toho pečlivě naplánujte konfiguraci sítě.
+>
+>
+
+1. V prohlížeči přejděte na portál [Azure Portal](http://portal.azure.com) a v případě potřeby se přihlaste pomocí účtu Azure.
+2. Klikněte na **+**. Do pole **Hledat na Marketplace** zadejte text „Virtuální síť“. Ve vráceném seznamu vyhledejte položku **Virtuální síť** a kliknutím otevřete stránku **Virtuální síť**.
 
   ![Stránka pro vyhledání prostředku virtuální sítě](./media/vpn-gateway-basic-vnet-rm-portal-include/newvnetportal700.png "Stránka pro vyhledání prostředku virtuální sítě")
-3. Téměř hello dolní části stránky hello virtuální sítě z hello **vybrat model nasazení** vyberte **Resource Manager**a potom klikněte na **vytvořit**.
+3. U dolního okraje stránky Virtuální síť v seznamu **Vybrat model nasazení** vyberte **Resource Manager** a potom klikněte na **Vytvořit**.
 
   ![Výběr Resource Manageru](./media/vpn-gateway-basic-vnet-rm-portal-include/resourcemanager250.png "Výběr Resource Manageru")
-4. Na hello **vytvořit virtuální síť** nakonfigurujte nastavení sítě VNet hello. Po vyplnění polí hello hello červený vykřičník stane zelená značka zaškrtnutí při hello znaků zadané v poli hello jsou platné. Některé hodnoty mohou být vyplněny automaticky. Pokud ano, nahraďte hello hodnoty vlastními. Hello **vytvořit virtuální síť** stránka bude vypadat podobně jako toohello následující ukázka:
+4. Na stránce **Vytvořit virtuální síť** nakonfigurujte nastavení virtuální sítě. Po vyplnění polí se červený vykřičník změní na zelenou značku zaškrtnutí, pokud jsou znaky zadané do pole platné. Některé hodnoty mohou být vyplněny automaticky. V takovém případě je nahraďte vlastními. Stránka **Vytvořit virtuální síť** vypadá podobně jako v následujícím příkladu:
 
-  ![Stránka pro vytvoření virtuální sítě](./media/vpn-gateway-basic-vnet-rm-portal-include/createvnet300.png "Stránka pro vytvoření virtuální sítě")
-5. **Název**: Zadejte název hello vaší virtuální sítě.
-6. **Adresní prostor**: Zadejte hello adresní prostor. Pokud máte více tooadd prostory adres, přidejte první adresní prostor. Můžete přidat další adresní prostory později, po vytvoření hello virtuální sítě.
-7. **Název podsítě**: přidejte hello názvem a podsíť rozsah adres podsítě. Můžete přidat další podsítě později, po vytvoření hello virtuální sítě.
-8. **Předplatné**: Ověřte, že hello uvedené předplatného je hello správná. Odběry můžete změnit pomocí rozevíracího seznamu hello.
-9. **Skupina prostředků**: Vyberte existující skupinu prostředků nebo vytvořte novou zadáním názvu nové skupiny prostředků. Pokud vytváříte novou skupinu, skupinu prostředků hello název podle tooyour plánované hodnoty konfigurace. Další informace o skupinách prostředků najdete v článku [Přehled Azure Resource Manageru](../articles/azure-resource-manager/resource-group-overview.md#resource-groups).
-10. **Umístění**: Vyberte hello umístění pro virtuální síť. umístění Hello Určuje, kde se bude nacházet hello prostředky, abyste nasadili toothis virtuální sítě.
-11. Vyberte **Pin toodashboard** Jestliže chcete mít toofind toobe virtuální síť snadno na řídicím panelu hello a pak klikněte na tlačítko **vytvořit**.
+  ![Stránka pro vytvoření virtuální sítě](./media/vpn-gateway-basic-vnet-rm-portal-include/vnet.png "Stránka pro vytvoření virtuální sítě")
+5. **Název**: Zadejte název své virtuální sítě.
+6. **Adresní prostor**: Zadejte adresní prostor. Pokud chcete přidat více adresních prostorů, přidejte první adresní prostor. Další adresní prostory můžete přidat později po vytvoření virtuální sítě.
+7. **Předplatné**: Zkontrolujte, jestli je uvedeno správné předplatné. Předplatná můžete měnit prostřednictvím rozevíracího seznamu.
+8. **Skupina prostředků**: Vyberte existující skupinu prostředků nebo vytvořte novou zadáním názvu nové skupiny prostředků. Pokud vytváříte novou skupinu, nazvěte skupinu prostředků v souladu s hodnotami plánované konfigurace. Další informace o skupinách prostředků najdete v článku [Přehled Azure Resource Manageru](../articles/azure-resource-manager/resource-group-overview.md#resource-groups).
+9. **Umístění**: Vyberte umístění sítě VNet. Umístění určuje, kde budou uloženy prostředky nasazené v této síti VNet.
+10. **Podsíť:** Přidejte název podsítě a rozsah adres podsítě. Další podsítě můžete přidat později po vytvoření virtuální sítě.
+11. Pokud chcete mít k síti VNet snadný přístup na řídicím panelu, vyberte možnost **Připnout na řídicí panel** a potom klikněte na **Vytvořit**.
 
- ![PIN kód toodashboard](./media/vpn-gateway-basic-vnet-rm-portal-include/pintodashboard150.png "toodashboard PIN kód")
-12. Po kliknutí na **vytvořit**, zobrazí se na dlaždici na řídicím panelu se projeví hello průběh vaší virtuální sítě. změny dlaždice Hello jako hello se vytváří virtuální sítě.
-
-  ![Dlaždice Vytváří se virtuální síť](./media/vpn-gateway-basic-vnet-rm-portal-include/deploying150.png "Dlaždice Vytváří se virtuální síť")
+  ![Připnout na řídicí panel](./media/vpn-gateway-basic-vnet-rm-portal-include/pintodashboard150.png "Připnout na řídicí panel")

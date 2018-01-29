@@ -1,4 +1,4 @@
-Hello následující tabulka uvádí omezení hello přidružené hello různých úrovních služby (S1, S2, S3, F1). Informace o hello náklady jednotlivých *jednotky* v jednotlivých vrstvách, najdete v části [IoT Hub ceny](https://azure.microsoft.com/pricing/details/iot-hub/).
+Následující tabulka uvádí omezení spojená s různými úrovněmi služeb (S1, S2, S3, F1). Informace o nákladech na jednotlivé *jednotky* v každé úrovni najdete v tématu [Ceny služby IoT Hub](https://azure.microsoft.com/pricing/details/iot-hub/).
 
 | Prostředek | S1 Standard | S2 Standard | S3 Standard | F1 Free |
 | --- | --- | --- | --- | --- |
@@ -10,7 +10,7 @@ Hello následující tabulka uvádí omezení hello přidružené hello různýc
 > 
 > 
 
-Hello následující tabulka uvádí hello limity, které platí tooIoT rozbočovače prostředky:
+Následující tabulka uvádí omezení, která se vztahují na prostředky služby IoT Hub:
 
 | Prostředek | Omezení |
 | --- | --- |
@@ -24,12 +24,12 @@ Hello následující tabulka uvádí hello limity, které platí tooIoT rozbočo
 | Maximální velikost zprávy typu cloud-zařízení |64 kB |
 | Maximální hodnota TTL pro zprávy typu cloud-zařízení |2 dny |
 | Maximální počet doručení zpráv typu <br/> cloud-zařízení |100 |
-| Maximální počet doručení zpráv se zpětnou vazbou <br/> v odpovědi tooa cloud zařízení |100 |
-| Maximální hodnota TTL pro zprávy se zpětnou vazbou <br/> zpráva odpovědi tooa cloud zařízení |2 dny |
+| Maximální počet doručení zpráv se zpětnou vazbou <br/> v reakci na zprávu typu cloud-zařízení |100 |
+| Maximální hodnota TTL pro zprávy se zpětnou vazbou <br/> v reakci na zprávu typu cloud-zařízení |2 dny |
 | Maximální velikost dvojčete zařízení <br/> (značky, ohlášené vlastnosti a požadované vlastnosti) | 8 kB |
-| Maximální velikost řetězcové hodnoty dvojčete zařízení | 512 bajtů |
+| Maximální velikost řetězcové hodnoty dvojčete zařízení | 4 KB |
 | Maximální hloubka objektu ve dvojčeti zařízení | 5 |
-| Maximální velikost datové části přímé metody | 8 kB |
+| Maximální velikost datové části přímé metody | 128 KB |
 | Maximální doba uchování historie úlohy | 30 dní |
 | Maximální počet souběžných úloh | 10 (pro S3), 5 (pro S2), 1 (pro S1) |
 | Maximální počet dalších koncových bodů | 10 (pro S1, S2, S3) |
@@ -41,9 +41,9 @@ Hello následující tabulka uvádí hello limity, které platí tooIoT rozbočo
 
 
 > [!NOTE]
-> V současné době hello maximální počet zařízení se můžete připojit tooa jeden IoT hub je 500 000. Pokud chcete tento limit tooincrease, obraťte se na [Microsoft Support](https://azure.microsoft.com/en-us/support/options/).
+> Maximální počet zařízení, které se můžete připojit k jedné IoT hub je v současné době 500 000. Pokud chcete tento limit zvýšit, obraťte se na [Microsoft Support](https://azure.microsoft.com/en-us/support/options/).
 
-Hello služby IoT Hub omezí generovaný požadavky při překročení hello následující kvót:
+Služba IoT Hub omezuje žádosti při překročení následujících kvót:
 
 | Omezení | Hodnota na centrum |
 | --- | --- |
@@ -53,7 +53,7 @@ Hello služby IoT Hub omezí generovaný požadavky při překročení hello ná
 | Odesílání typu cloud-zařízení | 83.33/sec/Unit (5000/minimální/unit) (pro S3), 1.67/sec/unit (min/100/unit) (u S1 a S2). |
 | Příjem typu cloud-zařízení |833.33/sec/Unit (50000/minimální/unit) (pro S3), 16.67/sec/unit (1000/minimální/unit) (u S1 a S2). |
 | Operace nahrávání souborů |83.33 soubor nahrát oznámení za sekundu nebo jednotku (5000/min nebo jednotky) (pro S3), 1.67 souboru nahrávání oznámení/sec/jednotky (min/100/unit) (u S1 a S2). <br/> Najednou může existovat 10 000 identifikátorů URI SAS pro účet Azure Storage.<br/> Najednou může existovat 10 identifikátorů URI SAS/zařízení. |
-| Přímé metody | 3000/sec/jednotku (pro S3), 60/sec/jednotku (pro S2), 20/sec/jednotku (pro S1) |
+| Přímé metody | 24MB/sec/jednotku (pro S3), 480KB/sec/jednotku (pro S2), 160KB/sec/jednotku (pro S1)<br/> Založené na 8KB omezení velikosti měřidla. |
 | Čtení dvojčat zařízení | 50/s/jednotku (pro S3), maximálně 10/s nebo 1/s/jednotku (pro S2), 10/s (pro S1) |
 | Aktualizace dvojčat zařízení | 50/s/jednotku (pro S3), maximálně 10/s nebo 1/s/jednotku (pro S2), 10/s (pro S1) |
 | Operace úloh <br/> (vytvoření, aktualizace, výpis, odstranění) | 83.33/sec/Unit (5000/minimální/unit) (pro S3), 1.67/sec/unit (min/100/unit) (pro S2), 1.67/sec/unit (min/100/unit) (pro S1) |

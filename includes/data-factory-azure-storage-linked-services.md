@@ -1,12 +1,12 @@
 ### <a name="azure-storage-linked-service"></a>Propojená služba Azure Storage
-Hello **propojená služba Azure Storage** vám umožní toolink služby úložiště Azure tooan účtu Azure data factory pomocí hello **klíč účtu**, který poskytuje objekt pro vytváření dat hello s globálním přístupem toohello Azure Úložiště. Hello následující tabulka obsahuje popis pro konkrétní tooAzure elementy JSON propojené služby úložiště.
+**Propojená služba Azure Storage** umožňuje propojení účtu úložiště Azure s objektem pro vytváření dat Azure pomocí **klíč účtu**, který poskytuje objekt pro vytváření dat s globálním přístupem do úložiště Azure. Následující tabulka obsahuje popis JSON elementy, které jsou specifické pro propojenou službu úložiště Azure.
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type |vlastnost typu Hello musí být nastavena na: **azurestorage.** |Ano |
-| připojovací řetězec |Zadejte informace potřebné pro vlastnost connectionString hello tooconnect tooAzure úložiště. |Ano |
+| type |Vlastnost typu musí být nastavena na: **azurestorage.** |Ano |
+| připojovací řetězec |Zadejte informace potřebné pro připojení k úložišti Azure pro vlastnost connectionString. |Ano |
 
-V tématu hello následujícího článku pro klíč účtu hello tooview nebo zkopírování kroky pro Azure Storage: [zobrazení, kopírování a opětovné vytváření úložiště přístupové klíče](../articles/storage/common/storage-create-storage-account.md#manage-your-storage-account).
+Najdete v následujícím článku postup zobrazení nebo zkopírování klíč účtu pro Azure Storage: [zobrazení, kopírování a opětovné vytváření úložiště přístupové klíče](../articles/storage/common/storage-create-storage-account.md#manage-your-storage-account).
 
 **Příklad:**  
 
@@ -23,18 +23,21 @@ V tématu hello následujícího článku pro klíč účtu hello tooview nebo z
 ```
 
 ### <a name="azure-storage-sas-linked-service"></a>Propojená služba úložiště Azure Sas
-Sdílený přístupový podpis (SAS) poskytuje Delegovaný přístup tooresources ve vašem účtu úložiště. Je možné, že toogrant klienta omezené oprávnění tooobjects ve vašem účtu úložiště v zadaném časovém intervalu a zadanou sadu oprávnění, bez nutnosti tooshare klíče pro přístup k účtu. Hello SAS je identifikátor URI, který zahrnuje všechny hello informace potřebné pro ověřený přístup tooa úložiště prostředků v jeho parametry dotazu. tooaccess prostředky úložiště s hello SAS, hello klienta stačí toopass v odpovídající konstruktor toohello hello SAS nebo metoda. Podrobné informace o tokenu SAS naleznete v tématu [sdílené přístupové podpisy: vysvětlení hello modelu SAS](../articles/storage/common/storage-dotnet-shared-access-signature-part-1.md)
+Sdílený přístupový podpis (SAS) poskytuje Delegovaný přístup k prostředkům ve vašem účtu úložiště. Umožňuje udělit, že klient omezené oprávnění k objektům v účtu úložiště v zadaném časovém intervalu a zadanou sadu oprávnění, aniž by museli sdílet klíče pro přístup k účtu. SAS je identifikátor URI, který zahrnuje všechny informace potřebné pro ověřený přístup k prostředku úložiště v jeho parametry dotazu. Pro přístup k prostředkům úložiště s SAS, klient pouze musí předat SAS metodu, nebo odpovídající konstruktor. Podrobné informace o tokenu SAS naleznete v tématu [sdílené přístupové podpisy: vysvětlení modelu SAS](../articles/storage/common/storage-dotnet-shared-access-signature-part-1.md)
 
 > [!IMPORTANT]
-> Azure Data Factory podporuje nyní pouze **SAS služby** , ale není SAS účtu. V tématu [typy z sdílené přístupové podpisy](../articles/storage/common/storage-dotnet-shared-access-signature-part-1.md#types-of-shared-access-signatures) podrobnosti o těchto dvou typů a jak tooconstruct. Poznámka: hello SAS URL generable z portálu Azure nebo Storage Explorer je SAS účtu, který není podporován.
-> 
+> Azure Data Factory podporuje nyní pouze **SAS služby** , ale není SAS účtu. V tématu [typy z sdílené přístupové podpisy](../articles/storage/common/storage-dotnet-shared-access-signature-part-1.md#types-of-shared-access-signatures) podrobné informace o těchto dvou typů a postup vytvoření. Poznamenejte si adresu SAS URL generable z portálu Azure nebo Storage Explorer je SAS účtu, který není podporován.
 
-Hello SAS úložiště Azure, propojené služby umožňuje toolink služby Azure data factory tooan účet úložiště Azure pomocí sdíleného přístupového podpisu (SAS). Poskytuje objekt pro vytváření dat hello přístup omezený nebo časově vázaných tooall nebo konkrétní prostředky (kontejner nebo objektů blob) v úložišti hello. Hello následující tabulka obsahuje popis pro konkrétní tooAzure elementy JSON úložiště SAS propojené služby. 
+> [!TIP]
+> Můžete spustit následující příkazy prostředí PowerShell ke generování SAS služby pro účet úložiště (nahraďte zástupného a udělení potřebných oprávnění):`$context = New-AzureStorageContext -StorageAccountName <accountName> -StorageAccountKey <accountKey>`
+> `New-AzureStorageContainerSASToken -Name <containerName> -Context $context -Permission rwdl -StartTime <startTime> -ExpiryTime <endTime> -FullUri`
+
+Služba Azure úložiště SAS propojené umožňuje propojení účet úložiště Azure do Azure data factory pomocí sdíleného přístupového podpisu (SAS). Poskytuje objekt pro vytváření dat omezený nebo časově vázaných přístup k prostředkům všechna nebo konkrétní (kontejner nebo objektů blob) v úložišti. Následující tabulka obsahuje popis JSON elementy, které jsou specifické pro SAS úložiště Azure, propojené služby. 
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type |vlastnost typu Hello musí být nastavena na: **AzureStorageSas** |Ano |
-| sasUri |Zadejte identifikátor URI podpis sdíleného přístupu toohello Azure Storage prostředky jako objekt blob, kontejneru nebo tabulky.  |Ano |
+| type |Vlastnost typu musí být nastavena na: **AzureStorageSas** |Ano |
+| sasUri |Zadejte identifikátor URI podpis sdíleného přístupu k prostředkům Azure Storage jako objekt blob, kontejneru nebo tabulky.  |Ano |
 
 **Příklad:**
 
@@ -44,15 +47,15 @@ Hello SAS úložiště Azure, propojené služby umožňuje toolink služby Azur
     "properties": {  
         "type": "AzureStorageSas",  
         "typeProperties": {  
-            "sasUri": "<Specify SAS URI of hello Azure Storage resource>"   
+            "sasUri": "<Specify SAS URI of the Azure Storage resource>"   
         }  
     }  
 }  
 ```
 
-Při vytváření **identifikátor URI pro SAS**, vzhledem k tomu následující hello:  
+Při vytváření **identifikátor URI pro SAS**, vzhledem k tomu následující:  
 
-* Nastavit vhodné pro čtení a zápis **oprávnění** u objektů na základě jak hello propojená služba (pro čtení, zápisu, čtení/zápis) se používá v datové továrně.
-* Nastavit **čas vypršení platnosti** správně. Ujistěte se, že hello přístup tooAzure úložiště objektů v rámci hello aktivní období kanálu hello nevyprší platnost.
-* Identifikátor URI by měl být vytvořen v hello správné kontejner nebo objekt blob nebo na úrovni tabulky podle hello potřebujete. Identifikátor Uri pro SAS tooan objektů blob v Azure umožňuje tooaccess služby Data Factory hello této konkrétní objekt blob. Kontejner objektů blob v Azure tooan identifikátor Uri pro SAS umožňuje tooiterate služby Data Factory hello prostřednictvím objektů BLOB v kontejneru. Pokud potřebujete přístup tooprovide více/méně objektů později, nebo aktualizace hello SAS URI, mějte na paměti, tooupdate hello propojené služby s hello nový identifikátor URI.   
+* Nastavit vhodné pro čtení a zápis **oprávnění** na objekty podle použití propojené služby (pro čtení, zápisu, čtení/zápis) ve službě data factory.
+* Nastavit **čas vypršení platnosti** správně. Ujistěte se, že přístup k objektům Azure Storage, nemá prošlou platnost do aktivního období kanálu.
+* Identifikátor URI by měl být vytvořen na úrovni tabulky podle potřeby nebo správné kontejner nebo objekt blob. Identifikátor Uri SAS do objektu blob Azure umožňuje služba Data Factory pro přístup k tomuto konkrétní objektu blob. Identifikátor Uri SAS pro kontejner objektů blob v Azure umožňuje služba Data Factory k iteraci v rámci objektů BLOB v kontejneru. Pokud potřebujete poskytovat přístup více nebo méně objektů později, nebo aktualizovat identifikátor URI SAS, nezapomeňte aktualizovat propojenou službu s nový identifikátor URI.   
 

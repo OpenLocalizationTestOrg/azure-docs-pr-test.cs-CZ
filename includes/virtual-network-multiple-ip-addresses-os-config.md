@@ -1,52 +1,53 @@
-## <a name="os-config"></a>Přidat IP adresy tooa virtuální počítač operační systém
+## <a name="os-config"></a>Přidání IP adres do operačního systému virtuálního počítače
 
-Připojení a přihlášení tooa virtuálních počítačů, které jste vytvořili pomocí více privátních IP adres. Je třeba ručně přidat všechny hello privátní IP adresy (včetně hello primární) zda jste přidali toohello virtuálních počítačů. Proveďte následující kroky pro operační systém virtuálního počítače hello:
+Připojte a přihlaste se k virtuálnímu počítači, který jste vytvořili s více privátními IP adresami. Je třeba ručně přidat všechny privátní IP adresy (včetně primární), které jste přidali do virtuálního počítače. Proveďte následující kroky pro operační systém vašeho virtuálního počítače:
 
 ### <a name="windows"></a>Windows
 
-1. Na příkazovém řádku zadejte *ipconfig /all*.  Zobrazí pouze hello *primární* privátní IP adresu (prostřednictvím protokolu DHCP).
-2. Typ *ncpa.cpl* v hello příkazového řádku tooopen hello **síťová připojení** okno.
-3. Otevřete vlastnosti hello odpovídající adaptéru hello: **připojení k místní síti**.
+1. Na příkazovém řádku zadejte *ipconfig /all*.  Zobrazí se pouze *primární* privátní IP adresa (prostřednictvím protokolu DHCP).
+2. Zadáním *ncpa.cpl* na příkazovém řádku otevřete okno **Síťová připojení**.
+3. Otevřete vlastnosti pro příslušný adaptér: **Připojení k místní síti**.
 4. Dvakrát klikněte na Protokol IPv4 (Internet Protocol verze 4).
-5. Vyberte **hello použít následující IP adresu** a zadejte hello následující hodnoty:
+5. Vyberte **Použít následující IP adresu** a zadejte tyto hodnoty:
 
-    * **IP adresa**: Zadejte hello *primární* privátní IP adresa
-    * **Maska podsítě:** Nastavte podle vaší podsítě. Například pokud hello podsíť je/24 podsíť a podsíť hello maska je 255.255.255.0.
-    * **Výchozí brána**: hello první IP adresa v podsíti hello. Pokud podsíť 10.0.0.0/24, IP adresa brány hello je 10.0.0.1.
-    * Klikněte na tlačítko **hello použijte následující adresy serverů DNS** a zadejte hello následující hodnoty:
-        * **Upřednostňovaný server DNS:** Pokud nepoužíváte vlastní server DNS, zadejte 168.63.129.16.  Pokud používáte serveru DNS, zadejte pro váš server hello IP adresu.
-    * Klikněte na tlačítko hello **Upřesnit** tlačítko a přidejte další IP adresy. Přidejte všechny hello sekundární soukromé IP adresy uvedené v kroku 8 toohello síťový adaptér s hello stejné podsíti zadána pro hello primární IP adresu.
+    * **IP adresa:** Zadejte *primární* privátní IP adresu.
+    * **Maska podsítě:** Nastavte podle vaší podsítě. Pokud je podsíť například /24, maska podsítě bude 255.255.255.0.
+    * **Výchozí brána:** První IP adresa v podsíti. Pokud je vaše podsíť 10.0.0.0/24, IP adresa brány bude 10.0.0.1.
+    * Klikněte na **Použít následující adresu serveru DNS** a zadejte tyto hodnoty:
+        * **Upřednostňovaný server DNS:** Pokud nepoužíváte vlastní server DNS, zadejte 168.63.129.16.  Pokud používáte vlastní server DNS, zadejte IP adresu pro váš server.
+    * Klikněte na tlačítko **Upřesnit** a přidejte další IP adresy. Přidejte všechny sekundární privátní IP adresy uvedené v kroku 8 k síťovému adaptéru, který má zadanou stejnou podsíť pro primární IP adresu.
         >[!WARNING] 
-        >Pokud se výše uvedené kroky hello není řídit správně, může dojít ke ztrátě připojení tooyour virtuálních počítačů. Zkontrolujte, zda informace hello zadali v kroku 5 přesné než budete pokračovat.
+        >Pokud nebudete správně postupovat podle výše uvedených kroků, můžete ztratit připojení k virtuálnímu počítači. Než budete pokračovat, ujistěte se, že informace zadané v kroku 5 jsou správné.
 
-    * Klikněte na tlačítko **OK** tooclose out hello TCP/IP nastavení a potom **OK** znovu tooclose nastavení adaptéru hello. Vaše připojení RDP je obnoveno.
+    * Kliknutím na **OK** zavřete nastavení protokolu TCP/IP a pak znovu kliknutím na **OK** zavřete nastavení adaptéru. Vaše připojení RDP je obnoveno.
 
 6. Na příkazovém řádku zadejte *ipconfig /all*. Zobrazí se všechny IP adresy, které jste přidali, a protokol DHCP je vypnutý.
+7. Konfigurace systému Windows na privátní IP adresa primární konfigurace protokolu IP v Azure jako primární IP adresu pro systém Windows. V tématu [přístup k Internetu bez z virtuálního počítače Windows Azure, který má více IP adres](https://support.microsoft.com/help/4040882/no-internet-access-from-azure-windows-vm-that-has-multiple-ip-addresse) podrobnosti. 
 
 
 ### <a name="validation-windows"></a>Ověření (Windows)
 
-tooensure jsou možné tooconnect toohello, které internet z vaší sekundární konfiguraci IP adresy prostřednictvím hello veřejná IP adresa spojená, po přidání správně pomocí kroků výše, použijte následující příkaz hello:
+Abyste se ujistili, že se můžete připojit k internetu ze sekundární konfigurace IP adresy přes přidruženou veřejnou IP adresu, po jejím přidání pomocí výše uvedených kroků použijte následující příkaz:
 
 ```bash
 ping -S 10.0.0.5 hotmail.com
 ```
 >[!NOTE]
->Pro sekundární konfigurace IP můžete pouze ping toohello Internetu, pokud konfigurace hello má veřejnou IP adresu s ním spojená. Pro primární konfigurace protokolu IP veřejnou IP adresu se nenachází požadovaná tooping toohello Internetu.
+>Pro sekundární konfigurace IP pouze připojíte k Internetu Pokud konfigurace má veřejnou IP adresu s ním spojená. Pro primární konfigurace protokolu IP není potřeba veřejnou IP adresu na příkaz ping k Internetu.
 
 ### <a name="linux-ubuntu"></a>Linux (Ubuntu)
 
 1. Otevřete okno terminálu.
-2. Ujistěte se, že jste hello kořenového uživatele. Pokud si nejste, zadejte následující příkaz hello:
+2. Ujistěte se, že jste uživatel root. Pokud ne, zadejte následující příkaz:
 
     ```bash
     sudo -i
     ```
 
-3. Aktualizujte konfigurační soubor hello hello síťového rozhraní (za předpokladu, eth0').
+3. Aktualizujte konfigurační soubor síťového rozhraní (předpokládejme, že je to „eth0“).
 
-    * Zachovat existující položka řádku hello protokolu DHCP. primární adresa IP Hello zůstane nakonfigurované jako dříve.
-    * Přidáte konfiguraci pro další statickou IP adresu s hello následující příkazy:
+    * Ponechejte stávající položku řádku pro protokol DHCP. Primární IP adresa bude nakonfigurována stejně jako dříve.
+    * Přidejte konfiguraci pro další statickou IP adresu pomocí následujících příkazů:
 
         ```bash
         cd /etc/network/interfaces.d/
@@ -54,14 +55,14 @@ ping -S 10.0.0.5 hotmail.com
         ```
 
     Měl by se zobrazit soubor .cfg.
-4. Soubor otevřete hello. Měli byste vidět hello následující řádky na konci hello hello souboru:
+4. Otevřete tento soubor. Na konci souboru by se měly zobrazit tyto řádky:
 
     ```bash
     auto eth0
     iface eth0 inet dhcp
     ```
 
-5. Přidejte následující řádky po hello řádky, které existují v tomto souboru hello:
+5. Následující řádky přidejte za všechny řádky v tomto souboru:
 
     ```bash
     iface eth0 inet static
@@ -69,66 +70,66 @@ ping -S 10.0.0.5 hotmail.com
     netmask <your subnet mask>
     ```
 
-6. Uložte soubor hello pomocí hello následující příkaz:
+6. Uložte soubor pomocí tohoto příkazu:
 
     ```bash
     :wq
     ```
 
-7. Resetování hello síťové rozhraní s hello následující příkaz:
+7. Resetujte síťové rozhraní pomocí tohoto příkazu:
 
     ```bash
     sudo ifdown eth0 && sudo ifup eth0
     ```
 
     > [!IMPORTANT]
-    > Spusťte ifdown a ifup v hello stejné řádku při použití vzdáleného připojení.
+    > Pokud používáte vzdálené připojení, spusťte ifdown a ifup na stejném řádku.
     >
 
-8. Ověřte, zda text hello IP adresa se přidá toohello síťové rozhraní s hello následující příkaz:
+8. Ověřte přidání IP adresy k síťovému rozhraní pomocí následujícího příkazu:
 
     ```bash
     ip addr list eth0
     ```
 
-    Měli byste vidět hello IP adresy můžete přidat jako součást hello seznamu.
+    V seznamu by se měla zobrazit IP adresa, kterou jste přidali.
 
 ### <a name="linux-redhat-centos-and-others"></a>Linux (Red Hat, CentOS a další)
 
 1. Otevřete okno terminálu.
-2. Ujistěte se, že jste hello kořenového uživatele. Pokud si nejste, zadejte následující příkaz hello:
+2. Ujistěte se, že jste uživatel root. Pokud ne, zadejte následující příkaz:
 
     ```bash
     sudo -i
     ```
 
-3. Zadejte své heslo a postupujte podle zobrazených pokynů. Až se hello kořenového uživatele, přejděte toohello síťové skripty složky s hello následující příkaz:
+3. Zadejte své heslo a postupujte podle zobrazených pokynů. Jakmile budete uživatel root, přejděte do složky se síťovými skripty pomocí následujícího příkazu:
 
     ```bash
     cd /etc/sysconfig/network-scripts
     ```
 
-4. Seznam hello související s ifcfg soubory pomocí hello následující příkaz:
+4. Zobrazte seznam souvisejících souborů ifcfg pomocí následujícího příkazu:
 
     ```bash
     ls ifcfg-*
     ```
 
-    Měli byste vidět *ifcfg eth0* jako jeden ze souborů hello.
+    Mezi soubory by se měl zobrazit soubor *ifcfg-eth0*.
 
-5. tooadd IP adresu, vytvořte konfigurační soubor pro něj, jak vidíte níže. Pro každou konfiguraci IP adresy se musí vytvořit jeden soubor.
+5. Pokud chcete přidat IP adresu, vytvořte pro ni konfigurační soubor, jak je znázorněno níže. Pro každou konfiguraci IP adresy se musí vytvořit jeden soubor.
 
     ```bash
     touch ifcfg-eth0:0
     ```
 
-6. Otevřete hello *ifcfg-eth0:0* soubor s hello následující příkaz:
+6. Otevřete soubor *ifcfg-eth0:0* pomocí tohoto příkazu:
 
     ```bash
     vi ifcfg-eth0:0
     ```
 
-7. Přidejte soubor obsahu toohello *eth0:0* v takovém případě s hello následující příkaz. Být jisti tooupdate informace založené na IP adresu.
+7. Přidejte obsah do souboru, v tomto případě *eth0:0*, pomocí následujícího příkazu. Nezapomeňte aktualizovat informace podle vaší IP adresy.
 
     ```bash
     DEVICE=eth0:0
@@ -138,32 +139,32 @@ ping -S 10.0.0.5 hotmail.com
     NETMASK=255.255.255.0
     ```
 
-8. Uložte soubor hello se hello následující příkaz:
+8. Uložte soubor pomocí tohoto příkazu:
 
     ```bash
     :wq
     ```
 
-9. Restartujte hello síťové služby a ověřte, že hello změny jsou úspěšné spuštěním hello následující příkazy:
+9. Restartujte síťové služby a ověřte úspěšné provedení změn spuštěním následujících příkazů:
 
     ```bash
     /etc/init.d/network restart
     ifconfig
     ```
 
-    Měli byste vidět hello IP adres jste přidali, *eth0:0*, v seznamu hello vrátila.
+    V navráceném seznamu by se měla zobrazit IP adresa, kterou jste přidali – *eth0:0*.
 
 ### <a name="validation-linux"></a>Ověření (Linux)
 
-tooensure jsou možné tooconnect toohello Internetu z vaší sekundární konfiguraci IP adresy prostřednictvím hello veřejné IP adresy přidružené ji, použijte následující příkaz hello:
+Abyste se ujistili, že se můžete připojit k internetu ze sekundární konfigurace IP adresy přes přidruženou veřejnou IP adresu, použijte následující příkaz:
 
 ```bash
 ping -I 10.0.0.5 hotmail.com
 ```
 >[!NOTE]
->Pro sekundární konfigurace IP můžete pouze ping toohello Internetu, pokud konfigurace hello má veřejnou IP adresu s ním spojená. Pro primární konfigurace protokolu IP veřejnou IP adresu se nenachází požadovaná tooping toohello Internetu.
+>Pro sekundární konfigurace IP pouze připojíte k Internetu Pokud konfigurace má veřejnou IP adresu s ním spojená. Pro primární konfigurace protokolu IP není potřeba veřejnou IP adresu na příkaz ping k Internetu.
 
-Pro virtuální počítače s Linuxem, při pokusu o toovalidate odchozí připojení z sekundárního síťového adaptéru může být nutné tooadd odpovídající trasy. Existuje mnoho způsobů toodo to. Další informace najdete v odpovídající dokumentaci k vaší distribuci Linuxu. Následující Hello je jedna metoda tooaccomplish toto:
+Pokud ověřujete odchozí připojení ze sekundárního síťového rozhraní na virtuálním počítači s Linuxem, možná bude nutné přidat odpovídající trasy. To lze provést několika způsoby. Další informace najdete v odpovídající dokumentaci k vaší distribuci Linuxu. Toto je jedna z metod, jak to provést:
 
 ```bash
 echo 150 custom >> /etc/iproute2/rt_tables 
@@ -172,7 +173,7 @@ ip rule add from 10.0.0.5 lookup custom
 ip route add default via 10.0.0.1 dev eth2 table custom
 
 ```
-- Být jisti tooreplace:
-    - **10.0.0.5** s hello privátní IP adresu, která má veřejnou IP adresou přidružené tooit
-    - **10.0.0.1** tooyour výchozí brány
-    - **eth2** toohello název vaší sekundární síťové karty
+- Nezapomeňte nahradit:
+    - **10.0.0.5** za privátní IP adresu, ke které je přidružená veřejná IP adresa,
+    - **10.0.0.1** za vaši výchozí bránu,
+    - **eth2** za název sekundárního síťového rozhraní.

@@ -1,38 +1,57 @@
-## <a name="create-hello-webapi-project"></a>Vytvoření hello WebAPI projektu
-Vytvoří se nový back-end ASP.NET WebAPI v hello oddíly, které následují a bude mít tři hlavní účely:
+## <a name="create-the-webapi-project"></a>Vytvoření projektu WebAPI
+Další části popisují vytvoření nové ASP.NET WebAPI back-end. Tento proces má tři hlavní funkce:
 
-1. **Ověřování klientů**: obslužné rutiny zpráv přidá novější požadavky klientů tooauthenticate a přidružení hello uživatele s hello požadavku.
-2. **Registrace oznámení klienta**: později budete přidávat nové registrace řadiče toohandle klienta zařízení tooreceive oznámení. Hello jméno ověřeného uživatele, se automaticky přidají toohello registrace jako [značky](https://msdn.microsoft.com/library/azure/dn530749.aspx).
-3. **Odesílání oznámení tooClients**: později, přidejte také řadiče tooprovide způsob, jak uživatele tootrigger toodevices zabezpečení nabízené a klienty přidružené k hello značky. 
+* **Ověřuje klienty**: přidejte obslužné rutiny zpráv později k ověření klientských požadavků a přidružit uživatele k žádosti.
 
-Hello následující kroky ukazují, jak toocreate hello nový back-end ASP.NET WebAPI: 
+* **Registrace pro oznámení pomocí WebAPI back-end**: přidání řadiče pro zpracování nové registrace pro klientské zařízení k přijímání oznámení. Ověřené uživatelské jméno se automaticky přidá do registrace jako [značky](https://msdn.microsoft.com/library/azure/dn530749.aspx).
+
+* **Odesílání oznámení klientům**: také přidat řadič poskytnout způsob, jak uživatelům aktivovat zabezpečené oznámení do zařízení a klientů, které jsou přidružené k značky. 
+
+Vytvořte nový ASP.NET WebAPI back-end následujícím způsobem: 
 
 > [!IMPORTANT]
-> Pokud používáte Visual Studio 2015 nebo starší, před zahájením tohoto kurzu, Zkontrolujte prosím, že jste nainstalovali nejnovější verzi hello hello Správce balíčků NuGet. toocheck, spuštění sady Visual Studio. Z hello **nástroje** nabídky, klikněte na tlačítko **rozšíření a aktualizace**. Vyhledejte **Správce balíčků NuGet** pro vaši verzi sady Visual Studio a ujistěte se, že máte nejnovější verzi hello. Pokud ne, odinstalujte a pak znovu nainstalujte hello Správce balíčků NuGet.
-> 
-> ![][B4]
-> 
+> Pokud používáte Visual Studio 2015 nebo starší, před zahájením tohoto kurzu, zkontrolujte, zda jste nainstalovali nejnovější verze Správce balíčků NuGet pro Visual Studio. 
+>
+>Pokud to chcete zkontrolovat, spusťte sadu Visual Studio. Na **nástroje** nabídce vyberte možnost **rozšíření a aktualizace**. Vyhledejte **Správce balíčků NuGet** ve vaší verzi sady Visual Studio a ujistěte se, že máte nejnovější verzi. Pokud vaše verze není na nejnovější verzi, odinstalujte ji a poté znovu nainstalujte Správce balíčků NuGet.
+ 
+![][B4]
+
 > [!NOTE]
-> Ujistěte se, že máte nainstalovanou hello Visual Studio [Azure SDK](https://azure.microsoft.com/downloads/) pro nasazení webu.
+> Ujistěte se, že máte nainstalovanou sadu [Azure SDK](https://azure.microsoft.com/downloads/) pro vývoj pro web.
 > 
 > 
 
-1. Spusťte sadu Visual Studio nebo Visual Studio Express. Klikněte na tlačítko **Průzkumníka serveru** a přihlaste se tooyour účet Azure. Visual Studio bude nutné vás přihlásit toocreate hello webu prostředky na vašem účtu.
-2. V sadě Visual Studio, klikněte na tlačítko **soubor**, pak klikněte na tlačítko **nový**, pak **projektu**, rozbalte položku **šablony**, **Visual C#**, pak klikněte na tlačítko **webové** a **webové aplikace ASP.NET**, název typu hello **AppBackend**a potom klikněte na **OK**. 
-   
-    ![][B1]
-3. V hello **nový projekt ASP.NET** dialogové okno, klikněte na tlačítko **webového rozhraní API**, pak klikněte na tlačítko **OK**.
-   
-    ![][B2]
-4. V hello **konfigurace webové aplikace Azure Microsoft** dialogovém okně, vyberte předplatné a **plán služby App Service** jste už vytvořili. Můžete také **vytvořit nový plán služby app** a vytvořit z dialogového okna hello. Pro účely tohoto kurzu nepotřebujete databázi. Jakmile vyberete váš plán služby app service, klikněte na tlačítko **OK** toocreate hello projektu.
-   
-    ![][B5]
+1. Spusťte sadu Visual Studio nebo Visual Studio Express. 
 
-## <a name="authenticating-clients-toohello-webapi-backend"></a>Ověřování klientů toohello WebAPI back-end
-V této části vytvoříte novou třídu obslužné rutiny zpráv s názvem **AuthenticationTestHandler** pro nový back-end hello. Tato třída je odvozený od [DelegatingHandler](https://msdn.microsoft.com/library/system.net.http.delegatinghandler.aspx) a přidány jako obslužné rutiny zpráv tak může zpracovat všechny žádosti přicházející do hello back-end. 
+2. Vyberte **Průzkumníka serveru**a přihlaste se k účtu Azure. Pokud chcete vytvořit prostředky webu na vašem účtu, musí být podepsané.
 
-1. V Průzkumníku řešení klikněte pravým tlačítkem na hello **AppBackend** projektu, klikněte na tlačítko **přidat**, pak klikněte na tlačítko **třída**. Pojmenujte novou třídu hello **AuthenticationTestHandler.cs**a klikněte na tlačítko **přidat** toogenerate hello třídy. Tato třída bude použité tooauthenticate uživatele, kteří používají *základní ověřování* pro jednoduchost. Nezapomeňte, že vaše aplikace může používat jakékoli schéma ověřování.
-2. V AuthenticationTestHandler.cs, přidejte následující hello `using` příkazy:
+3. V sadě Visual Studio, vyberte **soubor** > **nový** > **projektu**, rozbalte položku **šablony**, rozbalte položku **Visual C#**a potom vyberte **webové** a **webové aplikace ASP.NET**.
+
+4. V **název** zadejte **AppBackend**a potom vyberte **OK**. 
+   
+    ![Okno Nový projekt][B1]
+
+5. V **nový projekt ASP.NET** vyberte **webového rozhraní API** zaškrtněte políčko a potom vyberte **OK**.
+   
+    ![Okno Nový projekt ASP.NET][B2]
+
+6. V **konfigurace webové aplikace Azure Microsoft** okno, vyberte předplatné a pak na **plán služby App Service** seznamu, proveďte jednu z následujících:
+
+    * Vyberte plán služby app service, kterou jste vytvořili. 
+    * Vyberte **vytvořit nový plán služby app**a pak vytvořit. 
+    
+  Pro účely tohoto kurzu nepotřebujete databázi. Po výběru váš plán služby app service, vyberte **OK** a vytvořte tak projekt.
+   
+    ![Okno Konfigurace Microsoft Azure Web App][B5]
+
+## <a name="authenticate-clients-to-the-webapi-back-end"></a>Ověření klientům WebAPI back-end
+V této části vytvoříte novou třídu obslužné rutiny zpráv s názvem **AuthenticationTestHandler** pro nový back-end. Tato třída je odvozený od [DelegatingHandler](https://msdn.microsoft.com/library/system.net.http.delegatinghandler.aspx) a přidat jako obslužné rutiny zpráv tak, aby ji může zpracovat všechny požadavky tohoto zadány do back-end. 
+
+1. V Průzkumníku řešení klikněte pravým tlačítkem myši **AppBackend** projekt, vyberte **přidat**a potom vyberte **třída**. 
+ 
+2. Pojmenujte novou třídu **AuthenticationTestHandler.cs**a potom vyberte **přidat** ke generování třídy. Tato třída ověřuje uživatele pomocí *základní ověřování* pro jednoduchost. Aplikace můžete používat žádné schéma ověřování.
+
+3. V souboru AuthenticationTestHandler.cs přidejte následující příkazy `using`:
    
         using System.Net.Http;
         using System.Threading;
@@ -41,19 +60,24 @@ V této části vytvoříte novou třídu obslužné rutiny zpráv s názvem **A
         using System.Text;
         using System.Threading.Tasks;
 
-3. V AuthenticationTestHandler.cs, nahraďte hello `AuthenticationTestHandler` definici třídy s hello následující kód. 
+4. V AuthenticationTestHandler.cs, nahraďte `AuthenticationTestHandler` třídy definice následujícím kódem: 
    
-    Tato obslužná rutina ověření požadavku hello při hello následující tři podmínky jsou splněny všechny:
+    Obslužná rutina se ověření požadavku, pokud jsou splněny následující tři podmínky:
    
-   * Hello požadavek zahrnuty *autorizace* záhlaví. 
-   * žádost o Hello používá *základní* ověřování. 
-   * řetězec názvu Hello uživatele a heslo řetězec hello jsou hello jednoho řetězce.
+   * Požadavek obsahuje *autorizace* záhlaví. 
+   * Požadavek používá *základní* ověřování. 
+   * Řetězce uživatelského jména a hesla jsou stejné.
      
-     V opačném hello žádost odmítnuta. Toto není správný přístup k ověřování a autorizaci. Je to jenom velmi jednoduchý příklad pro účely tohoto kurzu.
+  Jinak bude požadavek zamítnut. Toto není správný přístup k ověřování a autorizaci. Je velmi jednoduchý příklad v tomto kurzu.
      
-     Pokud zpráva požadavku hello ověří a autorizuje podle hello `AuthenticationTestHandler`, hello základní ověřování uživatele bude připojené toohello aktuální požadavek na hello [HttpContext](https://msdn.microsoft.com/library/system.web.httpcontext.current.aspx). Informace o uživateli v hello HttpContext budou používat jiný řadič (RegisterController) novější tooadd [značka](https://msdn.microsoft.com/library/azure/dn530749.aspx) toohello žádost o registraci oznámení.
+  Pokud se ověří a autorizuje ve zprávě požadavku `AuthenticationTestHandler`, uživatel základní ověřování je připojen k aktuální požadavek na [HttpContext](https://msdn.microsoft.com/library/system.web.httpcontext.current.aspx). Informace o uživateli v HttpContext použije jiný řadič (RegisterController) později přidat [značky](https://msdn.microsoft.com/library/azure/dn530749.aspx) na žádost o registraci oznámení.
      
-       public class AuthenticationTestHandler : DelegatingHandler   {       protected override Task<HttpResponseMessage> SendAsync(       HttpRequestMessage request, CancellationToken cancellationToken)       {           var authorizationHeader = request.Headers.GetValues("Authorization").First();
+       public class AuthenticationTestHandler : DelegatingHandler
+       {
+           protected override Task<HttpResponseMessage> SendAsync(
+           HttpRequestMessage request, CancellationToken cancellationToken)
+           {
+               var authorizationHeader = request.Headers.GetValues("Authorization").First();
      
                if (authorizationHeader != null && authorizationHeader
                    .StartsWith("Basic ", StringComparison.InvariantCultureIgnoreCase))
@@ -67,7 +91,7 @@ V této části vytvoříte novou třídu obslužné rutiny zpráv s názvem **A
      
                    if (verifyUserAndPwd(user, password))
                    {
-                       // Attach hello new principal object toohello current HttpContext object
+                       // Attach the new principal object to the current HttpContext object
                        HttpContext.Current.User =
                            new GenericPrincipal(new GenericIdentity(user), new string[0]);
                        System.Threading.Thread.CurrentPrincipal =
@@ -96,29 +120,35 @@ V této části vytvoříte novou třídu obslužné rutiny zpráv s názvem **A
        }
      
      > [!NOTE]
-     > **Poznámka k zabezpečení**: hello `AuthenticationTestHandler` třída neposkytuje true ověřování. Je použít jenom toomimic základní ověřování a není zabezpečený. Ve svých produkčních aplikacích a službách musíte implementovat mechanismus zabezpečeného ověřování.                
+     > Poznámka k zabezpečení: `AuthenticationTestHandler` třída neposkytuje true ověřování. Používá se pouze k napodobení základního ověřování a není bezpečná. Ve svých produkčních aplikacích a službách musíte implementovat mechanismus zabezpečeného ověřování.                
      > 
      > 
-4. Přidejte následující kód na konci hello hello hello `Register` metoda v hello **App_Start/WebApiConfig.cs** třídu obslužné rutiny zpráv hello tooregister:
+5. Pokud chcete zaregistrovat popisovač zpráv, přidejte následující kód na konci `Register` metoda v **App_Start/WebApiConfig.cs** třídy:
    
         config.MessageHandlers.Add(new AuthenticationTestHandler());
-5. Uložte provedené změny.
 
-## <a name="registering-for-notifications-using-hello-webapi-backend"></a>Registrace pro oznámení prostřednictvím hello WebAPI back-end
-V této části přidáme toohandle WebAPI back-end sady nové řadiče toohello požadavky tooregister uživatele a zařízení pro oznámení pomocí hello klientské knihovny pro centra oznámení. Přidá značku uživatele pro hello uživatele, který byl ověřen a připojené toohello HttpContext podle hello Hello řadiče `AuthenticationTestHandler`. značka Hello bude obsahovat řetězec formátu hello, `"username:<actual username>"`.
+6. Uložte provedené změny.
 
-1. V Průzkumníku řešení klikněte pravým tlačítkem na hello **AppBackend** projektu a pak klikněte na **spravovat balíčky NuGet**.
-2. Na levé straně hello, klikněte na tlačítko **Online**a vyhledejte **Microsoft.Azure.NotificationHubs** v hello **vyhledávání** pole.
-3. V seznamu výsledků hello, klikněte na tlačítko **Microsoft Azure Notification Hubs**a potom klikněte na **nainstalovat**. Dokončení instalace hello a potom zavřete okno Správce balíčků NuGet hello.
+## <a name="register-for-notifications-by-using-the-webapi-back-end"></a>Registrace pro oznámení pomocí WebAPI back-end
+V této části přidáte nový řadič WebAPI back-endu zpracování požadavků na registraci uživatele a zařízení pro oznámení pomocí klientské knihovny pro centra oznámení. Správce přidá značku uživatele pro uživatele, který byl ověřen a připojeny k HttpContext podle `AuthenticationTestHandler`. Značka bude mít formát řetězce `"username:<actual username>"`.
+
+1. V Průzkumníku řešení klikněte pravým tlačítkem myši **AppBackend** projektu a potom vyberte **spravovat balíčky NuGet**.
+
+2. V levém podokně vyberte **Online** a pak na **vyhledávání** zadejte **Microsoft.Azure.NotificationHubs**.
+
+3. V seznamu výsledků vyberte **Microsoft Azure Notification Hubs**a potom vyberte **nainstalovat**. Dokončení instalace a pak zavřete okno Správce balíčků NuGet.
    
-    Tento postup přidá odkaz toohello SDK centra oznámení Azure pomocí hello <a href="http://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/">balíčku Microsoft.Azure.Notification Hubs NuGet</a>.
-4. Nyní vytvoříme nový soubor třídy, který představuje připojení hello s oznámení toosend použít Centrum oznámení. V hello Průzkumníku řešení klikněte pravým tlačítkem na hello **modely** složku, klikněte na tlačítko **přidat**, pak klikněte na tlačítko **třída**. Pojmenujte novou třídu hello **Notifications.cs**, pak klikněte na tlačítko **přidat** toogenerate hello třídy. 
+    Tato akce přidá referenci na sadu SDK služby Azure Notification Hubs pomocí <a href="http://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/">balíčku NuGet Microsoft.Azure.Notification Hubs</a>.
+
+4. Vytvořte nový soubor – třída, která představuje připojení s centrem oznámení, která se používá k odesílání oznámení. V Průzkumníku řešení klikněte pravým tlačítkem myši **modely** složky, vyberte **přidat**a potom vyberte **třída**. Pojmenujte novou třídu **Notifications.cs**a potom vyberte **přidat** ke generování třídy. 
    
-    ![][B6]
-5. V Notifications.cs, přidejte následující hello `using` příkaz hello horní části souboru hello:
+    ![Okna Přidat novou položku][B6]
+
+5. Na začátek souboru Notifications.cs přidejte následující příkaz `using`:
    
         using Microsoft.Azure.NotificationHubs;
-6. Nahraďte hello `Notifications` definici s hello následující třídy a ujistěte se, že tooreplace hello dva zástupné symboly hello připojovací řetězec (s úplným přístupem) pro vaše Centrum oznámení a hello název centra (k dispozici na [portálu Azure Classic ](http://manage.windowsazure.com)):
+
+6. Nahraďte `Notifications` definici následujícím kódem třídy a nahraďte zástupné symboly dva připojovací řetězec (s úplným přístupem) pro vaše Centrum oznámení a název centra (k dispozici na [portál Azure](http://portal.azure.com)):
    
         public class Notifications
         {
@@ -131,19 +161,25 @@ V této části přidáme toohandle WebAPI back-end sady nové řadiče toohello
                                                                              "<hub name>");
             }
         }
-7. Dále vytvoříme nový kontroler **RegisterController**. V Průzkumníku řešení klikněte pravým tlačítkem na hello **řadiče** složku, pak klikněte na tlačítko **přidat**, pak klikněte na tlačítko **řadič**. Klikněte na tlačítko hello **webové rozhraní API 2 řadiče – prázdný** položky a pak klikněte na **přidat**. Pojmenujte novou třídu hello **RegisterController**a potom klikněte na **přidat** znovu toogenerate hello řadiče.
+7. Dále vytvořte nový řadič s názvem **RegisterController**. V Průzkumníku řešení klikněte pravým tlačítkem myši **řadiče** složky, vyberte **přidat**a potom vyberte **řadič**. 
+
+8. Vyberte **webové rozhraní API 2 řadiče - prázdný**a potom vyberte **přidat**.
    
-    ![][B7]
+    ![Okna Přidat vygenerované uživatelské rozhraní][B7]
    
-    ![][B8]
-8. V RegisterController.cs, přidejte následující hello `using` příkazy:
+9. V **názvu Kontroleru** zadejte **RegisterController** pojmenujte novou třídu, a potom vyberte **přidat**.
+
+    ![Okna Přidat kontroler][B8]
+
+10. V souboru RegisterController.cs přidejte následující příkazy `using`:
    
         using Microsoft.Azure.NotificationHubs;
         using Microsoft.Azure.NotificationHubs.Messaging;
         using AppBackend.Models;
         using System.Threading.Tasks;
         using System.Web;
-9. Přidejte následující kód do hello hello `RegisterController` definici třídy. Všimněte si, že se v tomto kódu, přidáme, aby byl značku uživatele pro uživatele hello, to je připojen toohello položka HttpContext. Hello uživatele došlo k ověření a připojené toohello HttpContext filtrem hello zprávu jsme přidali, `AuthenticationTestHandler`. Můžete také přidat tooverify volitelné kontroly, které hello uživatel má oprávnění tooregister pro hello požadované značky.
+
+11. Do definice třídy `RegisterController` přidejte následující kód. Všimněte si, že v tomto kódu přidáme značku uživatele pro uživatele, který je připojen k položka HttpContext. Uživatel byl ověřen a připojeny k HttpContext filtr zpráv, které jsme přidali, `AuthenticationTestHandler`. Můžete také přidat volitelné kontroly pro ověření, že uživatel má práva pro registraci k požadovaným značkám.
    
         private NotificationHubClient hub;
    
@@ -190,7 +226,7 @@ V této části přidáme toohandle WebAPI back-end sady nové řadiče toohello
         }
    
         // PUT api/register/5
-        // This creates or updates a registration (with provided channelURI) at hello specified id
+        // This creates or updates a registration (with provided channelURI) at the specified id
         public async Task<HttpResponseMessage> Put(string id, DeviceRegistration deviceUpdate)
         {
             RegistrationDescription registration = null;
@@ -215,7 +251,7 @@ V této části přidáme toohandle WebAPI back-end sady nové řadiče toohello
             registration.RegistrationId = id;
             var username = HttpContext.Current.User.Identity.Name;
    
-            // add check if user is allowed tooadd these tags
+            // add check if user is allowed to add these tags
             registration.Tags = new HashSet<string>(deviceUpdate.Tags);
             registration.Tags.Add("username:" + username);
    
@@ -248,22 +284,24 @@ V této části přidáme toohandle WebAPI back-end sady nové řadiče toohello
                     throw new HttpRequestException(HttpStatusCode.Gone.ToString());
             }
         }
-10. Uložte provedené změny.
+12. Uložte provedené změny.
 
-## <a name="sending-notifications-from-hello-webapi-backend"></a>Odesílání oznámení z hello WebAPI back-end
-V této části přidáte nový řadič, který zveřejňuje způsob, jak klientské zařízení toosend oznámení podle značky hello uživatelské jméno pomocí knihovny správy služby centra oznámení Azure v hello ASP.NET WebAPI back-end.
+## <a name="send-notifications-from-the-webapi-back-end"></a>Odesílání oznámení z back-end WebAPI
+V této části přidáte nový řadič, který zveřejňuje způsob pro klientská zařízení k odeslání oznámení. Oznámení je založena na značky uživatelského jména, která používá knihovna správy služby centra oznámení Azure v ASP.NET WebAPI back-end.
 
-1. Vytvořte další nový kontroler **NotificationsController**. Vytvořit hello stejně jako jste vytvořili hello **RegisterController** v předchozí části hello.
-2. V NotificationsController.cs, přidejte následující hello `using` příkazy:
+1. Vytvořte další nový řadič **NotificationsController** stejným způsobem, který jste vytvořili **RegisterController** v předchozí části.
+
+2. V souboru NotificationsController.cs přidejte následující příkazy `using`:
    
         using AppBackend.Models;
         using System.Threading.Tasks;
         using System.Web;
-3. Přidejte následující metodu toohello hello **NotificationsController** třídy.
+
+3. Přidejte následující metodu do **NotificationsController** třídy:
    
-    Tento kód odeslat typu oznámení založené na hello platformy oznámení služby (PNS) `pns` parametr. Hello hodnotu `to_tag` je použité tooset hello *uživatelské jméno* značky na uvítací zprávu. Tato značka musí odpovídat značce uživatelského jména aktivní registrace k centru událostí. Hello oznámení je načtený z textu hello hello požadavku POST a formátovat cílový hello systém PNS. 
+    Tento kód odešle oznámení typ, který je založen na oznámení služby platformy (PNS) `pns` parametr. Hodnota `to_tag` slouží k nastavení značky *username* (uživatelské jméno) pro zprávu. Tato značka musí odpovídat značce uživatelského jména aktivní registrace k centru událostí. Zpráva oznámení se přetáhne z textu požadavku POST a naformátuje se pro cílový systém oznámení platformy. 
    
-    V závislosti na hello platformy oznámení služby (PNS), podporovaných zařízení používat tooreceive oznámení podporují různé oznámení pomocí různých formátech. Například na zařízeních s Windows byste mohli použít [informační zprávu pomocí Služby nabízených oznámení Windows](https://msdn.microsoft.com/library/windows/apps/br230849.aspx), kterou ostatní systémy oznámení platformy přímo nepodporují. Aby váš back-end potřebovat tooformat hello oznámení do podporovaných oznámení pro hello systému PNS zařízení plánujete toosupport. Potom pomocí rozhraní API odpovídající odesílání hello na hello [NotificationHubClient – třída](https://msdn.microsoft.com/library/azure/microsoft.azure.notificationhubs.notificationhubclient_methods.aspx)
+    V závislosti na systém PNS, podporovaných zařízení použít k přijímání oznámení oznámení jsou podporovány v různých formátech. Například na zařízení se systémem Windows, můžete použít [připít oznámení s WNS](https://msdn.microsoft.com/library/windows/apps/br230849.aspx) který není podporován přímo jiné PNS. V takové instanci musí back-end vašeho formátu oznámení do podporovaných oznámení pro systém PNS zařízení, že která chcete podporovat. Pak použijte příslušné odeslat na rozhraní API [NotificationHubClient třída](https://msdn.microsoft.com/library/azure/microsoft.azure.notificationhubs.notificationhubclient_methods.aspx).
    
         public async Task<HttpResponseMessage> Post(string pns, [FromBody]string message, string to_tag)
         {
@@ -306,20 +344,30 @@ V této části přidáte nový řadič, který zveřejňuje způsob, jak klient
    
             return Request.CreateResponse(ret);
         }
-4. Stiskněte klávesu **F5** toorun hello aplikace a tooensure hello přesnost své dosavadní práce. Hello aplikace by měla spustit webový prohlížeč a zobrazit domovskou stránku ASP.NET hello. 
 
-## <a name="publish-hello-new-webapi-backend"></a>Publikování hello nový back-end WebAPI
-1. Nyní nasadíme tuto aplikaci tooan webu Azure v pořadí toomake je přístupná ze všech zařízení. Klikněte pravým tlačítkem na hello **AppBackend** projektu a vyberte **publikovat**.
-2. Jako cíl publikování vyberte **Microsoft Azure App Service** a klikněte na **Publikovat**. Otevře se dialog hello vytvořit službu App Service, který vám pomůže vytvořit všechny hello potřebné prostředky Azure toorun hello webové aplikace ASP.NET v Azure.
+4. Chcete-li spustit aplikaci a zkontrolujte přesnost své dosavadní, vyberte **F5** klíč. Aplikace otevře webový prohlížeč a zobrazí se na domovské stránce ASP.NET. 
 
-    ![][B15]
-3. V hello **vytvořit službu App Service** dialogovém okně, vyberte svůj účet Azure. Klikněte na **Změnit typ** a vyberte **Webová aplikace**. Zachovat hello **název webové aplikace** dané a vyberte možnost hello **předplatné**, **skupiny prostředků**, a **plán služby App Service**.  Klikněte na možnost **Vytvořit**.
+## <a name="publish-the-new-webapi-back-end"></a>Publikování nové WebAPI back-end
+Potom můžete nasadit aplikace pro web Azure a zpřístupnit jej ze všech zařízení. 
 
-4. Poznamenejte si hello **adresa URL webu** vlastnost hello **Souhrn** části. Označujeme toothis adresu URL jako vaše *koncový bod back-end* dál v tomto kurzu. Klikněte na **Publikovat**.
+1. Klikněte pravým tlačítkem myši **AppBackend** projektu a potom vyberte **publikovat**.
 
-5. Po dokončení Průvodce hello, tato možnost publikuje hello ASP.NET webové aplikace tooAzure a pak spustí hello aplikace v hello výchozí prohlížeč.  Vaši aplikaci bude možné zobrazit ve službě Azure App Service.
+2. Vyberte **Microsoft Azure App Service** jako cíl publikování a potom vyberte **publikovat**.  
+    Otevře se okno vytvořit službu App Service. Tady si můžete vytvořit všechny potřebné prostředky Azure ke spouštění webové aplikace ASP.NET v Azure.
 
-Adresa URL Hello používá název hello webové aplikace, který jste zadali dříve, s http://<app_name>.azurewebsites.net formátu hello.
+    ![Na dlaždici služby Microsoft Azure App Service][B15]
+
+3. V **vytvořit službu App Service** okně vyberte účtu Azure. Vyberte **změnit typ** > **webová aplikace**. Ponechte výchozí **název webové aplikace**a pak vyberte **předplatné**, **skupiny prostředků**, a **plán služby App Service**. 
+
+4. Vyberte **Vytvořit**.
+
+5. Poznamenejte si vlastnost **Adresa URL webu** v části **Souhrn**. Toto je adresa URL vaší *koncový bod back-end* dál v tomto kurzu. 
+
+6. Vyberte **publikování**.
+
+Po dokončení průvodce, publikuje webovou aplikaci ASP.NET do Azure a pak otevře aplikace ve výchozím prohlížeči.  Aplikace je zobrazitelný v Azure App Services.
+
+Adresa URL používá dříve zadaný název webové aplikace ve formátu http://<název_aplikace>.azurewebsites.net.
 
 [B1]: ./media/notification-hubs-aspnet-backend-notifyusers/notification-hubs-secure-push1.png
 [B2]: ./media/notification-hubs-aspnet-backend-notifyusers/notification-hubs-secure-push2.png

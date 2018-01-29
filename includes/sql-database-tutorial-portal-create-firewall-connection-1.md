@@ -1,102 +1,101 @@
-## <a name="log-in-toohello-azure-portal"></a>Přihlaste se toohello portálu Azure
+## <a name="log-in-to-the-azure-portal"></a>Přihlášení k portálu Azure Portal
 
-Přihlaste se toohello [portál Azure](https://portal.azure.com/).
+Přihlaste se k portálu [Azure Portal](https://portal.azure.com/).
 
-## <a name="create-a-blank-sql-database-using-hello-azure-portal"></a>Vytvořit prázdnou databázi SQL pomocí hello portálu Azure
+## <a name="create-a-blank-sql-database"></a>Vytvořit prázdnou databázi SQL
 
-Databáze SQL Azure se vytvoří s definovanou sadou [výpočetních prostředků a prostředků úložiště](../articles/sql-database/sql-database-service-tiers.md). Hello databáze byla vytvořena v rámci [skupina prostředků Azure](../articles/azure-resource-manager/resource-group-overview.md) a v [logického serveru Azure SQL Database](../articles/sql-database/sql-database-features.md). 
+Databáze SQL Azure se vytvoří s definovanou sadou [výpočetních prostředků a prostředků úložiště](../articles/sql-database/sql-database-service-tiers.md). Databáze se vytvoří v rámci [skupiny prostředků Azure](../articles/azure-resource-manager/resource-group-overview.md) a na [logickém serveru Azure SQL Database](../articles/sql-database/sql-database-features.md). 
 
-Postupujte podle těchto kroků toocreate prázdnou databázi SQL. 
+Postupujte podle těchto kroků můžete vytvořit prázdnou databázi SQL. 
 
-1. Klikněte na tlačítko hello **nový** nalezeno tlačítko na hello levém horním rohu hello portálu Azure.
+1. Klikněte na tlačítko **Nový** v levém horním rohu portálu Azure Portal.
 
-2. Vyberte **databáze** z hello **nový** a vyberte **SQL Database** z hello **databáze** stránky. 
+2. Na stránce **Nový** vyberte **Databáze** a v části **Databáze SQL** na stránce **Nový** vyberte **Vytvořit**.
 
    ![Vytvořit prázdná databáze](../articles/sql-database/media/sql-database-design-first-database/create-empty-database.png)
 
-3. Vyplňte hello SQL Database formulář s hello následující informace, jak je znázorněno na hello předcházející bitové kopie:   
+3. Vyplňte formulář databáze SQL pomocí následujících informací, jak je vidět na předchozím obrázku:   
 
-   | Nastavení | Navrhovaná hodnota | Popis |
-   | --------| --------------- | ----------- | 
+   | Nastavení       | Navrhovaná hodnota | Popis | 
+   | ------------ | ------------------ | ------------------------------------------------- | 
    | **Název databáze** | mySampleDatabase | Platné názvy databází najdete v tématu [Identifikátory databází](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers). | 
    | **Předplatné** | Vaše předplatné  | Podrobnosti o vašich předplatných najdete v tématu [Předplatná](https://account.windowsazure.com/Subscriptions). |
    | **Skupina prostředků** | myResourceGroup | Platné názvy skupin prostředků najdete v tématu [Pravidla a omezení pojmenování](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions). |
-   | **Vyberte zdroj** | Prázdnou databázi | Určuje, že by měl být vytvořen prázdnou databázi. |
-   ||||
+   | **Výběr zdroje** | Prázdná databáze | Určuje, že by měl být vytvořen prázdnou databázi. |
 
-4. Klikněte na tlačítko **Server** toocreate a nakonfigurujte nový server pro novou databázi. Vyplňte hello **nového formuláře serveru** s hello následující informace: 
+4. Klikněte na **Server** a vytvořte a nakonfigurujte nový server pro novou databázi. Do **formuláře Nový server** zadejte následující informace: 
 
-   | Nastavení | Navrhovaná hodnota | Popis |
-   | --------| --------------- | ----------- | 
-   | **Název serveru** | Libovolný globálně jedinečný název. | Platné názvy serverů najdete v tématu [Pravidla a omezení pojmenování](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions). | 
-   | **Přihlašovací jméno správce serveru** | Libovolný platný název. | Platná přihlašovací jména najdete v tématu [Identifikátory databází](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers).|
-   | **Heslo** | Všechny platné heslo. | Heslo musí mít aspoň osm znaků a musí obsahovat znaky ze tří z následujících kategorií hello: velká písmena, malá písmena, číslice a jiné než alfanumerické znaky. |
-   | **Umístění** | Jakékoli platné umístění. | Informace o oblastech najdete v tématu [Oblasti služeb Azure](https://azure.microsoft.com/regions/). |
-   ||||
+   | Nastavení       | Navrhovaná hodnota | Popis | 
+   | ------------ | ------------------ | ------------------------------------------------- | 
+   | **Název serveru** | Libovolný globálně jedinečný název | Platné názvy serverů najdete v tématu [Pravidla a omezení pojmenování](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions). | 
+   | **Přihlašovací jméno správce serveru** | Libovolné platné jméno | Platná přihlašovací jména najdete v tématu [Identifikátory databází](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers).|
+   | **Heslo** | Libovolné platné heslo | Heslo musí mít alespoň 8 znaků a musí obsahovat znaky ze tří z následujících kategorií: velká písmena, malá písmena, číslice a jiné než alfanumerické znaky. |
+   | **Umístění** | Libovolné platné umístění | Informace o oblastech najdete v tématu [Oblasti služeb Azure](https://azure.microsoft.com/regions/). |
 
    ![create database-server](../articles/sql-database/media/sql-database-design-first-database/create-database-server.png)
 
 5. Klikněte na **Vybrat**.
 
-6. Klikněte na tlačítko **cenová úroveň** toospecify hello služby vrstvy a úroveň výkonu pro novou databázi. V tomto kurzu vyberte **20 Dtu** a **250** GB úložiště.
+6. Klikněte na **Cenová úroveň** a zadejte úroveň služby, počet DTU a velikost úložiště. Prozkoumejte možnosti pro množství DTU a velikost úložiště, které máte k dispozici na jednotlivých úrovních služby. 
+
+7. V tomto kurzu vyberte **standardní** úrovně služby a potom posuvníkem vyberte **100 Dtu (S3)** a **400** GB úložiště.
 
    ![create database-s1](../articles/sql-database/media/sql-database-design-first-database/create-empty-database-pricing-tier.png)
 
-7. Klikněte na tlačítko **Použít**.  
-
-8. Vyberte **kolace** pro prázdnou databázi hello (pro tento kurz použijte hello výchozí hodnota). Další informace o kolacích najdete v tématu [kolace](https://docs.microsoft.com/sql/t-sql/statements/collations)
-
-9. Klikněte na tlačítko **vytvořit** tooprovision hello databáze. Zřizování trvá o minutu a půl toocomplete. 
-
-10. Na panelu nástrojů hello, klikněte na tlačítko **oznámení** procesu nasazení toomonitor hello.
-
-   ![oznámení](../articles/sql-database/media/sql-database-get-started-portal/notification.png)
-
-## <a name="create-a-server-level-firewall-rule-using-hello-azure-portal"></a>Vytvoření pravidla brány firewall na úrovni serveru pomocí hello portálu Azure
-
-Hello služba SQL Database vytvoří brána firewall na úrovni serveru hello. Původně hello brána firewall brání externích nástrojů a aplikací z připojení serveru toohello nebo tooany databáze na serveru hello. Připojení jsou povoleny po vytvoření pravidla brány firewall tooopen konkrétní IP adresy. Postupujte podle těchto kroků toocreate [pravidlo brány firewall na úrovni serveru SQL Database](../articles/sql-database/sql-database-firewall-configure.md) pro IP adresu vašeho klienta a tooenable externí připojení přes firewall hello databáze SQL pro vaše IP adresa. 
-
-
-> [!NOTE]
-> Azure SQL Database komunikuje přes port 1433. TooSQL databáze můžete připojit až po hello brána firewall vaší sítě umožňuje odchozí provoz přes port 1433.
-
-
-1. Po dokončení hello nasazení, klikněte na tlačítko **databází SQL** z nabídky na levé straně hello a pak klikněte na tlačítko **mySampleDatabase** na hello **databází SQL** stránky. Hello přehledová stránka otevře vaší databáze, zobrazující text hello plně kvalifikovaný název serveru (například **mynewserver20170313.database.windows.net**) a poskytuje možnosti pro další konfiguraci. Tento plně kvalifikovaný název serveru zkopírujte pro pozdější použití.
+8. Přijměte podmínky verze Preview pro použití možnosti **Doplňkové úložiště**. 
 
    > [!IMPORTANT]
-   > Je nutné tento plně kvalifikovaný název tooconnect tooyour serveru a její databáze v následných rychlé zahájení.
+   > \* Velikosti úložiště větší než velikost zahrnutého úložiště jsou ve verzi Preview a účtují se za ně další poplatky. Podrobnosti najdete na stránce s [cenami služby SQL Database](https://azure.microsoft.com/pricing/details/sql-database/). 
+   >
+   >\*Ve vrstvě | Premium je více než 1 TB úložiště aktuálně k dispozici v následujících oblastech: Austrálie – východ, Austrálie – jihovýchod, Střední Kanada, Východní Kanada, Francie centrální, Německo centrální Japonsko – východ, centrální Korejská – Jih, střed USA – jih východní Asie, nám East2 , Západ USA, Virginia verze pro státní správu USA a západní Evropa. Viz [Aktuální omezení pro P11–P15](../articles/sql-database/sql-database-resource-limits.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
    > 
+
+9. Po výběru úrovně služby, počtu DTU a velikosti úložiště klikněte na **Použít**.  
+
+10. Vyberte **kolace** pro prázdnou databázi (v tomto kurzu použijte výchozí hodnotu). Další informace o kolacích najdete v tématu [kolace](https://docs.microsoft.com/sql/t-sql/statements/collations)
+
+11. Klikněte na **Vytvořit**, aby se databáze zřídila. Zřizování trvá o minutu a půl k dokončení. 
+
+12. Na panelu nástrojů klikněte na **Oznámení** a sledujte proces nasazení.
+    
+     ![oznámení](../articles/sql-database/media/sql-database-get-started-portal/notification.png)
+
+## <a name="create-a-server-level-firewall-rule"></a>Vytvoření pravidla brány firewall na úrovni serveru
+
+Služba SQL Database vytvoří bránu firewall na úrovni serveru, aby zabránila externím aplikacím a nástrojům v připojení k serveru nebo ke kterékoli databázi na serveru, pokud není vytvořené pravidlo brány firewall k otevření brány firewall pro konkrétní IP adresy. Postupujte podle těchto kroků a vytvořte [pravidlo brány firewall na úrovni serveru služby SQL Database](../articles/sql-database/sql-database-firewall-configure.md) pro vaši IP adresu klienta a umožněte externí připojení přes bránu firewall služby SQL Database pouze pro vaši IP adresu. 
+
+> [!NOTE]
+> SQL Database komunikuje přes port 1433. Pokud se pokoušíte připojit z podnikové sítě, nemusí být odchozí provoz přes port 1433 bránou firewall vaší sítě povolený. Pokud je to tak, nebudete se moct připojit k serveru Azure SQL Database, dokud vaše IT oddělení neotevře port 1433.
+>
+
+1. Po dokončení nasazení klikněte na **Databáze SQL** z nabídky na levé straně a klikněte na **mySampleDatabase** na stránce **Databáze SQL**. Otevře se stránka Přehled pro vaši databázi, ukazuje název plně kvalifikovaný serveru (například **mynewserver20170824.database.windows.net**) a poskytuje možnosti pro další konfiguraci. 
+
+2. Zkopírujte tento plně kvalifikovaný název serveru, abyste ho mohli použít pro připojení k serveru a jeho databázím v následujících rychlých startech. 
 
    ![název serveru](../articles/sql-database/media/sql-database-get-started-portal/server-name.png) 
 
-2. Klikněte na tlačítko **nastavení brány firewall serveru** na panelu nástrojů hello viz předchozí obrázek hello. Hello **nastavení brány Firewall** otevře se stránka pro hello databáze SQL server. 
+3. Klikněte na tlačítko **nastavení brány firewall serveru** na panelu nástrojů. Otevře se stránka **Nastavení brány firewall** pro server služby SQL Database. 
 
    ![pravidlo brány firewall serveru](../articles/sql-database/media/sql-database-get-started-portal/server-firewall-rule.png) 
 
+4. Klikněte na **Přidat IP adresu klienta** na panelu nástrojů a přidejte svoji aktuální IP adresu do nového pravidla brány firewall. Pravidlo brány firewall může otevřít port 1433 pro jednu IP adresu nebo rozsah IP adres.
 
-3. Klikněte na tlačítko **přidat IP adresu klienta** na panelu nástrojů tooadd hello vaše aktuální IP adres tooa nové pravidlo brány firewall. Pravidlo brány firewall může otevřít port 1433 pro jednu IP adresu nebo rozsah IP adres.
+5. Klikněte na **Uložit**. Vytvoří se pravidlo brány firewall na úrovni serveru pro vaši aktuální IP adresu, které otevře port 1433 na logickém serveru.
 
-4. Klikněte na **Uložit**. Pro aktuální IP adrese otevřít port 1433 na logickém serveru hello je vytvořeno pravidlo brány firewall na úrovni serveru.
+6. Klikněte na **OK** a pak zavřete stránku **Nastavení brány firewall**.
 
-   ![nastavení pravidla brány firewall serveru](../articles/sql-database/media/sql-database-get-started-portal/server-firewall-rule-set.png) 
-
-4. Klikněte na tlačítko **OK** a pak zavřete hello **nastavení brány Firewall** stránky.
-
-Toohello serveru Azure SQL Database a její databáze je nyní můžete připojit pomocí nástroje, jako je například SQL Server Management Studio (SSMS). Hello připojení z tuto IP adresu, a bude používat účet správce serveru hello předtím vytvořili.
+Nyní se můžete z této IP adresy připojit k serveru SQL Database a jeho databázím pomocí aplikace SQL Server Management Studio nebo jiného nástroje podle vašeho výběru použitím účtu správce serveru vytvořeného dříve.
 
 
 > [!IMPORTANT]
-> Standardně je povolen přístup přes bránu firewall hello databáze SQL pro všechny služby Azure. Klikněte na tlačítko **OFF** na této stránce toodisable pro všechny služby Azure.
+> Standardně je přístup přes bránu firewall služby SQL Database povolený pro všechny služby Azure. Kliknutím na **OFF** na této stránce provedete zákaz pro všechny služby Azure.
 
+## <a name="sql-server-connection-information"></a>Informace o připojení k SQL serveru
 
-## <a name="get-connection-string-values-using-hello-azure-portal"></a>Získat hodnoty připojovacího řetězce pomocí hello portálu Azure
+Na webu Azure Portal získejte plně kvalifikovaný název serveru služby Azure SQL Database. Plně kvalifikovaný název serveru použijete k připojení k serveru pomocí aplikace SQL Server Management Studio.
 
-Získáte hello serveru plně kvalifikovaný název pro váš server Azure SQL Database v hello portálu Azure. Použijete hello plně kvalifikovaný název tooconnect tooyour serveru pomocí SQL Server Management Studio.
+1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com/).
+2. V nabídce vlevo vyberte **SQL Database** a na stránce **Databáze SQL** klikněte na vaši databázi. 
+3. V podokně **Základy** na stránce webu Azure Portal pro vaši databázi vyhledejte a potom zkopírujte **Název serveru**.
 
-1. Přihlaste se toohello [portál Azure](https://portal.azure.com/).
-
-2. Vyberte **databází SQL** z nabídky na levé straně hello a klikněte na tlačítko databáze na hello **databází SQL** stránky. 
-
-3. V hello **Essentials** podokně hello Azure stránky portálu pro vaši databázi, vyhledejte a pak zkopírujte hello **název serveru**.
-
-   ![informace o připojení](../articles/sql-database/media/sql-database-get-started-portal/server-name.png) 
+   ![informace o připojení](../articles/sql-database/media/sql-database-get-started-portal/server-name.png)

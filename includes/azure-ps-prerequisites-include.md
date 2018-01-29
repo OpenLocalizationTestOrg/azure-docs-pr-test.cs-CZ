@@ -1,6 +1,6 @@
-## <a name="prerequisite-install-hello-azure-powershell-module"></a>Předpoklad: Instalace hello modul Azure PowerShell
+## <a name="prerequisite-install-the-azure-powershell-module"></a>Požadavek: Instalace modulu Azure PowerShellu
 
-tooperform hello kroky v tomto článku, budete potřebovat příliš[tooinstall a konfigurace prostředí Azure PowerShell](/powershell/azureps-cmdlets-docs) a postupujte podle pokynů hello všechny toohello hello způsob ukončení toosign do Azure a vybrat své předplatné.
+Pokud chcete provést kroky v tomto článku, musíte [nainstalovat a nakonfigurovat modul Azure PowerShellu](/powershell/azureps-cmdlets-docs). Ujistěte se, že dokončíte všechny pokyny. Po dokončení instalace se přihlaste do Azure a vyberte své předplatné.
 
 > [!NOTE]
-> Pokud účet Azure nemáte, musíte si ho vytvořit. Zde si můžete zaregistrovat [bezplatnou zkušební verzi](../articles/active-directory/sign-up-organization.md).
+> Účet Azure je potřeba k dokončení těchto kroků. Pokud účet Azure nemáte, můžete si zaregistrovat [bezplatnou zkušební verzi](../articles/active-directory/sign-up-organization.md).

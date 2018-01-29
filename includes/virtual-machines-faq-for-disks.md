@@ -54,7 +54,7 @@ Ne. Virtuální počítače v nastavení dostupnosti musí používat disky vše
 
 **Spravované disků je výchozí možnost na portálu Azure?**
 
-Není v současné době ale výchozí hodnota se stane v budoucnu.
+Ano. 
 
 **Můžete vytvořit prázdný disk spravované?**
 
@@ -101,6 +101,10 @@ Disky systému Azure spravované aktuálně podporuje pouze místně redundantn�
 
 Ne. Tato funkce není aktuálně podporován. 
 
+**Můžete rozdělit zapůjčení na můj disku?**
+
+Ne. To není aktuálně podporováno jako zapůjčení je k dispozici, aby se zabránilo nechtěnému odstranění při použití disku.
+
 **Můžete změnit vlastnost název počítače při specializované (ne vytvořili pomocí nástroje pro přípravu systému nebo zobecněn) disk operačního systému slouží ke zřízení virtuálního počítače?**
 
 Ne. Nelze aktualizovat vlastnosti název počítače. Nový virtuální počítač se dědí z nadřazený virtuální počítač, který byl použit k vytvoření disku operačního systému. 
@@ -108,6 +112,40 @@ Ne. Nelze aktualizovat vlastnosti název počítače. Nový virtuální počíta
 **Kde najdu ukázkových šablon Azure Resource Manageru k vytvoření virtuálních počítačů s spravované disky?**
 * [Seznam šablon pomocí spravovaných disků](https://github.com/Azure/azure-quickstart-templates/blob/master/managed-disk-support-list.md)
 * https://github.com/chagarw/MDPP
+
+## <a name="migrate-to-managed-disks"></a>Migrace na spravované disky 
+
+**Jaké změny jsou potřeba v existující Azure Backup service před nebo za migraci konfigurace na spravovaných disky?**
+
+Nejsou vyžadovány žádné změny. 
+
+**Bude Moje zálohování virtuálních počítačů vytvořené prostřednictvím služby Azure Backup před migrací pokračovat v práci?**
+
+Ano, zálohování funguje bez problémů.
+
+**Jaké změny jsou potřeba v existující šifrování disků Azure konfigurace před nebo po migraci na spravované disky?**
+
+Nejsou vyžadovány žádné změny. 
+
+**Je automatické migrace z existující virtuální počítač škálování sady (VMSS) z nespravovaných disků spravované disky podporovány?**
+
+Ne. Nové VMSS můžete vytvořit s disky spravované pomocí bitové kopie z vašeho původního VMSS nespravované disky. 
+
+**Můžete vytvořit na Disk spravovaný ze snímku objekt blob stránky prováděné před migrací na spravované disky?**
+
+Ne. Můžete exportovat snímek objekt blob stránky jako objekt blob stránky a pak vytvořit spravované Disk z objektu blob exportovaný stránky. 
+
+**Můžete převzít Moje místní počítače chráněné službou Azure Site Recovery pro virtuální počítač s spravované disky?**
+
+Ano, můžete k převzetí služeb při selhání pro virtuální počítač s spravované disky.
+
+**Je k dispozici žádný vliv migrace na virtuálních počítačích Azure, které jsou chráněné pomocí Azure lokality Recovery (ASR) prostřednictvím replikace Azure do Azure?**
+
+Ano. Automatické obnovení systému Azure do Azure ochrany není podporováno pro virtuální počítače s spravované disky. Chce podporovat na konci CY2018 Otázka č. 1. 
+
+**Můžete migrovat virtuální počítače s nespravované disky, které se nacházejí na účtech úložiště, které jsou nebo byly dříve šifrovaná na spravované disky?**
+
+Ano
 
 ## <a name="managed-disks-and-storage-service-encryption"></a>Spravované disky a šifrování služby úložiště 
 

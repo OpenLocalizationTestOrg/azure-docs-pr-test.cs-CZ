@@ -1,16 +1,15 @@
-Vytvoření [webové aplikace](../articles/app-service-web/app-service-web-overview.md) v hello `myAppServicePlan` plán služby App Service se hello [az webapp vytvořit](/cli/azure/webapp#create) příkaz. 
+Ve službě Cloud Shell pomocí příkazu [az webapp create](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create) vytvořte [webovou aplikaci](../articles/app-service/app-service-web-overview.md) v plánu služby App Service `myAppServicePlan`. 
 
-webové aplikace Hello hostování místo kódu a poskytuje adresu URL tooview hello nasazené aplikace.
-
-Následující příkaz a nahraďte v hello  *\<app_name >* s jedinečným názvem (platnými znaky jsou `a-z`, `0-9`, a `-`). Pokud `<app_name>` není jedinečný. získáte hello chybová zpráva "Web se zadaným názvem < název_aplikace > již existuje." Výchozí adresa URL webové aplikace hello je Hello `https://<app_name>.azurewebsites.net`. 
+V následujícím příkladu nahraďte *\<app_name>* globálně jedinečným názvem aplikace (platné znaky jsou `a-z`, `0-9` a `-`). 
 
 ```azurecli-interactive
-az webapp create --name <app_name> --resource-group myResourceGroup --plan myAppServicePlan
+az webapp create --name <app_name> --resource-group myResourceGroup --plan myAppServicePlan --deployment-local-git
 ```
 
-Po vytvoření webové aplikace hello hello rozhraní příkazového řádku Azure zobrazuje informace podobné toohello následující ukázka:
+Po vytvoření webové aplikace se v rozhraní příkazového řádku Azure CLI zobrazí podobné informace jako v následujícím příkladu:
 
 ```json
+Local git is configured with url of 'https://<username>@<app_name>.scm.azurewebsites.net/<app_name>.git'
 {
   "availabilityState": "Normal",
   "clientAffinityEnabled": true,
@@ -19,26 +18,19 @@ Po vytvoření webové aplikace hello hello rozhraní příkazového řádku Azu
   "containerSize": 0,
   "dailyMemoryTimeQuota": 0,
   "defaultHostName": "<app_name>.azurewebsites.net",
+  "deploymentLocalGitUrl": "https://<username>@<app_name>.scm.azurewebsites.net/<app_name>.git",
   "enabled": true,
-  "enabledHostNames": [
-    "<app_name>.azurewebsites.net",
-    "<app_name>.scm.azurewebsites.net"
-  ],
-  "gatewaySiteName": null,
-  "hostNameSslStates": [
-    {
-      "hostType": "Standard",
-      "name": "<app_name>.azurewebsites.net",
-      "sslState": "Disabled",
-      "thumbprint": null,
-      "toUpdate": null,
-      "virtualIp": null
-    }
-    < JSON data removed for brevity. >
+  < JSON data removed for brevity. >
 }
 ```
 
-Procházejte toohello lokality toosee nově vytvořenou webovou aplikaci.
+Vytvořili jste prázdnou webovou aplikaci s povoleným nasazením Gitu.
+
+> [!NOTE]
+> Adresa URL vzdáleného úložiště Git se zobrazuje ve vlastnosti `deploymentLocalGitUrl` ve formátu `https://<username>@<app_name>.scm.azurewebsites.net/<app_name>.git`. Tuto adresu URL si uložte, protože ji budete potřebovat později.
+>
+
+Přejděte do nově vytvořené webové aplikace.
 
 ```bash
 http://<app_name>.azurewebsites.net

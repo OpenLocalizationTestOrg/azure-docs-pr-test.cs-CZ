@@ -1,0 +1,67 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: "Uživatelská dokumentace ke službě Azure Automation"
+metadata:
+  document_id: 
+  title: "Dokumentace ke službě Azure Automation – kurzy, reference k rozhraní API"
+  description: "Informace o používání služby Azure Automation"
+  services: automation
+  author: georgewallace
+  manager: carmonm
+  ms.service: automation
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 12/13/2017
+  ms.author: gwallace
+  ms.openlocfilehash: b2b155480cd43ce8daa0b4916b244910f094a032
+  ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 01/11/2018
+abstract:
+  description: "Přečtěte si, jak pomocí služby Automation nakonfigurovat a automatizovat provozní úlohy v hybridním prostředí. V kurzech, referencích k rozhraním API a další dokumentaci se dozvíte, jak automatizovat procesy, provádět správu aktualizací, zajistit požadovaný stav konfigurace, sledovat změny a shromažďovat údaje o inventáři."
+sections:
+- title: "Zprovoznění během 5 minut"
+  items:
+  - type: paragraph
+    text: "Zjistěte, jak pomocí služby Automation automatizovat a konfigurovat prostředí Azure a hybridní prostředí:"
+  - type: list
+    style: icon48
+    items:
+    - image:
+        src: /azure/automation/media/index/automation.svg
+      text: "Vytvoření účtu Automation"
+      href: /azure/automation/automation-quickstart-create-account
+    - image:
+        src: /azure/automation/media/index/runbook.svg
+      text: "Vytvoření runbooku"
+      href: /azure/automation/automation-quickstart-create-runbook
+    - image:
+        src: /azure/automation/media/index/dscconfig.svg
+      text: "Vytvoření konfigurace DSC"
+      href: /azure/automation/automation-quickstart-dsc-configuration
+- title: "Podrobné kurzy"
+  items:
+  - type: paragraph
+    text: "Zjistěte, jak integrovat, nasazovat a spravovat vaše prostředí Azure a hybridní prostředí."
+  - type: list
+    style: ordered
+    items:
+    - html: "<a href=\"/azure/automation/automation-watchers-tutorial\">Konfigurace úloh sledovacích procesů</a>"
+    - html: "<a href=\"/azure/automation/automation-tutorial-update-management\">Správa aktualizací na virtuálním počítači</a>"
+    - html: "<a href=\"/azure/automation/automation-onboard-solutions\">Začlenění ve velkém měřítku</a>"
+    - html: "<a href=\"/azure/automation/automation-tutorial-installed-software\">Identifikace softwaru nainstalovaného na virtuálním počítači</a>"
+    - html: "<a href=\"/azure/automation/automation-tutorial-troubleshoot-changes\">Řešení potíží se změnami na virtuálním počítači</a>"
+- title: Odkaz
+  items:
+  - type: list
+    style: cards
+    className: cardsD
+    items:
+    - title: "Příkazový řádek"
+      html: <p><a href="/powershell/module/azurerm.automation">PowerShell</a></p>
+    - title: Jazyky
+      html: <p><a href="/dotnet/api/microsoft.azure.management.automation">.NET</a></p>
+    - title: REST
+      html: "<p><a href=\"/rest/api/automation\">Rozhraní REST API pro Automation</a></p>"

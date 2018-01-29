@@ -1,39 +1,46 @@
 ## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
-Vytvoření služby IoT hub pro vaše aplikace tooconnect simulované zařízení k. Hello následující kroky vám ukážou, jak toocomplete tato úloha pomocí portálu Azure pomocí hello.
+Vytvoření služby IoT Hub pro aplikaci simulovaného zařízení, která se ke službě bude připojovat. Následující kroky vám ukážou, jak tuto úlohu dokončit pomocí portálu Azure.
 
-1. Přihlaste se toohello [portál Azure][lnk-portal].
-1. V hello vlevo, klikněte na **nový** > **Internet věcí** > **IoT Hub**.
+1. Přihlaste se na web [Azure Portal][lnk-portal].
+
+1. Vyberte **Nový** > **Internet věcí** > **IoT Hub**.
    
     ![Panel portálu Azure][1]
-1. V hello **služby IoT hub** okně zvolte hello konfiguraci pro službu IoT hub.
-   
-    ![Okno centra IoT][2]
-   
-   1. V hello **název** pole, zadejte název své služby IoT hub. Pokud hello **název** je platný a dostupný, zobrazí se zelená značka zaškrtnutí v hello **název** pole.
-    [!INCLUDE [iot-hub-pii-note-naming-hub](iot-hub-pii-note-naming-hub.md)]
-   
-   1. Vyberte [cenovou a škálovací úroveň][lnk-pricing]. Tento kurz nevyžaduje konkrétní úroveň. V tomto kurzu použijte bezplatnou úroveň F1 hello.
-   1. V části **Skupina prostředků** vytvořte skupinu prostředků nebo vyberte existující skupinu. Další informace najdete v tématu [pomocí prostředků skupiny prostředků Azure toomanage][lnk-resource-groups].
-   1. V **umístění**, vyberte hello toohost umístění služby IoT hub. V tomto kurzu zvolte nejbližší umístění.
-1. Po výběru možností konfigurace centra IoT klikněte na **Vytvořit**.  Může trvat několik minut, než Azure toocreate IoT hub. Stav hello toocheck, můžete sledovat průběh hello hello úvodním panelu nebo panelu oznámení hello.
-   
-    ![Stav nového centra IoT][3]
-1. Po úspěšném vytvoření služby IoT hub hello, klikněte na hello dlaždici nového centra IoT hello Azure portálu tooopen hello okně hello novou službu IoT hub. Poznamenejte si hello **Hostname**a potom klikněte na **zásady sdíleného přístupu**.
+
+1. V podokně **Centrum IoT** zadejte následující informace o centru IoT:
+
+   * **Název:** Vytvořte název centra IoT. Pokud je zadaný název platný, zobrazí se zelená značka zaškrtnutí.
+
+   [!INCLUDE [iot-hub-pii-note-naming-hub](iot-hub-pii-note-naming-hub.md)]
+
+   * **Úroveň cen a škálování:** V tomto kurzu vyberte úroveň **F1 – Free**. Další informace najdete v tématu popisujícím [úrovně cen a škálování][lnk-pricing].
+
+   * **Skupina prostředků:** Vytvořte skupinu prostředků, která bude hostitelem centra IoT, nebo použijte existující. Další informace najdete v tématu [Použití skupin prostředků ke správě prostředků Azure][lnk-resource-groups].
+
+   * **Umístění:** Vyberte vám nejbližší umístění.
+
+   * **Připnout na řídicí panel:** Zaškrtněte tuto možnost pro snadný přístup k centru IoT z řídicího panelu.
+
+    ![Okno Centrum IoT][2]
+
+1. Klikněte na možnost **Vytvořit**. Vytvoření centra IoT může trvat několik minut. Průběh můžete sledovat v podokně **Oznámení**.
+
+1. Po úspěšném vytvoření centra IoT kliknutím na dlaždici nového centra IoT na webu Azure Portal otevřete okno vlastností nového centra IoT. Teď, když jste vytvořili centrum IoT, vyhledejte důležité informace, které používáte pro připojení zařízení a aplikací do služby IoT hub. Poznačte si **Název hostitele** a klikněte na **Zásady sdíleného přístupu**.
    
     ![Okno nového centra IoT][4]
-1. V hello **zásady sdíleného přístupu** okně klikněte na tlačítko hello **iothubowner** zásady a pak zkopírujte a poznamenejte připojovací řetězec služby IoT Hub hello hello **iothubowner** okno. Další informace najdete v tématu [řízení přístupu] [ lnk-access-control] v hello "Příručka vývojáře IoT Hub."
+
+1. V části **Zásady sdíleného přístupu** klikněte na zásadu **iothubowner** a potom si z okna **iothubowner** zkopírujte a poznamenejte připojovací řetězec služby IoT Hub. Další informace najdete v tématu [Řízení přístupu][lnk-access-control] v Příručce pro vývojáře pro IoT Hub.
    
-    ![Okno zásad sdíleného přístupu][5]
+    ![Zásady sdíleného přístupu][5]
 
 <!-- Images. -->
 [1]: ./media/iot-hub-get-started-create-hub/create-iot-hub1.png
 [2]: ./media/iot-hub-get-started-create-hub/create-iot-hub2.png
-[3]: ./media/iot-hub-get-started-create-hub/create-iot-hub3.png
 [4]: ./media/iot-hub-get-started-create-hub/create-iot-hub4.png
 [5]: ./media/iot-hub-get-started-create-hub/create-iot-hub5.png
 
 <!-- Links -->
-[lnk-resource-groups]: ../articles/azure-resource-manager/resource-group-portal.md
+[lnk-access-control]: ../articles/iot-hub/iot-hub-devguide-security.md
 [lnk-portal]: https://portal.azure.com/
 [lnk-pricing]: https://azure.microsoft.com/pricing/details/iot-hub/
-[lnk-access-control]: ../articles/iot-hub/iot-hub-devguide-security.md
+[lnk-resource-groups]: ../articles/azure-resource-manager/resource-group-portal.md

@@ -1,2 +1,2 @@
 >[!Note]
-> Doporučujeme vám, že používáte účet úložiště Azure při vývoji místně. Použití hello emulátoru úložiště Azure nepodporuje nástroje Azure Functions.
+> Funkce aplikace pomocí emulátoru úložiště Azure pro **AzureWebJobsStorage** a **AzureWebJobsDashboard** nastavení připojení, které jsou vyžadované projektu. Pokud chcete použít v emulátoru, nastavte hodnoty těchto klíčů do `UseDevelopmentStorage=true`. 

@@ -1,6 +1,4 @@
-|  | **Klasické nasazení** | **Nasazení podle modelu Resource Manager** |
+| **Model/metoda nasazení** | **Azure Portal** | **PowerShell** | 
 | --- | --- | --- |
-| **Portál Classic** |Nepodporuje se |Nepodporuje se |
-| **Azure Portal** |Nepodporuje se |Nepodporuje se |
-| **PowerShell** |[Článek](../articles/expressroute/expressroute-howto-coexist-classic.md) |[Článek](../articles/expressroute/expressroute-howto-coexist-resource-manager.md) |
-
+| Resource Manager | **Nepodporuje se** | [Článek](../articles/expressroute/expressroute-howto-coexist-resource-manager.md)|
+| Classic | **Nepodporuje se** | [Článek](../articles/expressroute/expressroute-howto-coexist-classic.md) |

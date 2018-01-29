@@ -1,4 +1,4 @@
-Hello následující omezení platí jenom při použití hello Azure Resource Manager a skupiny prostředků Azure.
+Následující omezení se použijí při provádění operace správy pomocí Azure Resource Manager jenom.
 
 | Prostředek | Výchozí omezení |
 | --- | --- |

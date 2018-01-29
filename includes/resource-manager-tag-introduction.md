@@ -1,11 +1,17 @@
-Použití značek toologically tooyour prostředky Azure je uspořádat podle kategorií. Každá značka se skládá z názvu a hodnoty. Můžete například použít název hello "Prostředí" a hello hodnotu "Výroba" tooall hello prostředky v produkčním prostředí. Bez této značky může být obtížné určit, jestli je prostředek určený pro vývojové, testovací nebo produkční prostředí. „Prostředí“ a „Produkční“ jsou však jenom příklady. Definujete hello názvy a hodnoty, které hello nejvhodnější pro vaše předplatné uspořádání.
+Použijte značky na prostředky Azure pro jejich logické uspořádání podle kategorií. Každá značka se skládá z názvu a hodnoty. Můžete například použít název Prostředí a hodnotu Produkční na všechny prostředky v produkčním prostředí. Bez této značky může být obtížné určit, jestli je prostředek určený pro vývojové, testovací nebo produkční prostředí. „Prostředí“ a „Produkční“ jsou však jenom příklady. Definujte názvy a hodnoty, které jsou nejvhodnější pro uspořádání vašeho předplatného.
 
-Po použití značky můžete načíst všechny prostředky hello ve vašem předplatném s tímto názvem značky a hodnotu. Povolit značky je tooretrieve související prostředky, které se nacházejí v různých skupinách prostředků. Tento přístup je užitečné, když potřebujete tooorganize prostředky fakturace nebo správy.
+Po použití značek můžete načíst všechny prostředky v předplatném s daným názvem a hodnotou značky. Značky umožňují načíst související prostředky, které se nacházejí v různých skupinách prostředků. Tento přístup je užitečný v případě, že potřebujete uspořádat prostředky pro účely fakturace nebo správy.
 
-Hello následující omezení platí tootags:
+Na značky se vztahují následující omezení:
 
-* Každý prostředek nebo skupina prostředků může mít maximálně 15 párů název/hodnota značek. Toto omezení se vztahuje pouze skupinu prostředků toohello tootags použité přímo nebo prostředek. Skupina prostředků může obsahovat řadu prostředků, z nichž každý má 15 párů název/hodnota značek. 
-* název značky Hello je omezená too512 znaků a hodnota značky hello je omezená too256 znaků. Pro účty úložiště název značky hello je omezená too128 znaků a hodnota značky hello je omezená too256 znaků.
-* Skupina prostředků toohello značky použít nejsou zdědí hello prostředky v příslušné skupině prostředků. 
-
-Pokud máte více než 15 hodnoty, je nutné, aby tooassociate s prostředku, použijte pro hodnotu značky hello řetězec formátu JSON. Hello řetězce formátu JSON může obsahovat mnoho hodnoty, které jsou použité tooa název jedné značky. Tento článek ukazuje příklad přiřazování značku toohello řetězec formátu JSON.
+* Každý prostředek nebo skupina prostředků může mít maximálně 15 párů název/hodnota značek. Toto omezení se vztahuje pouze na značky použité přímo na prostředek nebo skupinu prostředků. Skupina prostředků může obsahovat řadu prostředků, z nichž každý má 15 párů název/hodnota značek. Pokud k prostředku potřebujete přidružit více než 15 hodnot, použijte jako hodnotu značky řetězec JSON. Řetězec JSON může obsahovat mnoho hodnot, které se použijí pro jeden název značky. Tento článek ukazuje příklad přiřazení řetězce JSON ke značce.
+* Název značky je omezen na 512 znaků a hodnota značky je omezena na 256 znaků. Pro účty úložiště je název značky omezen na 128 znaků a hodnota značky je omezena na 256 znaků.
+* Prostředky ve skupině prostředků nedědí značky použité na danou skupinu prostředků.
+* Tyto znaky se nepodporují:
+  * `<`
+  * `>`
+  * `%`
+  * `&`
+  * `\\`
+  * `?`
+  * `/`

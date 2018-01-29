@@ -18,7 +18,5 @@
 
 | Prostředek | Výchozí omezení |
 | --- | --- |
-| Maximum vstupně-výstupních operací za sekundu (IOPS) na virtuální počítač |80 000 IOPS s virtuálním počítačem GS5<sup>1</sup> |
-| Maximální propustnost na virtuální počítač |2 000 MB/s s virtuálním počítačem GS5<sup>1</sup> |
-
-<sup>1</sup>odkazovat příliš[velikost virtuálního počítače](../articles/virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) pro omezení pro další velikosti virtuálních počítačů. 
+| Maximum vstupně-výstupních operací za sekundu (IOPS) na virtuální počítač |80 000 IOPS s GS5 virtuálním Počítačem. |
+| Maximální propustnost na virtuální počítač |2 000 MB/s s GS5 virtuálních počítačů |

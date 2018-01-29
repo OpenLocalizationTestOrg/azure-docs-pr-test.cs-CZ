@@ -1,16 +1,16 @@
-Teď můžete použít nástroj Průzkumník dat hello v hello Azure portálu toocreate databázi grafu. 
+Teď můžete pomocí nástroje Průzkumník dat na webu Azure Portal vytvořit databázi grafu. 
 
-1. V hello portál Azure, v nabídce hello navigaci vlevo, klikněte na **Data Explorer (Preview)**. 
-2. V hello **Data Explorer (Preview)** okně klikněte na tlačítko **nový graf**, potom vyplňte stránku hello pomocí hello následující informace.
+1. Na portálu Azure, v nabídce na levé straně vyberte **Data Explorer (Preview)**.
 
-    ![Průzkumník dat v hello portálu Azure](./media/cosmos-db-create-graph/azure-cosmosdb-data-explorer.png)
+2. V části **Data Explorer (Preview)**, vyberte **nový graf**. Pak zadejte na stránce pomocí následující informace:
+
+    ![Průzkumník dat na portálu Azure Portal](./media/cosmos-db-create-graph/azure-cosmosdb-data-explorer.png)
 
     Nastavení|Navrhovaná hodnota|Popis
     ---|---|---
-    ID databáze|sample-database|Hello ID pro novou databázi. Názvy databází musí mít délku 1 až 255 znaků a nesmí obsahovat znaky `/ \ # ?` ani koncové mezery.
-    ID grafu|sample-graph|Hello ID pro nový graf. Názvy grafu mají hello znak stejné požadavky jako ID databáze.
-    Kapacita úložiště| 10 GB|Ponechte výchozí hodnotu hello. Toto je kapacita úložiště hello hello databáze.
-    Propustnost|400 RU/s|Ponechte výchozí hodnotu hello. Je možné škálovat nahoru propustnost hello později Pokud chcete, aby tooreduce latence.
-    Klíč oddílu|/userid|Klíč oddílu, který provede distribuci dat rovnoměrně tooeach oddílu. Výběr hello správný klíč oddílu je důležité při vytváření původce graf, další informace o jeho [návrh a vytváření oddílů](../articles/cosmos-db/partition-data.md#designing-for-partitioning).
+    ID databáze|sample-database|Jako název nové databáze zadejte *sample-database*. Názvy databází musí být v rozmezí 1 až 255 znaků a nesmí obsahovat `/ \ # ?` nebo koncové mezery.
+    ID grafu|sample-graph|Jako název nové kolekce zadejte *sample-graph*. Názvy grafů mají stejné požadavky na znaky jako ID databází.
+    Kapacita úložiště| 10 GB|Nechte zadanou výchozí hodnotu. Tohle je kapacita úložiště databáze.
+    Propustnost|400 RU/s|Nechte zadanou výchozí hodnotu. Propustnost můžete později navýšit, pokud budete chtít snížit latenci.
 
-3. Jakmile vyplňování formuláře hello, klikněte na možnost **OK**.
+3. Když je formulář vyplnit, vyberte **OK**.

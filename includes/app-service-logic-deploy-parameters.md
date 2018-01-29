@@ -1,13 +1,10 @@
-S Azure Resource Manager, můžete definovat parametry pro hodnoty chcete toospecify při nasazení šablony hello. Šablona Hello obsahuje oddíl s názvem parametry obsahující všechny hodnoty parametru hello.
-Měli byste parametr pro ty hodnoty, které se liší podle hello prostředí, které nasazujete nebo na základě hello projektu, které nasazujete. Parametry nedefinuje pro hodnoty, které vždy zůstanou hello stejné. Každá hodnota parametru se používá v hello šablony toodefine hello, které prostředky, které jsou nasadit. 
+S Azure Resource Manager, můžete definovat parametry pro hodnoty, které mají používat při nasazování šablony. Šablona obsahuje `parameters` oddíl, který obsahuje všechny hodnoty parametrů. Každá hodnota parametru se šablonou používá k definování prostředky, které chcete nasadit.
 
-Při definování parametrů, použijte hello **allowedValues** toospecify pole, které hodnoty uživatele můžete během nasazení zadat. Použití hello **defaultValue** pole tooassign toohello parametru hodnoty, pokud je během nasazení zadána žádná hodnota.
+> [!NOTE]
+> Nedefinujte parametry pro hodnoty, které jsou vždy stejné. Definujte parametry jenom pro hodnoty, které se liší podle prostředí, do kterého nasazujete nebo na základě projektu, který nasazujete.
 
-Nemůžeme se popisují jednotlivé parametry v šabloně hello.
+Když definujete parametry:
 
-### <a name="logicappname"></a>logicAppName
-Název Hello toocreate aplikace logiky hello.
+* Chcete-li určit povolené hodnoty, které můžete během nasazení zadat uživatele, použijte **allowedValues** pole.
 
-    "logicAppName": {
-        "type": "string"
-    }
+* Chcete-li přiřadit výchozí hodnoty na parametr, pokud jsou k dispozici žádné hodnoty během nasazení, použijte **defaultValue** pole. 

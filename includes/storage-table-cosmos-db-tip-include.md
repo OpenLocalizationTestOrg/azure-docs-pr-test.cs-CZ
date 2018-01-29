@@ -1,3 +1,3 @@
 > [!TIP]
-> Hello obsah v tomto článku se vztahuje toohello původní základní Azure Table storage. Nyní je však k dispozici nabídka služby Azure Table Storage úrovně Premium ve verzi Public Preview, která nabízí tabulky optimalizované pro zvýšení propustnosti, globální distribuci a automatické sekundární indexy. toolearn další a zkuste se hello nové prostředí premium, zkontrolujte [Cosmos databázi Azure: Tabulka API](https://aka.ms/premiumtables).
+> Obsah v tomto článku se vztahuje na původní Azure Table storage. Je však nyní prémiový nabídky pro úložiště table API Azure Cosmos DB tabulky, které nabízí propustnost optimalizované tabulky, globální distribuce a automatické sekundární indexy. Další informace a vyzkoušet premium prostředí, najdete [rozhraní API služby Azure Cosmos DB tabulky](https://aka.ms/premiumtables).
 >
