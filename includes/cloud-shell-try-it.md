@@ -1,21 +1,12 @@
 
-## <a name="launch-azure-cloud-shell"></a><span data-ttu-id="2a10c-101">Spuštění služby Azure Cloud Shell</span><span class="sxs-lookup"><span data-stu-id="2a10c-101">Launch Azure Cloud Shell</span></span>
+## <a name="launch-azure-cloud-shell"></a><span data-ttu-id="52032-101">Spuštění služby Azure Cloud Shell</span><span class="sxs-lookup"><span data-stu-id="52032-101">Launch Azure Cloud Shell</span></span>
 
-<span data-ttu-id="2a10c-102">Hello cloudové prostředí Azure je bezplatná prostředí Bash, který můžete spustit přímo v rámci hello portálu Azure.</span><span class="sxs-lookup"><span data-stu-id="2a10c-102">hello Azure Cloud Shell is a free Bash shell that you can run directly within hello Azure portal.</span></span> <span data-ttu-id="2a10c-103">Má hello rozhraní příkazového řádku Azure předinstalována a nakonfigurované toouse s vaším účtem.</span><span class="sxs-lookup"><span data-stu-id="2a10c-103">It has hello Azure CLI preinstalled and configured toouse with your account.</span></span> <span data-ttu-id="2a10c-104">Klikněte na tlačítko hello **cloudové prostředí** tlačítko v hello nabídce v pravé horní hello Dobrý den [portál Azure](https://portal.azure.com).</span><span class="sxs-lookup"><span data-stu-id="2a10c-104">Click hello **Cloud Shell** button on hello menu in hello upper-right of hello [Azure portal](https://portal.azure.com).</span></span>
+<span data-ttu-id="52032-102">Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít k provedení kroků v tomto článku.</span><span class="sxs-lookup"><span data-stu-id="52032-102">The Azure Cloud Shell is a free interactive shell that you can use to run the steps in this article.</span></span> <span data-ttu-id="52032-103">Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem.</span><span class="sxs-lookup"><span data-stu-id="52032-103">It has common Azure tools preinstalled and configured to use with your account.</span></span> <span data-ttu-id="52032-104">Stačí kliknout na **Kopírovat** a zkopírovat kód, vložit ho do Cloud Shellu a potom ho spustit stisknutím Enter.</span><span class="sxs-lookup"><span data-stu-id="52032-104">Just click the **Copy** to copy the code, paste it into the Cloud Shell, and then press enter to run it.</span></span>  <span data-ttu-id="52032-105">Existuje několik způsobů, jak Cloud Shell spustit:</span><span class="sxs-lookup"><span data-stu-id="52032-105">There are a few ways to launch the Cloud Shell:</span></span>
 
-<span data-ttu-id="2a10c-105">[![Cloud Shell](./media/cloud-shell-try-it/cloud-shell-menu.png)](https://portal.azure.com)</span><span class="sxs-lookup"><span data-stu-id="2a10c-105">[![Cloud Shell](./media/cloud-shell-try-it/cloud-shell-menu.png)](https://portal.azure.com)</span></span>
-
-<span data-ttu-id="2a10c-106">tlačítko Hello spustí interaktivní prostředí, který můžete použít toorun všechny hello kroky v tomto tématu:</span><span class="sxs-lookup"><span data-stu-id="2a10c-106">hello button launches an interactive shell that you can use toorun all of hello steps in this topic:</span></span>
-
-<span data-ttu-id="2a10c-107">[![Snímek obrazovky znázorňující hello cloudové prostředí okna portálu hello](./media/cloud-shell-try-it/cloud-shell-safari.png)](https://portal.azure.com)</span><span class="sxs-lookup"><span data-stu-id="2a10c-107">[![Screenshot showing hello Cloud Shell window in hello portal](./media/cloud-shell-try-it/cloud-shell-safari.png)](https://portal.azure.com)</span></span>
-
-
-
-
-
-
-
-
-
-
+|  |   |
+|-----------------------------------------------|---|
+| <span data-ttu-id="52032-106">Klikněte na **Vyzkoušet** v pravém horním rohu bloku kódu.</span><span class="sxs-lookup"><span data-stu-id="52032-106">Click **Try It** in the upper right corner of a code block.</span></span> | ![Cloud Shell v tomto článku](./media/cloud-shell-try-it/cli-try-it.png) |
+| <span data-ttu-id="52032-108">Otevřete Cloud Shell ve vašem prohlížeči.</span><span class="sxs-lookup"><span data-stu-id="52032-108">Open Cloud Shell in your browser.</span></span> | <span data-ttu-id="52032-109">[![https://shell.azure.com/bash](./media/cloud-shell-try-it/launchcloudshell.png)](https://shell.azure.com/bash)</span><span class="sxs-lookup"><span data-stu-id="52032-109">[![https://shell.azure.com/bash](./media/cloud-shell-try-it/launchcloudshell.png)](https://shell.azure.com/bash)</span></span> |
+| <span data-ttu-id="52032-110">Klikněte na tlačítko **Cloud Shell** v nabídce v pravé horní části webu [Azure Portal](https://portal.azure.com).</span><span class="sxs-lookup"><span data-stu-id="52032-110">Click the **Cloud Shell** button on the menu in the upper right of the [Azure portal](https://portal.azure.com).</span></span> |    ![Cloud Shell na portálu](./media/cloud-shell-try-it/cloud-shell-menu.png) |
+|  |  |
 
