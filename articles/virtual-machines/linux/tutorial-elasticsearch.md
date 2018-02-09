@@ -14,10 +14,10 @@ ms.topic: tutorial
 ms.date: 10/11/2017
 ms.author: routlaw
 ms.openlocfilehash: 5b0b51504478cc0d501a89760ccd60808a69ccbd
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.sourcegitcommit: 694e40a193980dea1e2f945471071f11030d5641
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="install-the-elastic-stack-on-an-azure-vm"></a>Azure virtuálního počítače nainstalujte elastické zásobníku
 
@@ -36,7 +36,7 @@ V tomto kurzu se naučíte:
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Pokud si zvolíte instalaci a použití rozhraní příkazového řádku místně, tento kurz vyžaduje, že používáte Azure CLI verze verze 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI 2.0]( /cli/azure/install-azure-cli). 
+Pokud se rozhodnete nainstalovat a místně používat rozhraní příkazového řádku, musíte mít Azure CLI verze 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI 2.0]( /cli/azure/install-azure-cli). 
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
@@ -233,7 +233,7 @@ Vyberte **Discover** v konzole Kibana pro vyhledávání, procházení a filtrov
 
 ![Procházet události procesu Syslog v Kibana](media/elasticsearch-install/kibana-search-filter.png)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste nasadili elastické zásobníku do vývoj virtuálního počítače v Azure. Naučili jste se tyto postupy:
 
