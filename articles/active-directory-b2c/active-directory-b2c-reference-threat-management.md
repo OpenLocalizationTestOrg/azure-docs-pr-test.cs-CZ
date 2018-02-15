@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/27/2016
 ms.author: 
 ms.openlocfilehash: a88a04dcc83482813b8ada0e7dbff985e9f49aba
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.sourcegitcommit: 694e40a193980dea1e2f945471071f11030d5641
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="azure-active-directory-b2c-threat-management"></a>Azure Active Directory B2C: Hrozby správy
 

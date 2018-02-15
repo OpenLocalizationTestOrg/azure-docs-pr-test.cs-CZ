@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 10/20/2017
 ms.author: parja
 ms.openlocfilehash: 676b277ae3fbf4554838eee70c5d3e2d8e12c33d
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.sourcegitcommit: 694e40a193980dea1e2f945471071f11030d5641
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="azure-ad-b2c-single-sign-on-sso-session-management"></a>Azure AD B2C: Jednotné přihlašování (SSO) relace správy
 
@@ -66,7 +66,7 @@ Tento zprostředkovatel mohou být použity k uložení deklarace identity v rel
 </TechnicalProfile>
 ```
 
-K přidávání deklarací identit v relaci, použijte `<PersistedClaims>` element technické profilu. Když se zprostředkovatel používá k znovu vytvořit relaci, trvalou deklarace identity se nepřidají do kontejneru deklarací identity. `<OutputClaims>`slouží k načítání deklarace identity z relace.
+K přidávání deklarací identit v relaci, použijte `<PersistedClaims>` element technické profilu. Když se zprostředkovatel používá k znovu vytvořit relaci, trvalou deklarace identity se nepřidají do kontejneru deklarací identity. `<OutputClaims>` slouží k načítání deklarace identity z relace.
 
 ### <a name="externalloginssosessionprovider"></a>ExternalLoginSSOSessionProvider
 
@@ -98,15 +98,15 @@ Existují dvě položky metadat v technické profilu:
 
 | Položka | Výchozí hodnota | Možné hodnoty | Popis
 | --- | --- | --- | --- |
-| IncludeSessionIndex | Hodnota TRUE | hodnotu true nebo false | K poskytovateli označuje, že by měly být uložené relace index. |
-| RegisterServiceProviders | Hodnota TRUE | hodnotu true nebo false | Označuje, že zprostředkovatel měli zaregistrovat všechny poskytovatele služby SAML, které byly vydané kontrolní výrazy. |
+| IncludeSessionIndex | true (pravda) | hodnotu true nebo false | K poskytovateli označuje, že by měly být uložené relace index. |
+| RegisterServiceProviders | true (pravda) | hodnotu true nebo false | Označuje, že zprostředkovatel měli zaregistrovat všechny poskytovatele služby SAML, které byly vydané kontrolní výrazy. |
 
 Při použití zprostředkovatele pro ukládání relace poskytovatele identity SAML, uvedených položek musí mít oba hodnotu false. Při použití zprostředkovatele pro ukládání relace B2C SAML, uvedených položek musí být true nebo není uveden jako výchozí hodnoty jsou true.
 
 >[!NOTE]
 > Odhlášení relace SAML vyžaduje `SessionIndex` a `NameID` k dokončení.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Jsme rádi, názory a návrhy! Pokud máte jakékoli problémy s tímto tématem, můžete zveřejnit na Stack Overflow pomocí značky [, azure ad b2c,](https://stackoverflow.com/questions/tagged/azure-ad-b2c). Pro žádosti o funkce, hlasování u nich naše [fóru pro zpětnou vazbu](https://feedback.azure.com/forums/169401-azure-active-directory/category/160596-b2c).
 

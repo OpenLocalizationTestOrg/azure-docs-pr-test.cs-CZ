@@ -15,10 +15,10 @@ ms.devlang: na
 ms.date: 08/04/2017
 ms.author: joroja;parahk;gsacavdm
 ms.openlocfilehash: 86b86c7c670b34b4f3303adbcb55aff8d5edb53a
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.sourcegitcommit: 694e40a193980dea1e2f945471071f11030d5641
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="azure-active-directory-b2c-get-started-with-custom-policies"></a>Azure Active Directory B2C: Začínáme s vlastní zásady
 
@@ -143,7 +143,7 @@ Jednotlivé sady starter obsahuje:
     PublicPolicyUri="http://yourtenant.onmicrosoft.com">
     ```
    >[!NOTE]
-   >`PolicyId`je název zásady, které vidíte na portálu a název, kterým je tento soubor zásad odkazují jiné soubory zásad.
+   >`PolicyId` je název zásady, které vidíte na portálu a název, kterým je tento soubor zásad odkazují jiné soubory zásad.
 
 5. Uložte soubor.
 6. Open TrustFrameworkExtensions.xml. Provést stejné změny dva nahrazením `yourtenant.onmicrosoft.com` s vašeho klienta Azure AD B2C. Ujistěte se, stejné náhrada v `<TenantId>` element celkem tři změny. Uložte soubor.

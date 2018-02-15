@@ -15,10 +15,10 @@ ms.devlang: na
 ms.date: 06/11/2017
 ms.author: parakhj
 ms.openlocfilehash: 16f7c5708b479f18de17a612a733a2be6e97ad01
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.sourcegitcommit: 694e40a193980dea1e2f945471071f11030d5641
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="azure-active-directory-b2c-sign-in-by-using-salesforce-accounts-via-saml"></a>Azure Active Directory B2C: Přihlaste se pomocí účtů služby Salesforce pomocí SAML
 
@@ -252,6 +252,6 @@ Potom aktualizujte soubor předávající stranu, který iniciuje cesty uživate
 
 K testování vlastních zásad, které jste právě nahráli, na portálu Azure, přejděte do okna zásady a pak klikněte na tlačítko **spustit nyní**. Pokud se nezdaří, najdete v části [řešení potíží se zásadami vlastní](active-directory-b2c-troubleshoot-custom.md).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Poskytnutí zpětné vazby k [ AADB2CPreview@microsoft.com ](mailto:AADB2CPreview@microsoft.com).

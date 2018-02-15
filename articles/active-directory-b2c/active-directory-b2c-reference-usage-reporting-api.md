@@ -13,10 +13,10 @@ ms.workload: identity
 ms.date: 08/04/2017
 ms.author: joroja
 ms.openlocfilehash: 6014301a026d60775634138cbdfe56bfa625508f
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.sourcegitcommit: 694e40a193980dea1e2f945471071f11030d5641
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="accessing-usage-reports-in-azure-ad-b2c-via-the-reporting-api"></a>Přístup k použití sestav v Azure AD B2C prostřednictvím rozhraní API pro generování sestav
 
@@ -118,7 +118,7 @@ Uživatel počet data se aktualizují každých 24 až 48 hodin. Ověření se a
   * ID aplikace existuje, ale v období vytváření sestav nebyla nalezena žádná data. Zkontrolujte parametry data a času.
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 ### <a name="monthly-bill-estimates-for-azure-ad"></a>Odhadne měsíčních nákladů pro Azure AD
 V kombinaci s [nejaktuálnější Azure AD B2C cenách dostupné](https://azure.microsoft.com/pricing/details/active-directory-b2c/), můžete odhadnout denní, týdenní a měsíční využití platformy Azure.  Odhad je obzvláště užitečná při plánování změny v chování klienta, který může mít vliv na celkové náklady. Můžete zkontrolovat skutečné náklady v vaše [přidružené předplatné Azure](active-directory-b2c-how-to-enable-billing.md).
 

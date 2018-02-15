@@ -15,10 +15,10 @@ ms.topic: get-started-article
 ms.date: 4/13/2017
 ms.author: parakhj
 ms.openlocfilehash: 6c1fd08c52f33a062d06e0593cbbe00346bb44f1
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
-ms.translationtype: HT
+ms.sourcegitcommit: 694e40a193980dea1e2f945471071f11030d5641
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="switching-to-your-azure-ad-b2c-tenant"></a>Přepnutí na tenanta Azure AD B2C
 

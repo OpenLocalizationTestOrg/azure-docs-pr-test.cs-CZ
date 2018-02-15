@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/26/2017
 ms.author: sama
 ms.openlocfilehash: f0aa3d19e15837b75888293f0cd19683b7621a6a
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.sourcegitcommit: 694e40a193980dea1e2f945471071f11030d5641
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="azure-active-directory-b2c-built-in-policies"></a>Azure Active Directory B2C: Předdefinované zásady
 
@@ -101,7 +101,7 @@ Zásady registrace nebo přihlášení k dispozici další možnosti než zásad
 
 Zásady přihlášení se doporučuje, pokud nepotřebujete k lokalizaci zásad, pouze nutnost branding schopnosti menší přizpůsobení a mají heslo resetovat integrovaný do ní.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * [Token, relace a jednotné přihlašování](active-directory-b2c-token-session-sso.md)
 * [Zakázání e-mailu ověření během registrace příjemce](active-directory-b2c-reference-disable-ev.md)
 

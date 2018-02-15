@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/16/2017
 ms.author: saeedakhter-msft
 ms.openlocfilehash: be3fe7199308606aaab002290319df9c82149433
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.sourcegitcommit: 694e40a193980dea1e2f945471071f11030d5641
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="azure-active-directory-b2c-customize-the-azure-ad-b2c-user-interface-ui"></a>Azure Active Directory B2C: Přizpůsobení uživatelského rozhraní (UI) Azure AD B2C
 

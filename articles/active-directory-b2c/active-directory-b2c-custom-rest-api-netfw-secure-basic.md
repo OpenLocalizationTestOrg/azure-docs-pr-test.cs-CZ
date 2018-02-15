@@ -15,10 +15,10 @@ ms.devlang: na
 ms.date: 09/25/2017
 ms.author: yoelh
 ms.openlocfilehash: 0d4594f5e7c0a13d50993dd42d4780c1ba703140
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.sourcegitcommit: 694e40a193980dea1e2f945471071f11030d5641
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="secure-your-restful-services-by-using-http-basic-authentication"></a>Zabezpečení vašich služeb RESTful pomocí základního ověřování protokolu HTTP
 V [souvisejícím článku Azure AD B2C](active-directory-b2c-custom-rest-api-netfw.md), vytvoření RESTful služby (webového rozhraní API), který se integruje se službou Azure Active Directory B2C cesty (Azure AD B2C) uživatele bez ověřování. 

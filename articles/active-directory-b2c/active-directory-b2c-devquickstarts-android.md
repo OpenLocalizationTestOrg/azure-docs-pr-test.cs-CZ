@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/06/2017
 ms.author: parakhj
 ms.openlocfilehash: dd08c666c09b651e6c0def72a89eda56ba73e34d
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.sourcegitcommit: 694e40a193980dea1e2f945471071f11030d5641
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="azure-ad-b2c-sign-in-using-an-android-application"></a>Azure AD B2C: Přihlaste se pomocí aplikace pro Android
 

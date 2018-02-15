@@ -15,10 +15,10 @@ ms.devlang: na
 ms.date: 06/07/2017
 ms.author: parja
 ms.openlocfilehash: afca6cf8f19c9b96de292881582e27133e35f096
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.sourcegitcommit: 694e40a193980dea1e2f945471071f11030d5641
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="create-an-azure-active-directory-b2c-tenant-in-the-azure-portal"></a>Vytvoření klienta Azure Active Directory B2C na portálu Azure
 
@@ -28,7 +28,7 @@ Tento rychlý start vám pomůže vytvořit klienta Microsoft Azure Active Direc
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="log-in-to-azure"></a>Přihlaste se k Azure.
+## <a name="log-in-to-azure"></a>Přihlášení k Azure
 
 Přihlaste se k portálu [Azure Portal](https://portal.azure.com/).
 
@@ -57,7 +57,7 @@ Potřebujete připojit k předplatnému Azure povolit všechny funkce B2C a plat
 
 Můžete taky přejít v okně zadáním `Azure AD B2C` v **vyhledávání prostředků** v horní části portálu. V seznamu výsledků vyberte **Azure AD B2C** přístup v okně Nastavení B2C.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [B2C aplikaci zaregistrovat do vašeho klienta B2C](active-directory-b2c-app-registration.md)

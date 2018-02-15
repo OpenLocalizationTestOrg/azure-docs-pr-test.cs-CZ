@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/07/2017
 ms.author: joroja
 ms.openlocfilehash: 8718f9c1dfce81682174eec11e8cbb731cbdf796
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.sourcegitcommit: 694e40a193980dea1e2f945471071f11030d5641
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="troubleshoot-azure-ad-b2c-custom-policies-and-identity-experience-framework"></a>Řešení potíží s Azure AD B2C vlastní zásady a Identity rozhraní Framework
 
@@ -44,22 +44,22 @@ Mohou být užitečné kontrolu pravidla XML. Azure AD B2C odmítne všechny XML
  
  Běžné chyby ověření, patří.
 
-Fragment kódu chyby:`... makes a reference to ClaimType with id "displaName" but neither the policy nor any of its base policies contain such an element`
+Fragment kódu chyby: `... makes a reference to ClaimType with id "displaName" but neither the policy nor any of its base policies contain such an element`
 * Typ ClaimType hodnota může být zadáno chybně nebo neexistuje ve schématu.
 * Typ ClaimType hodnoty musí být definován v alespoň jeden ze souborů v zásadách. 
     Příklad: ` <ClaimType Id="socialIdpUserId">`
 * Pokud je definován typ ClaimType v souboru rozšíření, ale používá se také hodnotu TechnicalProfile do základního souboru, odesílání základního souboru výsledkem chyba.
 
-Fragment kódu chyby:`...makes a reference to a ClaimsTransformation with id...`
+Fragment kódu chyby: `...makes a reference to a ClaimsTransformation with id...`
 * Příčiny chyby může být stejné jako typ ClaimType chyby.
 
-Fragment kódu chyby:`Reason: User is currently logged as a user of 'yourtenant.onmicrosoft.com' tenant. In order to manage 'yourtenant.onmicrosoft.com', please login as a user of 'yourtenant.onmicrosoft.com' tenant`
+Fragment kódu chyby: `Reason: User is currently logged as a user of 'yourtenant.onmicrosoft.com' tenant. In order to manage 'yourtenant.onmicrosoft.com', please login as a user of 'yourtenant.onmicrosoft.com' tenant`
 * Zkontrolujte, zda hodnoty TenantId hodnotu  **\<TrustFrameworkPolicy\>**  a  **\<BasePolicy\>**  elementy odpovídat tenanta cíl Azure AD B2C.  
 
 ## <a name="troubleshoot-the-runtime"></a>Řešení potíží s modulem runtime
 
 * Použití `Run Now` a `https://jwt.io` k otestování vašich zásad nezávisle na váš web nebo mobilní aplikaci. Tento web se chová jako aplikace předávající strany. Zobrazuje obsah z JSON Web Token (JWT) generovaných zásad služby Azure AD B2C. Pokud chcete vytvořit testovací aplikaci v rozhraní Framework Identity, použijte následující hodnoty:
-    * Název: TestApp
+    * Name: TestApp
     * Webovou aplikaci nebo webové rozhraní API: Ne
     * Nativní klient: Ne
 
@@ -75,6 +75,6 @@ Fragment kódu chyby:`Reason: User is currently logged as a user of 'yourtenant.
 
 **Vývoj a testování cesty uživatele pomocí otestované technické profilů.** Změňte kroků Orchestrace cesty uživatele postupně. Progresivně sestavení určený scénářů.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * V Githubu stáhněte si soubor .zip [active-directory-b2c-custom-policy-starterpack] (https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/archive/master.zip).

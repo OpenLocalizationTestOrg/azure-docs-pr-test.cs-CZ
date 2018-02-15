@@ -13,10 +13,10 @@ ms.devlang: na
 ms.date: 04/25/2017
 ms.author: sama
 ms.openlocfilehash: 3c7c49ee5fbd98762da0eef6f02e7c2f036453cb
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 694e40a193980dea1e2f945471071f11030d5641
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="azure-active-directory-b2c-using-language-customization"></a>Azure Active Directory B2C: Přizpůsobení jazyka pomocí
 
@@ -126,9 +126,9 @@ Pokud chcete zadat seznam sadu hodnot pro odpovědi, je nutné vytvořit `Locali
 >Pokud potřebujete k přepsání řetězec, nezapomeňte nastavit `Override` hodnotu `true`.  Pokud není hodnota změněna, tato položka je ignorována. 
 >
 
-* `ElementId`je uživatel atribut, který tato `LocalizedCollections` je odpovědí na
-* `Name`je hodnota zobrazí uživateli
-* `Value`Co je vrácený v deklaraci identity, pokud je vybraná tato možnost je
+* `ElementId` je uživatel atribut, který tato `LocalizedCollections` je odpovědí na
+* `Name` je hodnota zobrazí uživateli
+* `Value` Co je vrácený v deklaraci identity, pokud je vybraná tato možnost je
 
 ### <a name="upload-your-changes"></a>Odeslat změny
 1. Jakmile dokončíte změny do souboru JSON, přejděte zpět do svého klienta B2C.
@@ -157,7 +157,7 @@ Poskytujeme parametru OIDC ui_locales sociálních přihlášení, ale není dod
 Chrome a Firefox obě žádosti pro své jazykové sady a pokud je podporovaném jazyce, se zobrazí před výchozí.  Hraniční aktuálně neuvede v požadavku jazyk a přejde se rovnou na výchozí jazyk.
 ### <a name="known-issues"></a>Známé problémy
 * Odesílání prostředky jazyk pro stránku vícefaktorového ověřování v zásadách upravit profil není aktuálně dostupná.
-* `LocalizedCollections`nejsou generované hodnoty, pokud to vyžaduje typ odpovědi
+* `LocalizedCollections` nejsou generované hodnoty, pokud to vyžaduje typ odpovědi
 ### <a name="what-if-i-want-a-language-that-isnt-supported"></a>Co když chci, aby jazyk, který není podporován?
 Doporučujeme hodláte umožňují rozšíření tuto funkci, která vám umožní nahrát prostředek JSON směrem "vlastní jazycích".  Tato funkce umožňuje zadat název a jazyk kódu pro žádný jazyk a zadejte *všechny* překladů pro požadovaný jazyk.  Pokud potřebujete tuto funkci, pošlete nám na váš scénář [ aadb2cpreview@microsoft.com ](mailto:aadb2cpreview@microsoft.com).  
 
@@ -165,37 +165,37 @@ Doporučujeme hodláte umožňují rozšíření tuto funkci, která vám umožn
 
 | Jazyk              | Kód jazyka |
 |-----------------------|---------------|
-| Bengálském                | Bn            |
-| čeština                 | cs            |
+| Bengálština                | bn            |
+| Čeština                 | cs            |
 | dánština                | da            |
-| němčina                | de            |
-| řečtina                 | el            |
+| Němčina                | de            |
+| Řečtina                 | el            |
 | Angličtina               | en            |
-| španělština               | es            |
-| finština               | fi            |
-| francouzština                | fr            |
+| Španělština               | es            |
+| Finština               | fi            |
+| Francouzština                | fr            |
 | Gudžarátština              | gu            |
-| Hindština                 | Ahoj            |
-| Chorvatština              | personální oddělení            |
-| maďarština             | hu            |
+| Hindština                 | hi            |
+| Chorvatština              | h            |
+| Maďarština             | hu            |
 | italština               | it            |
-| japonština              | ja            |
-| Kannadština               | KN            |
-| korejština                | ko            |
-| Malajalámština             | ml            |
-| Maráthština               | MR            |
-| Malajština                 | MS            |
+| Japonština              | ja            |
+| Kannadština               | kn            |
+| Korejština                | ko            |
+| Malajálamština             | ml            |
+| Maráthština               | mr            |
+| Malajština                 | ms            |
 | Norská Bokmål      | nb            |
-| holandština                 | nl            |
-| Paňdžábština               | Pa            |
+| Holandština                 | nl            |
+| Paňdžábština               | pa            |
 | polština                | pl            |
 | Portugalština – Brazílie   | pt-br         |
 | Portugalština – Portugalsko | pt-pt         |
-| rumunština              | ro            |
+| Rumunština              | ro            |
 | ruština               | ru            |
-| Slovenština                | Sk            |
+| Slovenština                | sk            |
 | švédština               | sv            |
-| Tamilština                 | tových            |
+| Tamilština                 | ta            |
 | Telugština                | te            |
 | Thajština                  | tý            |
 | turečtina               | tr            |

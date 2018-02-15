@@ -15,10 +15,10 @@ ms.devlang: na
 ms.date: 09/25/2017
 ms.author: yoelh
 ms.openlocfilehash: 582aadd35821779e307ac285804e3b7fe5c24abd
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.sourcegitcommit: 694e40a193980dea1e2f945471071f11030d5641
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="secure-your-restful-service-by-using-client-certificates"></a>Zabezpečení služby RESTful pomocí klientských certifikátů
 V souvisejícím článku jste [vytvoření RESTful služby](active-directory-b2c-custom-rest-api-netfw.md) který komunikuje se službou Azure Active Directory B2C (Azure AD B2C).

@@ -15,10 +15,10 @@ ms.devlang: na
 ms.date: 04/04/2017
 ms.author: parakhj
 ms.openlocfilehash: f34326bcb8a7cbf5b5cf75e8f18f2843abc0b3ab
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.sourcegitcommit: 694e40a193980dea1e2f945471071f11030d5641
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="azure-active-directory-b2c-sign-in-by-using-azure-ad-accounts"></a>Azure Active Directory B2C: Přihlaste se pomocí účtů služby Azure AD
 
@@ -50,7 +50,7 @@ Chcete-li povolit přihlášení pro uživatele z konkrétní organizace Azure A
 1. Vyberte **další služby** v levém podokně a vyhledejte "Aplikace registrace."
 1. Vyberte **nové registrace aplikace**.
 1. Zadejte název pro vaši aplikaci (například `Azure AD B2C App`).
-1. Vyberte **webovou aplikaci nebo API** pro typ aplikace.
+1. Jako typ aplikace vyberte položku **Webová aplikace / webové rozhraní API**.
 1. Pro **přihlašovací adresa URL**, zadejte následující adresu URL, kde `yourtenant` je nahrazena název vašeho klienta Azure AD B2C (`fabrikamb2c.onmicrosoft.com`):
 
     >[!NOTE]
@@ -219,6 +219,6 @@ Teď je potřeba aktualizovat soubor předávající stranu, který zahájí ces
 
 Testování vlastních zásad, které jste právě nahráli otevřením její okno a kliknutím na **spustit nyní**. K diagnostikování problémů, přečtěte si informace o [řešení potíží s](active-directory-b2c-troubleshoot-custom.md).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Poskytnutí zpětné vazby k [ AADB2CPreview@microsoft.com ](mailto:AADB2CPreview@microsoft.com).

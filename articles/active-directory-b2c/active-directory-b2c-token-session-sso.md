@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/16/2017
 ms.author: parakhj
 ms.openlocfilehash: 76feb172ce9b08d4feef9c86e74a592553a3c7f4
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.sourcegitcommit: 694e40a193980dea1e2f945471071f11030d5641
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="azure-active-directory-b2c-token-session-and-single-sign-on-configuration"></a>Azure Active Directory B2C: Token, relace a jednotné přihlašování
 
@@ -32,7 +32,7 @@ Tato funkce poskytuje jemně odstupňovanou kontrolu na [-policy základ](active
 Pro předdefinované zásady můžete tuto funkci v adresáři Azure AD B2C následujícím způsobem:
 
 1. Postupujte podle těchto kroků [přejděte do nabídky funkce B2C](active-directory-b2c-app-registration.md#navigate-to-b2c-settings) na portálu Azure.
-2. Klikněte na tlačítko **zásady registrace nebo přihlášení**. *Poznámka: Můžete použít tuto funkci na libovolného typu zásady, nejen na **zásady registrace nebo přihlášení***.
+2. Klikněte na tlačítko **zásady registrace nebo přihlášení**. * Poznámka: Můžete použít tuto funkci na libovolného typu zásady, nejen na ** registrace nebo přihlášení zásady ***.
 3. Kliknutím otevřete zásadu. Klikněte například na **B2C_1_SiUpIn**.
 4. Klikněte na tlačítko **upravit** v horní nabídce.
 5. Klikněte na tlačítko **Token, relace a konfigurace přihlášení**.
@@ -67,7 +67,7 @@ Toto je několik případů použití, které můžete povolit pomocí těchto v
     > 
     > 
 
-## <a name="token-compatibility-settings"></a>Nastavení kompatibility tokenu
+## <a name="token-compatibility-settings"></a>Nastavení kompatibility tokenů
 
 Jsme provedli změny formátování důležité deklarací identity v tokenech zabezpečení vygenerované pomocí Azure AD B2C. K tomu bylo potřeba pro zlepšení naše standardní protokol podporu a pro lepší spolupráci s knihovny identity jiných výrobců. Ale pokud chcete vyhnout pozastavení existující aplikace, jsme vytvořili umožňuje zákazníkům výslovný souhlas podle potřeby následující vlastnosti:
 

@@ -12,10 +12,10 @@ ms.devlang: na
 ms.date: 11/13/2017
 ms.author: sama
 ms.openlocfilehash: 4ed9791d6590e3982a1bc79b96f8592995bc315c
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.sourcegitcommit: 694e40a193980dea1e2f945471071f11030d5641
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 01/29/2018
 ---
 #<a name="language-customization-in-custom-policies"></a>Vlastní nastavení jazyka v vlastní zásady
 
@@ -47,7 +47,7 @@ Výchozí jazyk a podporovaných jazyků, chovají stejným způsobem jako ve in
 
 Vytváření vlastní jazyk řetězců vyžaduje dva kroky:
 1. Upravit `<ContentDefinition>` pro stránku a zadejte ID prostředku pro požadované jazyky
-2. Vytvořte `<LocalizedResources>` s odpovídající ID vašeho`<BuildingBlocks>`
+2. Vytvořte `<LocalizedResources>` s odpovídající ID vašeho `<BuildingBlocks>`
 
 Mějte na paměti, který můžete umístit `<ContentDefinition>` a `<BuildingBlock>` v souboru rozšíření nebo předávající soubor zásad, který v závislosti na tom, zda chcete změny být ve všech dědičných zásad, nebo ne.
 

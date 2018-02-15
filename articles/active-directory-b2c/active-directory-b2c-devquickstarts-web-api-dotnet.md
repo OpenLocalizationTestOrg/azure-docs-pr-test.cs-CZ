@@ -16,10 +16,10 @@ ms.date: 03/17/2017
 ms.author: parakhj
 ms.custom: seohack1
 ms.openlocfilehash: d81976988a26ce264dd7b9ed24f43aed21d4ee99
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.sourcegitcommit: 694e40a193980dea1e2f945471071f11030d5641
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="azure-ad-b2c-call-a-net-web-api-from-a-net-web-app"></a>Azure AD B2C: Volání webového rozhraní API .NET z webové aplikace .NET
 
@@ -52,7 +52,7 @@ Kód k tomuto kurzu se udržuje na [GitHubu](https://github.com/Azure-Samples/ac
 git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi.git
 ```
 
-Po stažení ukázkového kódu otevřete soubor Visual Studio .sln, abyste mohli začít. Soubor řešení obsahuje dva projekty: `TaskWebApp` a `TaskService`. `TaskWebApp`je webová aplikace MVC, který uživatel komunikuje. `TaskService` je back-endové webové rozhraní API aplikace, které ukládá seznam úkolů každého uživatele. Tento článek nepopisuje sestavování `TaskWebApp` webovou aplikaci nebo `TaskService` webové rozhraní api. Naučte se vytvářet webové aplikace .NET pomocí Azure AD B2C, najdete v tématu naše [kurz .NET pro webové aplikace](active-directory-b2c-devquickstarts-web-dotnet-susi.md). Naučte se vytvářet rozhraní .NET webové rozhraní API zabezpečené pomocí Azure AD B2C, najdete v tématu naše [kurz webové rozhraní API .NET](active-directory-b2c-devquickstarts-api-dotnet.md).
+Po stažení ukázkového kódu otevřete soubor Visual Studio .sln, abyste mohli začít. Soubor řešení obsahuje dva projekty: `TaskWebApp` a `TaskService`. `TaskWebApp` je webová aplikace MVC, který uživatel komunikuje. `TaskService` je back-endové webové rozhraní API aplikace, které ukládá seznam úkolů každého uživatele. Tento článek nepopisuje sestavování `TaskWebApp` webovou aplikaci nebo `TaskService` webové rozhraní api. Naučte se vytvářet webové aplikace .NET pomocí Azure AD B2C, najdete v tématu naše [kurz .NET pro webové aplikace](active-directory-b2c-devquickstarts-web-dotnet-susi.md). Naučte se vytvářet rozhraní .NET webové rozhraní API zabezpečené pomocí Azure AD B2C, najdete v tématu naše [kurz webové rozhraní API .NET](active-directory-b2c-devquickstarts-api-dotnet.md).
 
 ### <a name="update-the-azure-ad-b2c-configuration"></a>Aktualizace konfigurace Azure AD B2C
 
@@ -61,7 +61,7 @@ Naše ukázka je nakonfigurovaná k použití zásad a ID klienta naše ukázkov
 1. Otevřete `web.config` v projektu `TaskService` a nahraďte následující hodnoty:
 
     * `ida:Tenant` názvem vašeho tenanta
-    * `ida:ClientId`pomocí svého ID aplikace webového rozhraní api
+    * `ida:ClientId` pomocí svého ID aplikace webového rozhraní api
     * `ida:SignUpSignInPolicyId` názvem zásady registrace/přihlášení
 
 2. Otevřete `web.config` v projektu `TaskWebApp` a nahraďte následující hodnoty:

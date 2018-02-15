@@ -15,10 +15,10 @@ ms.topic: hero-article
 ms.date: 5/06/2017
 ms.author: parakhj
 ms.openlocfilehash: 304500d2adc2d5093c3d053a1b982bac4da374bc
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
-ms.translationtype: HT
+ms.sourcegitcommit: 694e40a193980dea1e2f945471071f11030d5641
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="azure-active-directory-b2c-sign-up-and-sign-in-consumers-in-your-applications-using-custom-policies"></a>Azure Active Directory B2C: Registrace a přihlašování uživatelů aplikace s využitím vlastních zásad
 Vlastní zásady jsou konfigurační soubory, které určují chování tenanta služby Azure AD B2C. Vývojář identit je může plně upravit a přizpůsobit je pro skoro neomezené množství úloh.

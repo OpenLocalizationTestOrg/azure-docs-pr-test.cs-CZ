@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/10/2017
 ms.author: xerners
 ms.openlocfilehash: b4a5db7e6769d7ebb0bcf0287b3a1bfb7932984a
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.sourcegitcommit: 694e40a193980dea1e2f945471071f11030d5641
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="azure-ad-b2c-add-sign-in-to-a-nodejs-web-app"></a>Azure AD B2C: Přidání přihlašování do webové aplikace Node.js
 
@@ -400,7 +400,7 @@ Spusťte `node app.js` a přejděte na `http://localhost:3000`.
 
 Pomocí emailu nebo Facebooku se zaregistrujte nebo přihlaste k aplikaci. Odhlaste se a přihlaste se jako jiný uživatel.
 
-##<a name="next-steps"></a>Další kroky
+##<a name="next-steps"></a>Další postup
 
 Pro srovnání je hotová ukázka (bez vašich hodnot nastavení) [k dispozici jako soubor .zip](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-NodeJS/archive/complete.zip). Můžete ho také klonovat z GitHubu:
 

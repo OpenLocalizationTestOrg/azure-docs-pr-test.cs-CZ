@@ -15,10 +15,10 @@ ms.devlang: na
 ms.date: 10/13/2017
 ms.author: joroja
 ms.openlocfilehash: 064ccec58406e08ae68320b59fcf2a96952a41ee
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.sourcegitcommit: 694e40a193980dea1e2f945471071f11030d5641
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="release-notes-for-azure-active-directory-b2c-custom-policy-public-preview"></a>Poznámky k verzi pro verzi public preview služby Azure Active Directory B2C vlastních zásad
 Sada funkcí vlastních zásad je nyní k dispozici pro vyhodnocení v rámci verze public preview pro všechny Azure Active Directory B2C zákazníků (Azure AD B2C). Tato sada funkcí je cílena na vývojáře pokročilé identity vytváření nejvíce komplexní řešení identity.  
@@ -71,8 +71,8 @@ Rozhraní s externí součásti a aplikace
 | Rozšíření IDP OpenIDConnect |  | x |  | například Google + |
 | ROZŠÍŘENÍ IDP OAUTH2 |  | x |  | například Facebook  |
 | ROZŠÍŘENÍ IDP OAUTH1 |  | x |  | například služby Twitter |
-| ROZŠÍŘENÍ IDP SAML |  | x |  | například Salesforce, služba AD FS |
-| ROZŠÍŘENÍ IDP WSFED | x |  |  |  |
+| IDP-SAML |  | x |  | například Salesforce, služba AD FS |
+| IDP-WSFED | x |  |  |  |
 | Předávající strany OAUTH |  | x |  |  |
 | Předávající strany OIDC |  | x |  |  |
 | Předávající strany SAML | x |  |  |  |
@@ -143,5 +143,5 @@ Rozhraní s externí součásti a aplikace
 
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 [Začínáme s vlastními zásadami](active-directory-b2c-get-started-custom.md).

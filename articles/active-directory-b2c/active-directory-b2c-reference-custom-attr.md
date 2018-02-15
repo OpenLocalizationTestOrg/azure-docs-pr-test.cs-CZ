@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 12/06/2016
 ms.author: swkrish
 ms.openlocfilehash: 3e2c8b3ab223cf269129d7723c37d98c24f0653c
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.sourcegitcommit: 694e40a193980dea1e2f945471071f11030d5641
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="azure-active-directory-b2c-use-custom-attributes-to-collect-information-about-your-consumers"></a>Azure Active Directory B2C: Použijte vlastní atributy ke shromažďování informací o uživatelích
 Adresáře Azure Active Directory (Azure AD) B2C se dodává s integrovanou sadu informace (atributy): křestní jméno, příjmení, Město, PSČ a další atributy. Každá aplikace určených však má jedinečné požadavky na atributy, které ke shromáždění od příjemce. S Azure AD B2C můžete rozšířit sadu atributů, které jsou uložené na každý uživatelský účet. Můžete vytvořit vlastní atributy na [portál Azure](https://portal.azure.com/) a použít ho v registraci zásady, jak je uvedeno níže. Můžete také číst a zapsat pomocí těchto atributů [Azure AD Graph API](active-directory-b2c-devquickstarts-graph-dotnet.md).

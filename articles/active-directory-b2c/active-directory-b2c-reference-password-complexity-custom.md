@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 08/16/2017
 ms.author: saeeda
 ms.openlocfilehash: eb187a120399089f1c3c145a06fbe993f50fb92b
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.sourcegitcommit: 694e40a193980dea1e2f945471071f11030d5641
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="configure-password-complexity-in-custom-policies"></a>Nakonfigurujte složitost hesel v vlastní zásady
 
 > [!NOTE]
-> **Tato funkce je ve verzi preview.**  Obraťte se na [ AADB2CPreview@microsoft.com ](mailto:AADB2CPreview@microsoft.com) tak, aby měl váš klient testovací povolit tuto funkci.  Neprovádějte testování to na produkční klienty.
+> Tato funkce je ve verzi preview.  Obraťte se na [ AADB2CPreview@microsoft.com ](mailto:AADB2CPreview@microsoft.com) tak, aby měl váš klient testovací povolit tuto funkci.  Neprovádějte testování to na produkční klienty.
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 

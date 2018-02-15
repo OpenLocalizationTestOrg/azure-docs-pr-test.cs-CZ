@@ -15,10 +15,10 @@ ms.devlang: na
 ms.date: 08/04/2017
 ms.author: joroja
 ms.openlocfilehash: 6dd9039520ec9bfadb358262dad7ebcdb67f6344
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.sourcegitcommit: 694e40a193980dea1e2f945471071f11030d5641
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="define-trust-frameworks-with-azure-ad-b2c-identity-experience-framework"></a>Definování rozhraní vztah důvěryhodnosti s Azure AD B2C Identity rozhraní Framework
 

@@ -16,10 +16,10 @@ ms.date: 03/17/2017
 ms.author: parakhj
 ms.custom: seohack1
 ms.openlocfilehash: ffc46f4348a2ac3cae51c859a24c609756a710fe
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.sourcegitcommit: 694e40a193980dea1e2f945471071f11030d5641
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="create-an-aspnet-web-app-with-azure-active-directory-b2c-sign-up-sign-in-profile-edit-and-password-reset"></a>Vytvoření webové aplikace ASP.NET s Azure Active Directory B2C profil registrace, přihlášení, úpravy a resetování hesla
 
@@ -83,7 +83,7 @@ Kód k tomuto kurzu se udržuje na [GitHubu](https://github.com/Azure-Samples/ac
 git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi.git
 ```
 
-Po stažení ukázkového kódu otevřete soubor Visual Studio .sln, abyste mohli začít. Soubor řešení obsahuje dva projekty: `TaskWebApp` a `TaskService`. `TaskWebApp`je webová aplikace MVC, která uživatel komunikuje. `TaskService` je back-endové webové rozhraní API aplikace, které ukládá seznam úkolů každého uživatele. Tento článek bude probírat pouze aplikaci `TaskWebApp`. Další informace o sestavení `TaskService` pomocí Azure AD B2C, najdete v tématu [naše kurz webové rozhraní api .NET](active-directory-b2c-devquickstarts-api-dotnet.md).
+Po stažení ukázkového kódu otevřete soubor Visual Studio .sln, abyste mohli začít. Soubor řešení obsahuje dva projekty: `TaskWebApp` a `TaskService`. `TaskWebApp` je webová aplikace MVC, která uživatel komunikuje. `TaskService` je back-endové webové rozhraní API aplikace, které ukládá seznam úkolů každého uživatele. Tento článek bude probírat pouze aplikaci `TaskWebApp`. Další informace o sestavení `TaskService` pomocí Azure AD B2C, najdete v tématu [naše kurz webové rozhraní api .NET](active-directory-b2c-devquickstarts-api-dotnet.md).
 
 ## <a name="update-code-to-use-your-tenant-and-policies"></a>Aktualizujte kód používat klienta a zásady
 

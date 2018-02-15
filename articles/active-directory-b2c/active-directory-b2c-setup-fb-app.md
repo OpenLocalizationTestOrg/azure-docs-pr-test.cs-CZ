@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 8/7/2017
 ms.author: sromeroz
 ms.openlocfilehash: 7f551a7ba9b7ddbb373e6b6418ab43fe7ce9be36
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.sourcegitcommit: 694e40a193980dea1e2f945471071f11030d5641
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="azure-active-directory-b2c-provide-sign-up-and-sign-in-to-consumers-with-facebook-accounts"></a>Azure Active Directory B2C: Zadejte registrace a přihlášení k příjemce s účty služby Facebook
 ## <a name="create-a-facebook-application"></a>Vytvořit aplikaci pro Facebook

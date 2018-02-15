@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/10/2017
 ms.author: gsacavdm
 ms.openlocfilehash: 752a98ca7f3c77c434de296461790f2cf37e2d5c
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.sourcegitcommit: 694e40a193980dea1e2f945471071f11030d5641
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="azure-active-directory-b2c-region-availability--data-residency"></a>Azure Active Directory B2C: Dostupnost & data sídle oblast
 Dostupnost v oblastech a sídla dat jsou dvě velmi různých koncepty, které jinak týkají Azure AD B2C, od zbytku Azure. Tento článek se popisují rozdíly mezi těmito dvěma konceptů a porovnání, jak se vztahují na Azure oproti využívání Azure AD B2C.
@@ -54,7 +54,7 @@ Zbývající zemích probíhá se přidává do seznamu.  Teď stále můžete A
 
 > Afghánistán, Argentiny, Austrálie, Brazílie, základě, Kolumbie, Ekvádor, Hongkong – zvláštní správní oblast ČLR, Indie, Indonésie, Irák, Japonsko, Korejská, Malajsie, Nový Zéland, Paraguay, Peru, Filipíny, Singapur, Srí Lanka, Tchaj-wan, Thajska, Uruguayského a Venezuela.
 
-## <a name="preview-tenant"></a>Náhled klienta
+## <a name="preview-tenant"></a>Tenant ve verzi Preview
 Pokud jste vytvořili klienta B2C během období preview Azure AD B2C, je pravděpodobné, který vaše **klienta typu** uvádí **Preview klienta**. Pokud je to tento případ, používejte pouze pro účely vývoje a testování a ne pro produkční aplikace vašeho klienta.
 
 > [!IMPORTANT]

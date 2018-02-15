@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/07/2017
 ms.author: saeeda
 ms.openlocfilehash: b4f46129a7a18e4653d714599630d6cdddfff4ed
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.sourcegitcommit: 694e40a193980dea1e2f945471071f11030d5641
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="azure-ad-b2c-sign-in-using-an-ios-application"></a>Azure AD B2C: Přihlaste se pomocí aplikace pro iOS
 

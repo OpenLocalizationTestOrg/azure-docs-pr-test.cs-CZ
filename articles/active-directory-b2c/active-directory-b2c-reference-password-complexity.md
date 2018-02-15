@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 08/16/2017
 ms.author: saeeda
 ms.openlocfilehash: 3906c9fa1def206a8f0a7e155949097242728c2f
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.sourcegitcommit: 694e40a193980dea1e2f945471071f11030d5641
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="azure-ad-b2c-configure-complexity-requirements-for-passwords"></a>Azure AD B2C: Konfigurujte požadavky na složitost hesel
 
 > [!NOTE]
-> **Tato funkce je ve verzi preview.**  Obraťte se na [ AADB2CPreview@microsoft.com ](mailto:AADB2CPreview@microsoft.com) tak, aby měl váš klient testovací povolit tuto funkci.  Neprovádějte testování to na produkční klienty.
+> Tato funkce je ve verzi preview.  Obraťte se na [ AADB2CPreview@microsoft.com ](mailto:AADB2CPreview@microsoft.com) tak, aby měl váš klient testovací povolit tuto funkci.  Neprovádějte testování to na produkční klienty.
 
 Azure Active Directory B2C (Azure AD B2C) podporuje změna požadavky na složitost hesla poskytl koncového uživatele při vytváření účtu.  Ve výchozím nastavení používá Azure AD B2C `Strong` hesla.  Azure AD B2C podporuje také konfigurační možnosti pro řízení složitosti hesla, které zákazníci mohou používat.
 
@@ -51,7 +51,7 @@ Toto jsou typy zásad konfigurovaným složitost hesla:
 
 | Složitost | Popis |
 | --- | --- |
-| Jednoduché | Heslo, které je alespoň 8 až 64 znaků. |
+| Jednoduchý | Heslo, které je alespoň 8 až 64 znaků. |
 | Silné | Heslo, které je alespoň 8 až 64 znaků. To vyžaduje 3 ze 4 malá písmena, velká písmena, číslice a symboly. |
 | Vlastní | Tato možnost poskytuje maximální kontrolu nad pravidla složitosti hesla.  Umožňuje konfiguraci vlastní délka.  Umožňuje také přijetí hesla jenom číslo (PIN). |
 

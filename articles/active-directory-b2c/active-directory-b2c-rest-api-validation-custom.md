@@ -15,10 +15,10 @@ ms.devlang: na
 ms.date: 04/24/2017
 ms.author: joroja
 ms.openlocfilehash: dfd33a9ecdce7b21f58660fb39a5f2d7b4ce6f43
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.sourcegitcommit: 694e40a193980dea1e2f945471071f11030d5641
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="walkthrough-integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-validation-on-user-input"></a>Návod: Integrace rozhraní REST API deklarace identity výměn v vám dobře slouží Azure AD B2C uživatele jako ověření na vstup uživatele
 
@@ -127,7 +127,7 @@ Přidání deklarace identity exchange do samoobslužné uplatňovaná technick�
 2. Použití **spustit nyní** k testování soubor zásad RP úpravy profilu.
 3. Test ověření některým z existující názvy (například mcvinny) v **křestní jméno** pole. Pokud všechno, co je správně nastavena, měli byste obdržet zprávu, která upozorní uživatele, že player značky se již používá.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 [Upravit profil registrace upravit a uživatelů sbírat dodatečné informace od uživatelů](active-directory-b2c-create-custom-attributes-profile-edit-custom.md)
 

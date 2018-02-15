@@ -13,10 +13,10 @@ ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
 ms.openlocfilehash: a1b3517ddae732ffdfb6653507c43348ec1455ad
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
-ms.translationtype: HT
+ms.sourcegitcommit: 694e40a193980dea1e2f945471071f11030d5641
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/29/2018
 ---
 #<a name="active-directory-b2c-documentation"></a>Dokumentace ke službě Active Directory B2C
 

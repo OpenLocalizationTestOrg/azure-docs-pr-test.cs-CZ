@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 12/06/2016
 ms.author: swkrish
 ms.openlocfilehash: 93589352094fdd556811ba906ee27e7b8ac1d8b5
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.sourcegitcommit: 694e40a193980dea1e2f945471071f11030d5641
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="azure-active-directory-b2c-provide-sign-up-and-sign-in-to-consumers-with-google-accounts"></a>Azure Active Directory B2C: Zadejte registrace a přihlášení k příjemce s Google + účty
 ## <a name="create-a-google-application"></a>Vytvoření aplikace Google +

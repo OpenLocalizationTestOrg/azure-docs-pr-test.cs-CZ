@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 12/06/2016
 ms.author: swkrish
 ms.openlocfilehash: cfbcb9ad561320da8836086b1b8bff39f3fefb37
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.sourcegitcommit: 694e40a193980dea1e2f945471071f11030d5641
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="troubleshoot-creating-an-azure-active-directory-or-azure-active-directory-b2c-tenant"></a>Řešení potíží s vytváření klienta služby Azure Active Directory nebo Azure Active Directory B2C 
 

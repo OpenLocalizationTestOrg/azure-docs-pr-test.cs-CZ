@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 9/06/2017
 ms.author: parja
 ms.openlocfilehash: b28a1bb6287a0e30eda21d9a7c03abbf14b5d8d9
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.sourcegitcommit: 694e40a193980dea1e2f945471071f11030d5641
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="azure-ad-b2c-extensions-app"></a>Azure AD B2C: Rozšíření aplikace
 

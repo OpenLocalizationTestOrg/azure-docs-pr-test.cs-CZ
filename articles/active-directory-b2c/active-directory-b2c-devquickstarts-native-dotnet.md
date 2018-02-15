@@ -16,10 +16,10 @@ ms.date: 01/07/2017
 ms.author: dastrock
 ms.custom: seohack1
 ms.openlocfilehash: 5d4664e87ca0a45d59d976f6415fce858bc51dcd
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.sourcegitcommit: 694e40a193980dea1e2f945471071f11030d5641
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="azure-ad-b2c-build-a-windows-desktop-app"></a>Azure AD B2C: Sestavení aplikace na ploše systému Windows
 Pomocí Azure Active Directory (Azure AD) B2C můžete přidat výkonné identity samoobslužné funkce pro správu k vaší aplikace na ploše v několika krocích. Tento článek vám ukáže, jak vytvořit aplikaci "seznam úkolů".NET Windows Presentation Foundation (WPF), která zahrnuje uživatelskou registraci, přihlašování a správu profilu. Aplikace bude zahrnují podporu pro registraci a přihlaste se pomocí uživatelského jména nebo e-mailu. Podporu registrace a přihlašování bude zahrnovat také pomocí sociálních účty například Facebook nebo Google.

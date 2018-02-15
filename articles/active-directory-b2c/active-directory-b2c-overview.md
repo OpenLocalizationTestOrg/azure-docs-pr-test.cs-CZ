@@ -16,10 +16,10 @@ ms.date: 12/06/2016
 ms.author: saeedakhter-msft
 ms.custom: seohack1
 ms.openlocfilehash: 7881793ebce10b4f9fbc9c534d9d6fc0ebb38f0b
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
-ms.translationtype: HT
+ms.sourcegitcommit: 694e40a193980dea1e2f945471071f11030d5641
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="azure-ad-b2c-focus-on-your-app-let-us-worry-about-sign-up-and-sign-in"></a>Azure AD B2C: Soustřeďte se na svoji aplikaci, o registraci a přihlašování se postaráme my
 
@@ -64,7 +64,7 @@ Další informace o použití konkrétních funkcí Azure Active Directory B2C:
 * [Přizpůsobení vzhledu a chování registrace a přihlášení a dalších stránek určených uživatelům](active-directory-b2c-reference-ui-customization.md), které obsluhuje Azure Active Directory B2C.
 * [Využijte Azure Active Directory Graph API k programovému vytváření, čtení, aktualizaci a mazání uživatelů](active-directory-b2c-devquickstarts-graph-dotnet.md) ve svém klientu Azure Active Directory B2C.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Následující odkazy jsou užitečné při prozkoumávání služby do hloubky:
 

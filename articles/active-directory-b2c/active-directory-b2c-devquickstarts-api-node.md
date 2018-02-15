@@ -15,10 +15,10 @@ ms.topic: hero-article
 ms.date: 01/07/2017
 ms.author: xerners
 ms.openlocfilehash: 3a0249f2f7dfd76d89cbf497376f53fe06c250c3
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
-ms.translationtype: HT
+ms.sourcegitcommit: 694e40a193980dea1e2f945471071f11030d5641
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="azure-ad-b2c-secure-a-web-api-by-using-nodejs"></a>Azure AD B2C: Zabezpečení webového rozhraní API pomocí Node.js
 <!-- TODO [AZURE.INCLUDE [active-directory-b2c-devquickstarts-web-switcher](../../includes/active-directory-b2c-devquickstarts-web-switcher.md)]-->
@@ -754,7 +754,7 @@ Chyba 401 je odpověď, kterou si přejete. Označuje, že se vrstva Passportu p
 ## <a name="you-now-have-a-rest-api-service-that-uses-oauth2"></a>Nyní máte službu REST API, která používá OAuth2
 Implementovali jste rozhraní REST API s použitím Restify a OAuth! Nyní máte dostatek kódu pro pokračování ve vývoji vlastní služby a navázání na tento příklad. S tímto serverem jste došli nejdál, co to jde bez použití klienta kompatibilního s OAuth2. Pro tento další krok použijte další podrobný postup, například náš návod [Připojení k webovému rozhraní API pomocí iOS s B2C](active-directory-b2c-devquickstarts-ios.md).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Nyní se můžete přesunout k pokročilejším tématům, jako například:
 
 [Připojení k webovému rozhraní API pomocí iOS s B2C](active-directory-b2c-devquickstarts-ios.md)

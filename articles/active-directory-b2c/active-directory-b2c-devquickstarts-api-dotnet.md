@@ -16,10 +16,10 @@ ms.date: 01/14/2018
 ms.author: parakhj
 ms.custom: seohack1
 ms.openlocfilehash: 68c0f50e20b5a1a44ff2cb1bc5df35d60928b911
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
-ms.translationtype: HT
+ms.sourcegitcommit: 694e40a193980dea1e2f945471071f11030d5641
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="azure-active-directory-b2c-build-a-net-web-api"></a>Azure Active Directory B2C: Sestavení webového rozhraní API .NET
 

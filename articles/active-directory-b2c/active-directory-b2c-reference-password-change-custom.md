@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 09/05/2016
 ms.author: vigunase
 ms.openlocfilehash: 76e7ed328716d09dc57e25f15c411f07fda77bb9
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.sourcegitcommit: 694e40a193980dea1e2f945471071f11030d5641
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="azure-active-directory-b2c-configure-password-change-in-custom-policies"></a>Azure Active Directory B2C: Konfigurace Změna hesla v vlastní zásady  
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
@@ -154,7 +154,7 @@ Přidejte následující zprostředkovatele deklarací identity do vaší zásad
 
 Přidat ID aplikace souboru rozšíření (`TrustFrameworkExtensions.xml`):
 
-1. V souboru rozšíření (TrustFrameworkExtensions.xml) nalezen element `<TechnicalProfile Id="login-NonInteractive">` a`<TechnicalProfile Id="login-NonInteractive-PasswordChange">`
+1. V souboru rozšíření (TrustFrameworkExtensions.xml) nalezen element `<TechnicalProfile Id="login-NonInteractive">` a `<TechnicalProfile Id="login-NonInteractive-PasswordChange">`
 
 2. Nahraďte všechny výskyty `IdentityExperienceFrameworkAppId` s ID aplikace Framework prostředí Identity aplikace, jak je popsáno v [Začínáme](active-directory-b2c-get-started-custom.md). Zde naleznete příklad:
 

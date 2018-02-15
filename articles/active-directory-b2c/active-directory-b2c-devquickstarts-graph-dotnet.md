@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/07/2017
 ms.author: parakhj
 ms.openlocfilehash: 33df6c4255d4ca672e65237c8be45b3f0bc7864e
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.sourcegitcommit: 694e40a193980dea1e2f945471071f11030d5641
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="azure-ad-b2c-use-the-azure-ad-graph-api"></a>Azure AD B2C: Azure AD Graph API pomocí
 
@@ -128,7 +128,7 @@ Chcete-li použít B2CGraphClient, otevřete `cmd` Windows příkazového řádk
 Tato akce zobrazí stručný popis každého příkazu. Pokaždé, když vyvolat jeden z těchto příkazů `B2CGraphClient` odešle požadavek do Azure AD Graph API.
 
 ### <a name="get-an-access-token"></a>Získání přístupového tokenu
-Každá žádost o rozhraní Graph API vyžaduje token přístupu pro ověřování. `B2CGraphClient`pomocí open source Active Directory Authentication Library (ADAL) k získání přístupových tokenů. ADAL usnadňuje získávání tokenu poskytuje jednoduché rozhraní API a postará o některé důležité podrobnosti, jako je například ukládání do mezipaměti přístupových tokenů. Nemáte vám pomůže získat tokeny, když ADAL. Můžete také získat tokeny tím, že vytvoří požadavky HTTP.
+Každá žádost o rozhraní Graph API vyžaduje token přístupu pro ověřování. `B2CGraphClient` pomocí open source Active Directory Authentication Library (ADAL) k získání přístupových tokenů. ADAL usnadňuje získávání tokenu poskytuje jednoduché rozhraní API a postará o některé důležité podrobnosti, jako je například ukládání do mezipaměti přístupových tokenů. Nemáte vám pomůže získat tokeny, když ADAL. Můžete také získat tokeny tím, že vytvoří požadavky HTTP.
 
 > [!NOTE]
 > Tento příklad používá ADAL v2 komunikovat s rozhraní Graph API.  Pokud chcete získat přístupové tokeny, které se dají použít s Azure AD Graph API je nutné použít ADAL verze 2 nebo 3.
@@ -357,7 +357,7 @@ Výstup z těchto funkcí zobrazí podrobnosti o jednotlivých vlastních atribu
 > B2C Update-User <object-id-of-user> <path-to-json-file>
 ```
 
-Pomocí `B2CGraphClient`, máte aplikaci služby, která můžete spravovat vaše uživatele klienta B2C prostřednictvím kódu programu. `B2CGraphClient`vlastní identity aplikace se používá k ověření Azure AD Graph API. Je také získá tokeny pomocí tajný klíč klienta. Protože tato funkce se začlenit do vaší aplikace, mějte na paměti několik klíčových bodů pro B2C aplikace:
+Pomocí `B2CGraphClient`, máte aplikaci služby, která můžete spravovat vaše uživatele klienta B2C prostřednictvím kódu programu. `B2CGraphClient` vlastní identity aplikace se používá k ověření Azure AD Graph API. Je také získá tokeny pomocí tajný klíč klienta. Protože tato funkce se začlenit do vaší aplikace, mějte na paměti několik klíčových bodů pro B2C aplikace:
 
 * Je třeba udělit příslušná oprávnění v klientovi aplikace.
 * Nyní potřebujete získat přístupové tokeny pomocí knihovny ADAL (ne MSAL). (Můžete také odeslat zprávy protokolu přímo, bez použití knihovny.)

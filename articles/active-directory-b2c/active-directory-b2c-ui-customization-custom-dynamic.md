@@ -15,10 +15,10 @@ ms.devlang: na
 ms.date: 09/20/2017
 ms.author: yoelh
 ms.openlocfilehash: 3a2310ae6266709df6677c55f11b15239c0425a2
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.sourcegitcommit: 694e40a193980dea1e2f945471071f11030d5641
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="azure-active-directory-b2c-configure-the-ui-with-dynamic-content-by-using-custom-policies"></a>Azure Active Directory B2C: Konfigurace uživatelského rozhraní s dynamickým obsahem pomocí vlastních zásad
 Pomocí Azure Active Directory B2C (Azure AD B2C) vlastní zásady, můžete odeslat parametr v řetězci dotazu. Pomocí předání parametru váš koncový bod HTML, můžete dynamicky měnit obsah stránky. Například můžete změnit obrázek pozadí na Azure AD B2C registrace nebo přihlášení stránky, na základě parametr, který můžete předat z webu nebo mobilních aplikací. 

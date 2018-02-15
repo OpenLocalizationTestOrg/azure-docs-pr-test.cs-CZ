@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 12/06/2016
 ms.author: swkrish
 ms.openlocfilehash: 8fc6c43a0197c203cda5b2200e0a5c01258d1613
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.sourcegitcommit: 694e40a193980dea1e2f945471071f11030d5641
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="azure-active-directory-b2c-enable-multi-factor-authentication-in-your-consumer-facing-applications"></a>Azure Active Directory B2C: Povolení služby Multi-Factor Authentication v aplikacích určených uživatelům
 Azure Active Directory (Azure AD) B2C se integruje přímo s [Azure Multi-Factor Authentication](../multi-factor-authentication/multi-factor-authentication.md) tak, že přidáte druhou vrstvu zabezpečení do prostředí registrace a přihlašování v aplikacích určených uživatelům. A můžete to provést bez nutnosti napsat jediný řádek kódu. Momentálně podporujeme telefonního hovoru a textové zprávy ověření. Pokud jste již vytvořili zásady registrace a přihlášení, stále můžete povolit službu Multi-Factor Authentication.

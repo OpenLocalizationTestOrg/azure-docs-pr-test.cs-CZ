@@ -15,10 +15,10 @@ ms.devlang: na
 ms.date: 09/30/2017
 ms.author: yoelh
 ms.openlocfilehash: fd9c95ae78590aa772fde10c8c80914c905767a8
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.sourcegitcommit: 694e40a193980dea1e2f945471071f11030d5641
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-validation-of-user-input"></a>Integrace rozhraní REST API deklarace identity výměn v vám dobře slouží Azure AD B2C uživatele jako ověřování vstupu uživatele
 S použitím rozhraní Framework Identity, které základem Azure Active Directory B2C (Azure AD B2C), kterou můžete integrovat se rozhraní RESTful API cesty uživatele. V tomto návodu se dozvíte, jak Azure AD B2C komunikuje s rozhraní .NET Framework RESTful služeb (webové rozhraní API).
@@ -249,8 +249,8 @@ Poskytovatele deklarací identity může mít několik technické profilů z rů
 Následující fragment kódu XML obsahuje uzel zprostředkovatele deklarací se dva technické profily:
 
 * **TechnicalProfile Id = "REST API SignUp"**: definuje služby RESTful. 
-   * `Proprietary`je označen jako protokol pro zprostředkovatele na základě dosáhl standardu RESTful. 
-   * `InputClaims`definuje deklarace identity, které budou odesílané z Azure AD B2C ke službě REST. 
+   * `Proprietary` je označen jako protokol pro zprostředkovatele na základě dosáhl standardu RESTful. 
+   * `InputClaims` definuje deklarace identity, které budou odesílané z Azure AD B2C ke službě REST. 
 
    V tomto příkladu obsah deklarace `givenName` se odešle do služby REST jako `firstName`, obsah deklarace `surname` se odešle do služby REST jako `lastName`, a `email` odešle jako je. `OutputClaims` Element definuje deklarace identity, které jsou načteny z služba RESTful zpět do Azure AD B2C.
 

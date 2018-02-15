@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 3/26/2017
 ms.author: parakhj
 ms.openlocfilehash: 320d7c57035d3b3ecdb4e03d80141a58cf429461
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.sourcegitcommit: 694e40a193980dea1e2f945471071f11030d5641
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="azure-active-directory-b2c-provide-sign-up-and-sign-in-to-consumers-with-weibo-accounts"></a>Azure Active Directory B2C: Zadejte registrace a přihlášení k příjemce s Weibo účty
 

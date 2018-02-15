@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 12/06/2016
 ms.author: swkrish
 ms.openlocfilehash: c0a10869477647820828b22b6291522be255844d
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.sourcegitcommit: 694e40a193980dea1e2f945471071f11030d5641
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="azure-active-directory-b2c-set-up-self-service-password-reset-for-your-consumers"></a>Azure Active Directory B2C: Nastavení samoobslužného resetování hesla pro uživatele
 Funkce resetování hesla pomocí samoobslužné služby s uživatele (kteří zaregistrovali pro místní účty) mohou resetovat svá hesla na své vlastní. To významně snižuje zátěž vašim zaměstnancům technické podpory, zvlášť pokud vaše aplikace nemá milionům příjemcům na základě v pravidelných intervalech. V současné době podporujeme jenom pomocí ověřenou e-mailovou adresu jako metodu obnovení. Přidáme obnovení dodatečné metody (ověřené telefonní číslo, bezpečnostní otázky atd.) v budoucnu.

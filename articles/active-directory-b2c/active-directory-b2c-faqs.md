@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 08/16/2017
 ms.author: saeeda
 ms.openlocfilehash: 38f33f2a5d0bba4686cfeef121f2087326e1897d
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.sourcegitcommit: 694e40a193980dea1e2f945471071f11030d5641
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: Nejčastější dotazy (FAQ) 
 Tato stránka odpovědi časté otázky o Azure Active Directory (Azure AD) B2C. Kontrolovat zpět aktualizací.
@@ -44,7 +44,7 @@ Začínáme s vlastními zásadami Vyzkoušejte naše [vlastní zásady starter 
 Ne, ale tato funkce je v našem plán. Výchozí obory, použít pro naše podporované sadu poskytovatelů sociálních identit jsou:
 
 * Facebook: e-mailu
-* Google +: e-mailu
+* Google+: email
 * Účet Microsoft: openid e-mailový profil
 * Amazon: profil
 * LinkedIn: r_emailaddress, r_basicprofile

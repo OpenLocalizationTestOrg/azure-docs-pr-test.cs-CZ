@@ -15,10 +15,10 @@ ms.topic: hero-article
 ms.date: 12/06/2016
 ms.author: dastrock
 ms.openlocfilehash: 5ff146460ebc603662340d64be5dc59ea579f6a4
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
-ms.translationtype: HT
+ms.sourcegitcommit: 694e40a193980dea1e2f945471071f11030d5641
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="azure-active-directory-b2c-types-of-applications"></a>Azure Active Directory B2C: Typy aplikací
 Azure Active Directory (Azure AD) B2C podporuje ověřování pro celou řadu architektur moderních aplikací. Všechny jsou založeny na standardních oborových protokolech [OAuth 2.0](active-directory-b2c-reference-protocols.md) nebo [OpenID Connect](active-directory-b2c-reference-protocols.md). Tento dokument stručně popisuje typy aplikací, které můžete sestavit, nezávisle na jazyce nebo platformě, kterým dáváte přednost. Také pomáhá pochopit scénáře vysoké úrovně před tím, než [začnete sestavovat aplikace](active-directory-b2c-overview.md#get-started).

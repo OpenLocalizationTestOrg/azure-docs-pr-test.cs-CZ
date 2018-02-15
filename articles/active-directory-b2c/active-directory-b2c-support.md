@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 12/06/2016
 ms.author: swkrish
 ms.openlocfilehash: b37575d636356304ca94a55736e7f69605cf8218
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.sourcegitcommit: 694e40a193980dea1e2f945471071f11030d5641
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="azure-active-directory-b2c-file-support-requests"></a>Azure Active Directory B2C: Žádosti o podporu souboru
 Můžete soubor žádosti o podporu pro Azure Active Directory (Azure AD) B2C na portálu Azure pomocí následujících kroků:
