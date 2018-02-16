@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 11/16/2016
 ms.author: kumud
 ms.openlocfilehash: e1cd7948e1969cd4ddb926e428c09b559190a805
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
-ms.translationtype: MT
+ms.sourcegitcommit: 694e40a193980dea1e2f945471071f11030d5641
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="advisor-high-availability-recommendations"></a>Doporučení pro vysokou dostupnost služby Advisor
 
@@ -55,7 +55,7 @@ Nastavení zálohování virtuálních počítačů zajistíte dostupnost důle�
 
 2.  Na řídicím panelu služby Advisor, klikněte na **vysokou dostupnost** kartě.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o doporučení služby Advisor najdete v tématu:
 * [Úvod do Azure Advisor](advisor-overview.md)

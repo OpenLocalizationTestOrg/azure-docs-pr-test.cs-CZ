@@ -1,6 +1,6 @@
 ---
 title: "Azure doporučení služby Advisor náklady | Microsoft Docs"
-description: "Pomocí Azure Advisor optimalizovat náklady na vašich Azure nasazení."
+description: "SipiTest - Advisor Azure používání za účelem optimalizace náklady na nasazení Azure."
 services: advisor
 documentationcenter: NA
 author: KumudD
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/16/2016
 ms.author: kumud
-ms.openlocfilehash: 7b9c7037271fabd67c1ada80420ad72c340e46bb
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
-ms.translationtype: MT
+ms.openlocfilehash: 3af81ba94d97ea34e4cf92d6e8e96b28cd012a76
+ms.sourcegitcommit: 57921d51ea018e6d8aa6676b3793f5e5a6402a63
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="advisor-cost-recommendations"></a>Náklady na doporučení služby Advisor
-
+To je upravit pro testování HT/MT přepínače.
 Pomáhá Advisor optimalizovat a snížit vaše celkové Azure tráví určením nečinnosti a nedostatečně prostředky. Můžete získat náklady doporučení z **náklady** na řídicím panelu služby Advisor.
 
 ## <a name="optimize-virtual-machine-spend-by-resizing-or-shutting-down-underutilized-instances"></a>Optimalizace tráví virtuálního počítače nebo změnou velikosti vypíná nedostatečně instancí 
@@ -43,11 +43,11 @@ Advisor identifikuje okruhy ExpressRoute, které byly ve stavu zprostředkovatel
 
 2.  Na řídicím panelu služby Advisor, klikněte na **náklady** kartě.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o doporučení služby Advisor najdete v tématu:
 * [Úvod do služby Advisor](advisor-overview.md)
 * [Začínáme](advisor-get-started.md)
-* [Poradce při hodnocení výkonu doporučení](advisor-cost-recommendations.md)
-* [Doporučení pro vysokou dostupnost služby Advisor](advisor-cost-recommendations.md)
-* [Doporučení zabezpečení Advisor](advisor-cost-recommendations.md)
+* Poradce při hodnocení výkonu doporučení
+* Doporučení pro vysokou dostupnost služby Advisor
+* Doporučení zabezpečení Advisor

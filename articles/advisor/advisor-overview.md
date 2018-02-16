@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 11/16/2016
 ms.author: kumud
 ms.openlocfilehash: 906450f75557820bb27762707c3328b08b23cccb
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
-ms.translationtype: MT
+ms.sourcegitcommit: 694e40a193980dea1e2f945471071f11030d5641
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="introduction-to-azure-advisor"></a>Úvod do Azure Advisor
 
@@ -73,7 +73,7 @@ Advisor poskytuje doporučení pro virtuální počítače, skupiny dostupnosti,
 
 Připomenout znovu nebo zrušit doporučení, klikněte **připomenout znovu** odkaz. Můžete zadat dobu připomenutí období nebo vybrat možnost **nikdy** zrušíte doporučení.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o doporučení služby Advisor najdete v tématu:
 

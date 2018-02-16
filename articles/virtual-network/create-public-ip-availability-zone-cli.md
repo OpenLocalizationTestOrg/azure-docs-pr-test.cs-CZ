@@ -17,10 +17,10 @@ ms.date: 09/25/2017
 ms.author: jdial
 ms.custom: 
 ms.openlocfilehash: ef93d43bbd0c58950027810c8c335d9076574326
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: MT
+ms.sourcegitcommit: 694e40a193980dea1e2f945471071f11030d5641
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="create-a-public-ip-address-in-an-availability-zone-with-the-azure-cli"></a>Vytvoření veřejné IP adresy v zóně dostupnosti pomocí Azure CLI
 
@@ -55,7 +55,7 @@ Získáte informace o zóně veřejné IP adresy pomocí následujícího přík
 az network public-ip show --resource-group myResourceGroup --name myPublicIp
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Další informace o [dostupnost zóny](https://docs.microsoft.com/azure/availability-zones/az-overview)
 - Další informace o [veřejné IP adresy](../virtual-network/virtual-network-public-ip-address.md) 

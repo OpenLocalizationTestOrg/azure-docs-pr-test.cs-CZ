@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 10/31/2017
 ms.author: saraford
 ms.openlocfilehash: ba8ee4657309ab2a541f4c7b3fd4879542eee63c
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.sourcegitcommit: 694e40a193980dea1e2f945471071f11030d5641
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="test-drive-a-single-page-application-configured-with-azure-ad-b2c"></a>Vyzkoušejte jednostránkové aplikace konfigurovaná na Azure AD B2C
 
@@ -65,7 +65,7 @@ Otevřete `http://localhost:6420` ve webovém prohlížeči pro přístup k webo
 
 ![Ukázkovou aplikaci v prohlížeči](media/active-directory-b2c-quickstarts-spa/sample-app-spa.png)
 
-## <a name="create-an-account"></a>Vytvoření účtu
+## <a name="create-an-account"></a>Vytvořit účet
 
 Klikněte **přihlášení** tlačítko Spustit Azure AD B2C **zaregistrovat nebo přihlásit** pracovního postupu. Když vytváříte účet, můžete použít existující účet zprostředkovatele sociální identity nebo e-mailový účet.
 
@@ -111,9 +111,9 @@ Jakmile se přihlásíte, můžete kliknout na **volání webového rozhraní AP
 
 ![Odpověď webové rozhraní API](media/active-directory-b2c-quickstarts-spa/call-api-spa.png)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Dalším krokem je vytvoření vlastního klienta Azure AD B2C a konfigurace vzorku, který se spustí pomocí vašeho klienta. 
 
 > [!div class="nextstepaction"]
-> [Vytvoření klienta Azure Active Directory B2C na portálu Azure](active-directory-b2c-get-started.md)
+> Vytvoření klienta Azure Active Directory B2C na portálu Azure

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 10/31/2017
 ms.author: patricka
 ms.openlocfilehash: bc56da695145f396a2899fb9dc7add3af9a549e8
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.sourcegitcommit: 694e40a193980dea1e2f945471071f11030d5641
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="test-drive-an-azure-ad-b2c-enabled-web-app"></a>Webové aplikace s povoleným test jednotky Azure AD B2C
 
@@ -60,10 +60,10 @@ Pro tento rychlý start, budete muset spustit i `TaskWebApp` a `TaskService` pro
 
 Vyberte **ladění > Spustit ladění** sestavení a spuštění aplikace. Každá aplikace se otevře v jeho vlastní kartu prohlížeče:
 
-`https://localhost:44316/`– Tato stránka je webová aplikace ASP.NET. Můžete pracovat přímo pomocí této aplikace v rychlý start.
-`https://localhost:44332/`– Tato stránka je webové rozhraní API, která volá webové aplikace ASP.NET.
+`https://localhost:44316/` – Tato stránka je webová aplikace ASP.NET. Můžete pracovat přímo pomocí této aplikace v rychlý start.
+`https://localhost:44332/` – Tato stránka je webové rozhraní API, která volá webové aplikace ASP.NET.
 
-## <a name="create-an-account"></a>Vytvoření účtu
+## <a name="create-an-account"></a>Vytvořit účet
 
 Klikněte na tlačítko **zaregistrovat / přihlásit** odkaz ve webové aplikaci ASP.NET spustit **zaregistrovat nebo přihlásit** pracovního postupu. Když vytváříte účet, můžete použít existující účet zprostředkovatele sociální identity nebo e-mailový účet. Pro tento rychlý start používejte účet sociálních identity zprostředkovatele ze sítě Facebook, Google, Microsoft nebo Twitteru.
 
@@ -115,7 +115,7 @@ Zadejte text v **nová položka** textové pole. Klikněte na tlačítko **přid
 
 Úspěšně jste použili účtu uživatele Azure AD B2C Chcete-li provést autorizovaným volání webového rozhraní API Azure AD B2C zabezpečené.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Ukázka používá v tento rychlý start slouží k akci scénáře Azure AD B2C, včetně:
 
@@ -125,4 +125,4 @@ Ukázka používá v tento rychlý start slouží k akci scénáře Azure AD B2C
 Pokud jste připraveni pustíte do vytvoření vlastního klienta Azure AD B2C a nakonfigurovat vzorku, který se spustí pomocí vlastního klienta, vyzkoušejte následující kurzu.
 
 > [!div class="nextstepaction"]
-> [Vytvoření webové aplikace ASP.NET s Azure Active Directory B2C profil registrace, přihlášení, úpravy a resetování hesla](active-directory-b2c-devquickstarts-web-dotnet-susi.md)
+> Vytvoření webové aplikace ASP.NET s Azure Active Directory B2C profil registrace, přihlášení, úpravy a resetování hesla

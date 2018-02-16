@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 11/16/2016
 ms.author: kumud
 ms.openlocfilehash: ea6fc67a0f5bdfe09435a00c4d2651f312695d25
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
-ms.translationtype: MT
+ms.sourcegitcommit: 694e40a193980dea1e2f945471071f11030d5641
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="advisor-security-recommendations"></a>Doporučení zabezpečení Advisor
 
@@ -34,7 +34,7 @@ Další informace o doporučení zabezpečení najdete v tématu [Správa doporu
 
 2.  Na řídicím panelu služby Advisor, klikněte na **zabezpečení** kartě.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o doporučení služby Advisor najdete v tématu:
 * [Úvod do služby Advisor](advisor-overview.md)

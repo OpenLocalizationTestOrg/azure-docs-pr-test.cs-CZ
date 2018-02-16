@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 02/10/2017
 ms.author: makohli
 ms.openlocfilehash: dc89cd29e1e8038f0ff317ff6acee332218ebce7
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
-ms.translationtype: MT
+ms.sourcegitcommit: 694e40a193980dea1e2f945471071f11030d5641
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="get-started-with-azure-advisor"></a>Začínáme se službou Azure Advisor
 
@@ -128,7 +128,7 @@ Advisor umožňuje stáhnout souhrn vaše doporučení.  Můžete si stáhnout v
 
 Možnost stažení respektuje všechny filtry, které jste použili k řídicímu panelu Advisor.  Pokud vyberete možnost stažení při zobrazení konkrétní doporučení kategorie nebo doporučení, zahrnuje stažené souhrn pouze informace pro tuto kategorii nebo doporučení. 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o službě Advisor najdete v tématu:
 * [Úvod do Azure Advisor](advisor-overview.md)

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 10/31/2017
 ms.author: saraford
 ms.openlocfilehash: 51f5643f0bd975beb939c2d5a8853810fb609ec9
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.sourcegitcommit: 694e40a193980dea1e2f945471071f11030d5641
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="test-drive-a-desktop-application-configured-with-azure-ad-b2c"></a>Vyzkoušejte desktopová aplikace nakonfigurované v Azure AD B2C
 
@@ -46,7 +46,7 @@ Ve složce projektu ukázkové aplikace otevřete `active-directory-b2c-wpf.sln`
 
 Vyberte **ladění > Spustit ladění** sestavení a spuštění aplikace. 
 
-## <a name="create-an-account"></a>Vytvoření účtu
+## <a name="create-an-account"></a>Vytvořit účet
 
 Klikněte na tlačítko **přihlášení** spustit **zaregistrovat nebo přihlásit** pracovního postupu. Když vytváříte účet, můžete použít existující účet zprostředkovatele sociální identity nebo e-mailový účet.
 
@@ -116,9 +116,9 @@ Klikněte na tlačítko **volání rozhraní API** vytvořte žádost na do Azur
 
 Aplikace obsahuje token přístupu zobrazují v *Token informace* textového pole v požadavku. Rozhraní API odesílá zpět zobrazovaný název obsažených v tokenu přístupu.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Dalším krokem je vytvoření vlastního klienta Azure AD B2C a konfigurace vzorku, který se spustí pomocí vašeho klienta. 
 
 > [!div class="nextstepaction"]
-> [Vytvoření klienta Azure Active Directory B2C na portálu Azure](active-directory-b2c-get-started.md)
+> Vytvoření klienta Azure Active Directory B2C na portálu Azure
