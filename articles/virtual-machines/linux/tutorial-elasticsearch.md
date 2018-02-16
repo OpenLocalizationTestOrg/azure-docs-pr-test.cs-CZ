@@ -15,7 +15,7 @@ ms.date: 10/11/2017
 ms.author: routlaw
 ms.openlocfilehash: 5b0b51504478cc0d501a89760ccd60808a69ccbd
 ms.sourcegitcommit: 694e40a193980dea1e2f945471071f11030d5641
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/29/2018
 ---
