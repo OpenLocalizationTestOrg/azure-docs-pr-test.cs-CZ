@@ -1,41 +1,41 @@
 
 
-Když vytvoříte projekt webové aplikace pro Azure, můžete zřídit virtuální počítač v Azure. Potom můžete nakonfigurovat další software hello virtuálního počítače nebo použít hello virtuální počítač pro účely ladění a diagnostiky.
+Když vytvoříte projekt webové aplikace pro Azure, můžete zřídit virtuální počítač v Azure. Potom můžete nakonfigurovat virtuální počítač s další software, nebo použít virtuální počítač pro účely ladění a diagnostiky.
 
-toocreate virtuální počítač při vytvoření webové aplikace, postupujte takto:
+Pokud chcete vytvořit virtuální počítač při vytvoření webové aplikace, postupujte takto:
 
-1. V sadě Visual Studio, klikněte na tlačítko **soubor** > **nový** > **projektu** > **webové**a potom vyberte **Webové aplikace ASP.NET** (v části hello **Visual C#** nebo **jazyka Visual Basic** uzly).
-2. V hello **nový projekt ASP.NET** dialogové okno, vyberte hello typ webové aplikace a v hello Azure části dialogového okna hello (v pravém dolním rohu, hello), ujistěte se, že hello **hostitel v cloudu hello**je zaškrtnuté políčko (Toto zaškrtávací políčko je označeno **vytvořit vzdálené prostředky** některé instalace).
+1. V sadě Visual Studio, klikněte na tlačítko **soubor** > **nový** > **projektu** > **webové**a potom vyberte **Webové aplikace ASP.NET** (v části **Visual C#** nebo **jazyka Visual Basic** uzly).
+2. V **nový projekt ASP.NET** dialogové okno, vyberte typ webové aplikace, které chcete a v části Azure v dialogovém okně (v pravém dolním rohu) ujistěte se, že **hostitel v cloudu** zaškrtávací políčko je vybrané (Toto zaškrtávací políčko je označeno **vytvořit vzdálené prostředky** některé instalace).
    
     ![][0]
-3. V tomto příkladu v rozevíracím seznamu hello v rámci Microsoft Azure, zvolte **virtuálního počítače (v1)**a potom klikněte na hello **OK** tlačítko.
-4. Pokud se zobrazí výzva, přihlaste tooAzure. Hello **vytvořit virtuální počítač** zobrazí se dialogové okno.
+3. V tomto příkladu v rozevíracím seznamu v části Microsoft Azure, zvolte **virtuálního počítače (v1)**a klikněte **OK** tlačítko.
+4. Pokud se zobrazí výzva, přihlaste se k Azure. **Vytvořit virtuální počítač** zobrazí se dialogové okno.
    
     ![][2]
-5. V hello **název DNS** pole, zadejte název pro virtuální počítač hello. název DNS Hello musí být jedinečný v Azure. Pokud není k dispozici hello jméno, které jste zadali, se zobrazí červený vykřičník.
-6. V hello **Image** vyberte hello bitovou kopii toobase hello virtuálního počítače na. Můžete použít standardní virtuální počítač Azure hello bitové kopie nebo bitové kopie, že jste odeslali tooAzure.
-7. Nechte hello **povolit IIS a Web Deploy** zaškrtávací políčko Vybrat, pokud máte v plánu tooinstall na jiný webový server. Pokud zakážete, nasazení webu, nebudete se moct toopublish ze sady Visual Studio. Můžete přidat službu IIS a Web Deploy tooany bitových kopií systému Windows Server hello zabalené, včetně vlastních bitových kopií.
-8. V hello **velikost** vyberte hello velikost hello virtuálního počítače.
-9. Zadejte hello přihlašovací údaje pro tento virtuální počítač. Poznamenejte si z nich, protože je budete potřebovat tooaccess hello počítači pomocí vzdálené plochy.
-10. V hello **umístění** vyberte hello oblast toohost hello virtuálního počítače.
-11. Klikněte na tlačítko hello **OK** tlačítko toostart vytváření hello virtuálního počítače. Můžete postupovat podle hello průběh operace hello v hello **výstup** okno.
+5. V **název DNS** pole, zadejte název pro virtuální počítač. Název DNS musí být jedinečný v Azure. Pokud zadaný název není k dispozici, se zobrazí červený vykřičník.
+6. V **Image** vyberte bitovou kopii chcete založit na virtuální počítač. Můžete použít všechny bitové kopie standardní virtuální počítač Azure nebo vaší bitové kopie, které jste odeslali do Azure.
+7. Ponechte **povolit IIS a Web Deploy** zaškrtávací políčko Vybrat, pokud chcete nainstalovat na jiný webový server. Nebudete moci publikovat ze sady Visual Studio, pokud zakážete, nasazení webu. Službu IIS a Web Deploy můžete přidat do jakéhokoli z zabalené Image systému Windows Server, včetně vlastních bitových kopií.
+8. V **velikost** seznamu, zvolte velikost virtuálního počítače.
+9. Zadejte přihlašovací pověření pro tento virtuální počítač. Poznamenejte si z nich, protože budete potřebovat jejich přístupu k počítači pomocí vzdálené plochy.
+10. V **umístění** seznamu, vyberte oblast pro hostování tohoto virtuálního počítače.
+11. Klikněte **OK** tlačítko start, vytvoření virtuálního počítače. Můžete sledovat průběh operace v **výstup** okno.
     
     ![][3]
-12. Při zřízení hello virtuálního počítače, ve vytvoří publikované skripty **PublishScripts** uzlu ve vašem řešení. Hello publikovala skript se spustí a zřizuje virtuálního počítače v Azure. Hello **výstup** okno zobrazuje stav hello. Hello skript provede následující akce tooset hello virtuálního počítače hello:
+12. Při zřízení virtuálního počítače, ve vytvoří publikovaná skripty **PublishScripts** uzlu ve vašem řešení. Publikované skript spustí a zřídí virtuálního počítače v Azure. **Výstup** okno zobrazuje stav. Skript provede následující akce nastavit virtuální počítač:
     
-    * Pokud ještě neexistuje, vytvoří hello virtuální počítač.
-    * Vytvoří účet úložiště s názvem, který začíná `devtest`, ale jenom v případě, že v zadané oblasti hello není již účtu úložiště.
-    * Vytvoří cloudovou službu jako kontejner pro hello virtuální počítač a vytvoří webové role pro hello webovou aplikaci.
-    * Nakonfiguruje Web Deploy na hello virtuálního počítače.
-    * Nakonfiguruje službu IIS a ASP.NET hello virtuálního počítače.
+    * Pokud ještě neexistuje, vytvoří virtuální počítač.
+    * Vytvoří účet úložiště s názvem, který začíná `devtest`, ale jenom v případě, že v zadané oblasti není již účtu úložiště.
+    * Vytvoří cloudovou službu jako kontejner pro virtuální počítač a vytvoří webové role pro webovou aplikaci.
+    * Nakonfiguruje Web Deploy na virtuálním počítači.
+    * Nakonfiguruje službu IIS a ASP.NET na virtuálním počítači.
     
     ![][4]
-13. (Volitelné) Toohello nový virtuální počítač se můžete připojit. V **Průzkumníka serveru**, rozbalte položku hello **virtuální počítače** uzlu, zvolte hello uzel pro virtuální počítač hello jste vytvořili a v jeho místní nabídce a potom vyberte **připojit pomocí vzdálené plochy**. Můžete taky v **Průzkumník cloudu** můžete **otevřít na portálu** hello místní nabídky a připojit toohello virtuálního počítače existuje.
+13. (Volitelné) Můžete připojit k novému virtuálnímu počítači. V **Průzkumníka serveru**, rozbalte **virtuální počítače** uzlu, zvolte uzel pro virtuální počítač, který jste vytvořili a v jeho místní nabídce a potom vyberte **připojit pomocí vzdálené plochy**. Můžete taky v **Průzkumník cloudu** můžete **otevřít na portálu** v místní nabídce a připojte se k virtuálnímu počítači existuje.
     
     ![][5]
 
 ## <a name="next-steps"></a>Další kroky
-Pokud chcete toocustomize hello publikované skripty, které jste vytvořili, přečtěte si podrobné informace v [tooDev tooPublish pomocí skriptů Windows PowerShell a testovací prostředí](http://msdn.microsoft.com/library/dn642480.aspx).
+Pokud chcete přizpůsobit publikované skripty, které jste vytvořili, přečtěte si podrobné informace v [pomocí skriptů prostředí PowerShell systému Windows k publikování pro vývoj a testovací prostředí](http://msdn.microsoft.com/library/dn642480.aspx).
 
 [0]: ./media/virtual-machines-common-classic-web-app-visual-studio/CreateVM_NewProject.PNG
 [1]: ./media/dotnet-visual-studio-create-virtual-machine/CreateVM_SignIn.PNG

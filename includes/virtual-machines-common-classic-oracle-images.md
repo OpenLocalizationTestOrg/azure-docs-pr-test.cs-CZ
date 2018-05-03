@@ -1,10 +1,10 @@
 
 
 
-toocreate virtuální počítače založené na imagích Oracle přihlásit toohello [portál Azure](https://portal.azure.com/), klikněte na tlačítko **Marketplace**, klikněte na tlačítko **výpočetní**a pak zadejte **Oracle**  do vyhledávacího pole hello. Vyberte bitovou kopii a postupujte podle hello pokyny tooset až hello bitové kopie v Microsoft Azure. Všimněte si, že Image Oracle společností Microsoft na hello [portál Azure](https://portal.azure.com/) běží v systému Windows a na Oracle Linux spusťte Oracle Image společností Oracle.
+Pokud chcete vytvořit virtuální počítače založené na imagích Oracle, přihlaste se k webu [Azure Portal](https://portal.azure.com/), klikněte na **Marketplace**, potom na **Compute** a do vyhledávacího pole zadejte **Oracle**. Vyberte image a postupujte podle pokynů k nastavení image v Microsoft Azure. Všimněte si, že image Oracle od Microsoftu na webu [Azure Portal](https://portal.azure.com/) běží na Windows a image Oracle od Oracle běží na Oracle Linuxu.
 
 ## <a name="windows-based-virtual-machine-images"></a>Image virtuálních počítačů s Windows
-Hello následuje seznam hello k dispozici Oracle bitové kopie virtuálních počítačů se systémem Windows Server na platformě Azure. Tyto Image jsou průběžnými platbami, což znamená, že licenci Oracle poplatků jsou součástí hello využití těchto bitových kopií. Microsoft už na webu Azure Marketplace nepublikuje image Oracle Database ani WebLogic.  Můžete přesto vytvořit svoji vlastní image a použít model přineste si vlastní licenci hello v pořadí toorun software Oracle na Microsoft Azure. 
+Následuje seznam dostupných imagí virtuálních počítačů Oracle, které běží na Windows Serveru v Azure. Na tyto image se vztahují průběžné platby, to znamená, že licenční poplatky Oracle jsou zahrnuté ve využití těchto imagí. Microsoft už na webu Azure Marketplace nepublikuje image Oracle Database ani WebLogic.  Pořád si ale můžete vytvořit vlastní image a pomocí modelu používání vlastní licence spouštět software Oracle v Microsoft Azure. 
 
 ### <a name="java-virtual-machine-images"></a>Image prostředí Java Virtual Machine
 * JDK 8 na Windows Serveru 2012 R2
@@ -12,7 +12,7 @@ Hello následuje seznam hello k dispozici Oracle bitové kopie virtuálních po�
 * JDK 6 na Windows Serveru 2012
 
 ## <a name="oracle-linux-virtual-machine-images"></a>Image virtuálních počítačů s Oracle Linuxem
-Hello následuje seznam hello k dispozici předkonfigurované Oracle bitové kopie virtuálních počítačů se systémem Linux Oracle na Azure. Očekává se, že toobring vlastní licenci pro tyto Image, jako Oracle licenční poplatky nejsou součástí hello využití těchto předkonfigurované bitové kopie virtuálních počítačů. Můžete také přineste si vlastní licenci tooinstall a spustit Oracle software na vlastní virtuální počítače v systému Windows nebo Linux. Tady jsou kompletní podrobnosti o [licencování Oracle v Azure](http://www.oracle.com/technetwork/topics/cloud/faq-1963009.html#support). A tady najdete podrobnosti o vytváření virtuálních počítačů s použitím [vlastních imagí](../articles/virtual-machines/windows/classic/createupload-vhd.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
+Následuje seznam dostupných předkonfigurovaných imagí virtuálních počítačů Oracle, které běží na Oracle Linuxu v Azure. Předpokládá se, že pro tyto image budete používat vlastní licence, protože licenční poplatky Oracle nejsou zahrnuté ve využití těchto předkonfigurovaných imagí virtuálních počítačů. Vlastní licence můžete také použít k instalaci a provozu softwaru Oracle ve Windows nebo Linuxu na vlastních virtuálních počítačích. Tady jsou kompletní podrobnosti o [licencování Oracle v Azure](http://www.oracle.com/technetwork/topics/cloud/faq-1963009.html#support). A tady najdete podrobnosti o vytváření virtuálních počítačů s použitím [vlastních imagí](../articles/virtual-machines/windows/classic/createupload-vhd.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 
 * Oracle Database 12c Enterprise Edition v Oracle Linuxu
 * Oracle Database 12c Standard Edition v Oracle Linuxu

@@ -1,68 +1,68 @@
 <!--author=SharS last changed: 12/01/15-->
 
-### <a name="step-1-authorize-a-device-toochange-hello-service-data-encryption-key-in-hello-azure-classic-portal"></a>Krok 1: Autorizace zařízení toochange hello šifrovacího klíče dat služby v hello portál Azure classic
-Správce zařízení hello obvykle bude požadovat tohoto správce služeb hello autorizovat šifrovací klíče zařízení toochange služby data. Správce služeb Hello bude potom budete autorizovat hello zařízení toochange hello klíč.
+### <a name="step-1-authorize-a-device-to-change-the-service-data-encryption-key-in-the-azure-classic-portal"></a>Krok 1: Autorizace zařízení, které chcete změnit šifrovacího klíče dat služby v portálu Azure classic
+Obvykle Správce zařízení bude požadovat, aby správce služeb autorizace zařízení, které chcete změnit šifrovací klíče dat služby. Správce služeb bude potom budete autorizovat zařízení změňte klíč.
 
-Tento krok se provádí v hello portál Azure classic. Správce služeb Hello můžete vybrat zařízení ze seznamu zobrazených hello zařízení, které jsou způsobilé toobe oprávnění. Hello zařízení je pak šifrovacího klíče dat služby autorizovaný toostart hello změňte procesu.
+Tento krok se provádí na portálu Azure classic. Správce služeb můžete vybrat zařízení ze seznamu zobrazených zařízení, které jsou způsobilé k autorizaci. Zařízení je pak oprávnění ke spuštění procesu změny klíče šifrování dat služby.
 
-#### <a name="which-devices-can-be-authorized-toochange-service-data-encryption-keys"></a>Zařízení, která může být oprávnění šifrovací klíče dat služby toochange?
-Zařízení musí splňovat následující kritéria, aby mohla být autorizovaným tooinitiate služby dat šifrování klíče změny hello:
+#### <a name="which-devices-can-be-authorized-to-change-service-data-encryption-keys"></a>Zařízení, která lze udělit oprávnění k změnit šifrovací klíče dat služby?
+Zařízení musí splňovat následující kritéria, než může být oprávnění k inicializaci služby dat šifrování klíče změny:
 
-* Hello zařízení musí být online toobe vhodné pro službu data šifrování změny klíče autorizace.
-* Můžete povolit hello stejného zařízení znovu po 30 minutách Pokud klíč hello změnit nebyla inicializována.
-* Jiné zařízení, můžete povolit za předpokladu, že změny klíče hello nebyla inicializována hello dříve oprávněným zařízením. Po hello nové zařízení byla potvrzena, nelze staré zařízení hello zahajte změnu hello.
-* Zařízení nejde autorizovat, když probíhá výměna šifrovacího klíče dat služby hello hello.
-* Zařízení můžete povolit, když některé z hello zařízení registrovaná službou hello mít převracet hello šifrování, jiné mají není. V takových případech jsou způsobilé zařízení hello hello ty, které byly dokončeny změny hello do služby data šifrovací klíče.
+* Zařízení musí být online způsobilé k autorizaci změny klíče šifrování dat služby.
+* Znovu po 30 minutách může autorizovat do stejného zařízení, pokud změny klíče nebyla inicializována.
+* Jiné zařízení, můžete povolit za předpokladu, že změny klíče nebyla inicializována dříve oprávněným zařízením. Po autorizoval nové zařízení stará zařízení nelze zahájit změnu.
+* Zařízení nejde autorizovat, když probíhá výměna šifrovacího klíče dat služby.
+* Zařízení můžete povolit, pokud některá zařízení zaregistrovaná ve službě service mít převracet šifrování, jiné mají není. V takových případech způsobilých zařízeních jsou ty, které byly dokončeny šifrovacího klíče dat služby změnit.
 
 > [!NOTE]
-> V hello portál Azure classic nejsou v hello seznam zařízení, které mohou být zobrazeny virtuální zařízení StorSimple oprávnění změny klíče toostart hello.
+> Na portálu Azure classic nejsou zobrazeny virtuální zařízení StorSimple v seznamu zařízení, která může získat oprávnění ke spuštění změny klíče.
 > 
 > 
 
-Proveďte následující kroky tooselect hello a autorizovat zařízení tooinitiate hello služby dat šifrování změny klíče.
+Proveďte následující kroky a vyberte autorizace zařízení zahájíte změny klíče šifrování dat služby.
 
-#### <a name="tooauthorize-a-device-toochange-hello-key"></a>tooauthorize klíč zařízení toochange hello
-1. Na stránce řídicího panelu služby hello, klikněte na **šifrovacího klíče dat služby změnu**.
+#### <a name="to-authorize-a-device-to-change-the-key"></a>Autorizace zařízení a změňte klíč
+1. Na stránce řídicího panelu služby klikněte na **šifrovacího klíče dat služby změnu**.
    
     ![Šifrovací klíč služby změn](./media/storsimple-change-data-encryption-key/HCS_ChangeServiceDataEncryptionKey-include.png)
-2. V hello **šifrovacího klíče dat služby změnu** dialogovém okně vyberte a autorizovat zařízení tooinitiate hello služby dat šifrování změny klíče. Hello rozevíracího seznamu má všech způsobilých zařízeních hello, které lze udělit oprávnění.
-3. Klikněte na ikonu zaškrtnutí hello ![ikona zaškrtnutí](./media/storsimple-change-data-encryption-key/HCS_CheckIcon-include.png).
+2. V **šifrovacího klíče dat služby změnu** dialogovém okně vyberte a autorizovat zařízení zahájíte změny klíče šifrování dat služby. Rozevíracím seznamu má všech způsobilých zařízeních, které lze udělit oprávnění.
+3. Klikněte na ikonu zaškrtnutí ![ikona zaškrtnutí](./media/storsimple-change-data-encryption-key/HCS_CheckIcon-include.png).
 
-### <a name="step-2-use-windows-powershell-for-storsimple-tooinitiate-hello-service-data-encryption-key-change"></a>Krok 2: Použití Windows Powershellu pro StorSimple tooinitiate hello služby šifrování klíče změny dat
-Tento krok se provádí v hello Windows Powershellu pro StorSimple rozhraní na hello oprávnění zařízení StorSimple.
+### <a name="step-2-use-windows-powershell-for-storsimple-to-initiate-the-service-data-encryption-key-change"></a>Krok 2: Použití Windows Powershellu pro StorSimple zahájíte změny klíče šifrování dat služby
+Tento krok se provádí v prostředí Windows PowerShell pro rozhraní StorSimple na autorizované zařízení StorSimple.
 
 > [!NOTE]
-> Žádné operace lze provést v hello portál Azure classic služby StorSimple Manager, dokud se nedokončí hello výměny klíčů.
+> Žádné operace lze provést na portálu Azure classic služby StorSimple Manager, dokud se nedokončí výměny klíčů.
 > 
 > 
 
-Pokud používáte hello zařízení konzoly sériového portu tooconnect toohello rozhraní Windows PowerShell, proveďte následující kroky hello.
+Pokud používáte konzole sériového portu zařízení pro připojení k rozhraní Windows PowerShell, proveďte následující kroky.
 
-#### <a name="tooinitiate-hello-service-data-encryption-key-change"></a>změna šifrovacího klíče dat služby tooinitiate hello
-1. Vyberte možnost 1 toolog na s úplným přístupem.
-2. Hello příkazového řádku zadejte:
+#### <a name="to-initiate-the-service-data-encryption-key-change"></a>Zahajte změnu klíče šifrování dat služby
+1. Výběrem možnosti 1 přihlaste s úplným přístupem.
+2. Na příkazovém řádku zadejte:
    
      `Invoke-HcsmServiceDataEncryptionKeyChange`
-3. Po úspěšném dokončení hello rutiny, zobrazí se nové šifrovacího klíče dat služby. Zkopírujte a uložte tento klíč pro použití v kroku 3 tohoto procesu. Tento klíč bude použit tooupdate všechny hello zbývající zařízení registrovaná službou StorSimple Manager hello.
+3. Po úspěšném dokončení rutiny, zobrazí se nové šifrovacího klíče dat služby. Zkopírujte a uložte tento klíč pro použití v kroku 3 tohoto procesu. Tento klíč se používá k aktualizaci všech zbývajících zařízení registrovaný ve službě StorSimple Manager.
    
    > [!NOTE]
    > Tento proces musí zahájit v rámci čtyři hodiny autorizace zařízení StorSimple.
    > 
    > 
    
-   Tento nový klíč se pak odešlou toohello služby toobe nabídnutých tooall hello zařízení, které jsou registrovány hello služby. Na řídicím panelu služby hello se potom zobrazí výstrahu. Služba Hello zakáže všechny operace hello na hello zaregistrovat zařízení a Správce zařízení hello bude nutné tooupdate šifrovacího klíče dat služby hello na hello jiná zařízení. Ale hello vstupně-výstupních operací (odesílání dat v cloudu toohello hostitele) nesmí být přerušeny.
+   Tento nový klíč je odeslaný do služby k vloží do všech zařízení, která jsou zaregistrovaná ve službě service. Na řídicím panelu služby se potom zobrazí výstrahu. Službu vypne všechny operace na registrovaná zařízení a pak muset aktualizovat šifrovacího klíče dat služby na jiných zařízení Správce zařízení. Ale nesmí být přerušeny vstupně-výstupních operací (odesílání dat do cloudu hostitelů).
    
-   Pokud máte jedno zařízení zaregistrován tooyour služby, proces výměny hello je nyní dokončen a hello další krok můžete vynechat. Pokud máte více zařízení registrovaná tooyour službu, pokračujte toostep 3.
+   Pokud máte jedno zařízení zaregistrován ke službě, proces výměny je nyní dokončen a můžete přejít na další krok. Pokud máte více zařízení zaregistrován ke službě, pokračujte krokem 3.
 
-### <a name="step-3-update-hello-service-data-encryption-key-on-other-storsimple-devices"></a>Krok 3: Aktualizace hello šifrovacího klíče dat služby na jiná zařízení StorSimple
-Tyto kroky je potřeba provést v prostředí Windows PowerShell rozhraní hello zařízení StorSimple, pokud máte více služby StorSimple Manager tooyour registrovaných zařízení. Hello klíč, který jste získali v kroku 2: použití Windows Powershellu pro StorSimple tooinitiate hello dat šifrování klíče změny služby musí být použité tooupdate všechny hello zbývající zaregistrována hello služby StorSimple Manager zařízení StorSimple.
+### <a name="step-3-update-the-service-data-encryption-key-on-other-storsimple-devices"></a>Krok 3: Aktualizace šifrovacího klíče dat služby na jiná zařízení StorSimple
+Tyto kroky je potřeba provést v prostředí Windows PowerShell rozhraní zařízení StorSimple, pokud máte více zařízení zaregistrován ke službě StorSimple Manager. Klíč, který jste získali v kroku 2: použití Windows Powershellu pro StorSimple zahájíte změny klíče šifrování dat služby musíte použít k aktualizaci všech zbývajících zařízení StorSimple registrovaný ve službě StorSimple Manager.
 
-Proveďte následující kroky tooupdate hello šifrování dat pro služby ve vašem zařízení hello.
+Proveďte následující kroky k aktualizaci šifrování dat služby ve vašem zařízení.
 
-#### <a name="tooupdate-hello-service-data-encryption-key"></a>šifrovací klíč dat služby tooupdate hello
-1. Pomocí Windows Powershellu pro StorSimple tooconnect toohello konzolu. Vyberte možnost 1 toolog na s úplným přístupem.
-2. Hello příkazového řádku zadejte:
+#### <a name="to-update-the-service-data-encryption-key"></a>Chcete-li aktualizovat šifrovacího klíče dat služby
+1. Pomocí Windows Powershellu pro StorSimple pro připojení ke konzole. Výběrem možnosti 1 přihlaste s úplným přístupem.
+2. Na příkazovém řádku zadejte:
    
     `Invoke-HcsmServiceDataEncryptionKeyChange – ServiceDataEncryptionKey`
-3. Zadejte hello služby datový šifrovací klíč, který jste získali v [krok 2: použití Windows Powershellu pro StorSimple tooinitiate hello dat šifrování klíče změny služby](#to-initiate-the-service-data-encryption-key-change).
+3. Zadejte šifrovací klíč dat služby, který jste získali v [krok 2: použití Windows Powershellu pro StorSimple zahájíte změny klíče šifrování dat služby](#to-initiate-the-service-data-encryption-key-change).
 
