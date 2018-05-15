@@ -1,7 +1,0 @@
-> [!div class="op_single_selector"]
-> * [<span data-ttu-id="f6e2f-101">C s simulovanou telemetrii</span><span class="sxs-lookup"><span data-stu-id="f6e2f-101">C with simulated telemetry</span></span>](../articles/iot-suite/iot-suite-raspberry-pi-kit-c-get-started-simulator.md)
-> * [<span data-ttu-id="f6e2f-102">C s skutečné senzor</span><span class="sxs-lookup"><span data-stu-id="f6e2f-102">C with real sensor</span></span>](../articles/iot-suite/iot-suite-raspberry-pi-kit-c-get-started-basic.md)
-> * [<span data-ttu-id="f6e2f-103">C implementovat aktualizaci firmwaru</span><span class="sxs-lookup"><span data-stu-id="f6e2f-103">C implement firmware update</span></span>](../articles/iot-suite/iot-suite-raspberry-pi-kit-c-get-started-advanced.md)
-> * [<span data-ttu-id="f6e2f-104">Node.js s simulovanou telemetrii</span><span class="sxs-lookup"><span data-stu-id="f6e2f-104">Node.js with simulated telemetry</span></span>](../articles/iot-suite/iot-suite-raspberry-pi-kit-node-get-started-simulator.md)
-> * [<span data-ttu-id="f6e2f-105">Node.js s skutečné senzor</span><span class="sxs-lookup"><span data-stu-id="f6e2f-105">Node.js with real sensor</span></span>](../articles/iot-suite/iot-suite-raspberry-pi-kit-node-get-started-basic.md)
-> * [<span data-ttu-id="f6e2f-106">Node.js implementovat aktualizaci firmwaru</span><span class="sxs-lookup"><span data-stu-id="f6e2f-106">Node.js implement firmware update</span></span>](../articles/iot-suite/iot-suite-raspberry-pi-kit-node-get-started-advanced.md)

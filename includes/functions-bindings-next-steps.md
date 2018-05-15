@@ -1,2 +1,0 @@
-<span data-ttu-id="3fb7b-101">Informace o dalších vazbách a aktivačních událostech v Azure Functions najdete v tématu [Aktivační události a vazby v Azure Functions – reference pro vývojáře](../articles/azure-functions/functions-triggers-bindings.md).</span><span class="sxs-lookup"><span data-stu-id="3fb7b-101">For information about other bindings and triggers for Azure Functions, see [Azure Functions triggers and bindings developer reference](../articles/azure-functions/functions-triggers-bindings.md).</span></span>
-
