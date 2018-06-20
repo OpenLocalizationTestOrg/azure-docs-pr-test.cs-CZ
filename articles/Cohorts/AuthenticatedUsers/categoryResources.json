@@ -1,0 +1,7 @@
+{
+    "en-us": {
+        "name": "Authenticated Users",
+        "description": "Authenticated Users Description",
+        "order": 100
+    }
+}
