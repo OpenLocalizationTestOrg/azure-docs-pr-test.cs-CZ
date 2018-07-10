@@ -1,6 +1,6 @@
 {
     "$schema": "https://github.com/Microsoft/Application-Insights-Workbooks/blob/master/schema/settings.json",
-    "name": "<span data-ttu-id=\"e6ab6-101\">Vylepšení uchovávání dat uživatele</span><span class=\"sxs-lookup\"><span data-stu-id=\"e6ab6-101\">Improving User Retention</span></span>",
+    "name": "<span data-ttu-id=\"68902-101\">Zlepšení udržení uživatelů</span><span class=\"sxs-lookup\"><span data-stu-id=\"68902-101\">Improving User Retention</span></span>",
     "author": "Microsoft",
     "order": 100,
     "visibleInGallery": true
