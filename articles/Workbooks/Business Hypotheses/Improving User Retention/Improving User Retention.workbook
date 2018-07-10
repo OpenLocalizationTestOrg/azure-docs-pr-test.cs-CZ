@@ -1,10 +1,235 @@
-{"$schema": "https://github.com/Microsoft/Application-Insights-Workbooks/blob/master/schema/workbook.json", "verze": "Poznámkového bloku nebo 1.0", "položky": [{"typ": 1, "obsah": {"json": "# předpoklad - _[navrhované změny]_ zlepší uchování uživatele pomocí _[očekává zlepšování]_ \ n---dobrý předpoklad \nA jsou srdcem řízené daty rozhodování. Hypotézy mohou uživatelé změnit informace o využití vašich zákazníků vaší aplikace do řešitelné návrh pro vylepšení. Pomocí tohoto sešitu vytvořit předpoklad týkající se vylepšení míru uchování uživatelů."
-}}, {"typ": 1, "obsah": {"json": "## problém - _[formulace problému]_ \nAdd souhrn problému v oddílu. Souhrn by měl být stručným a více než několik věty dlouho. Jasně stavu problému a vyhnout se nepotřebných podrobnosti. \n\n\n"}}, {"typ": 1,"obsah": {"json":" ### co je problém uchování? \nModify zobrazíte míru uchování aktivity analýze níže uvedených parametrů. Vaším cílem by měl být zvýraznění problém uchovávání informací ve vaší aplikaci."
-} }, { "type": 9, "content": { "version": "KqlParameterItem/1.0", "query": "", "crossComponentResources": [], "parameters": [ { "id": "e552c6ce-183d-4b5d-8405-d60313b3eb8e", "version": "KqlParameterItem/1.0", "name": "Activities", "type": 2, "description": "", "isRequired": true, "multiSelect": true, "quote": "'", "delimiter": ",", "query": "union customEvents, pageViews\r\n| where timestamp >= ago(7d)\r\n| summarize count() by name\r\n| order by count_ desc\r\n| project Id=name, Title=name, Selected=false\r\n| union (\r\ndatatable(Id:string, Title:string, Selected:boolean)[\r\n'*', 'All Events and Page Views', true\r\n]\r\n)" }, { "id": "68b8c1f5-9f24-401a-bea4-9739a7438069", "version": "KqlParameterItem/1.0", "name": "RetentionPeriod", "type": 2, "description": null, "isRequired": true, "multiSelect": null, "query": "datatable(key:string, display:string) \r\n[ \r\n\"1d\", \"Day over Day\", \r\n\"7d\", \"Week over Week\", \r\n\"28d\", \"Month over Month (28 days)\", \r\n\"30d\", \"Month over Month (30 days)\"\r\n] ", "value": "28d" }, { "id": "7813b809-0b92-4531-ad05-90add0674de0", "version": "KqlParameterItem/1.0", "name": "TimeRange", "type": 2, "description": null, "isRequired": true, "multiSelect": null, "query": "datatable(key:string, display:string) \r\n[ \r\n\"7d\", \"Last 7 days\", \r\n\"14d\", \"Last 14 days\", \r\n\"30d\", \"Last 30 days\", \r\n] ", "value": "30d" } ] } }, { "type": 3, "content": { "version": "KqlItem/1.0", "query": "let timeRange = {TimeRange};\r\nlet monthDefinition = {RetentionPeriod};\r\nlet hlls = union customEvents, pageViews\r\n| where timestamp >= startofmonth(now() - timeRange - 2 * monthDefinition)\r\n| where name in ({Activities}) or '*' in ({Activities})\r\n| summarize Hlls = hll(user_Id) by bin(timestamp, 1d)\r\n| project DaysToMerge = timestamp, Hlls;\r\nlet churnSeriesWithHllsToInclude = materialize(range d from 0d to (timeRange) step 1d\r\n| extend Day = startofday(now() - d)\r\n| extend R = range(0d, monthDefinition - 1d, 1d)\r\n| mvexpand R\r\n| extend ThisMonth = Day - totimespan(R)\r\n| extend LastMonth = Day - monthDefinition - totimespan(R)\r\n| project Day, ThisMonth, LastMonth);\r\nchurnSeriesWithHllsToInclude\r\n| extend DaysToMerge = ThisMonth\r\n| join kind= inner (hlls) on DaysToMerge \r\n| project Day, ThisMonthHlls = Hlls\r\n| union (\r\nchurnSeriesWithHllsToInclude\r\n| extend DaysToMerge = LastMonth\r\n| join kind= inner (hlls) on DaysToMerge\r\n| project Day, LastMonthHlls = Hlls)\r\n| summarize ThisMonth = hll_merge(ThisMonthHlls), LastMonth = hll_merge(LastMonthHlls) by Day\r\n| evaluate dcount_intersect(ThisMonth, LastMonth)\r\n| where Day >= startofday(now() - timeRange)\r\n| extend ChurnedUsers = (dcount_hll(LastMonth) - s1) // Last Months Users - Returning Users\r\n| project Day, [\"Retention Rate\"] = iff((s1 + ChurnedUsers) == 0, 0.0, 100.0 * s1 / (s1 + ChurnedUsers))\r\n", "showQuery": false, "size": 0, "aggregation": 5, "showAnnotations": false, "visualization": "timechart" } }, { "type": 1, "content": { "json": "### As a benchmark, what's the retention rate of a similar feature?\nUse this section to compare the retention of your activities with similar ones. To vám pomůže nastavit kontext vylepšení, které se pokoušíte provést."
-} }, { "type": 9, "content": { "version": "KqlParameterItem/1.0", "query": "", "crossComponentResources": [], "parameters": [ { "id": "35df6f18-6009-4c8c-898a-3d47414ee7cd", "version": "KqlParameterItem/1.0", "name": "RelatedActivities", "type": 2, "description": "", "isRequired": true, "multiSelect": true, "quote": "'", "delimiter": ",", "query": "union customEvents, pageViews\r\n| where timestamp >= ago(7d)\r\n| summarize count() by name\r\n| order by count_ desc\r\n| project Id=name, Title=name, Selected=false\r\n| union (\r\ndatatable(Id:string, Title:string, Selected:boolean)[\r\n'*', 'All Events and Page Views', true\r\n]\r\n)" } ] } }, { "type": 3, "content": { "version": "KqlItem/1.0", "query": "let timeRange = {TimeRange};\r\nlet monthDefinition = {RetentionPeriod};\r\nlet hlls = union customEvents, pageViews\r\n| where timestamp >= startofmonth(now() - timeRange - 2 * monthDefinition)\r\n| where name in ({RelatedActivities}) or '*' in ({RelatedActivities})\r\n| summarize Hlls = hll(user_Id) by bin(timestamp, 1d)\r\n| project DaysToMerge = timestamp, Hlls;\r\nlet churnSeriesWithHllsToInclude = materialize(range d from 0d to (timeRange) step 1d\r\n| extend Day = startofday(now() - d)\r\n| extend R = range(0d, monthDefinition - 1d, 1d)\r\n| mvexpand R\r\n| extend ThisMonth = Day - totimespan(R)\r\n| extend LastMonth = Day - monthDefinition - totimespan(R)\r\n| project Day, ThisMonth, LastMonth);\r\nchurnSeriesWithHllsToInclude\r\n| extend DaysToMerge = ThisMonth\r\n| join kind= inner (hlls) on DaysToMerge \r\n| project Day, ThisMonthHlls = Hlls\r\n| union (\r\nchurnSeriesWithHllsToInclude\r\n| extend DaysToMerge = LastMonth\r\n| join kind= inner (hlls) on DaysToMerge\r\n| project Day, LastMonthHlls = Hlls)\r\n| summarize ThisMonth = hll_merge(ThisMonthHlls), LastMonth = hll_merge(LastMonthHlls) by Day\r\n| evaluate dcount_intersect(ThisMonth, LastMonth)\r\n| where Day >= startofday(now() - timeRange)\r\n| extend ChurnedUsers = (dcount_hll(LastMonth) - s1) // Last Months Users - Returning Users\r\n| project Day, [\"Retention Rate\"] = iff((s1 + ChurnedUsers) == 0, 0.0, 100.0 * s1 / (s1 + ChurnedUsers))\r\n", "showQuery": false, "size": 0, "aggregation": 5, "showAnnotations": false, "visualization": "timechart" } }, { "type": 1, "content": { "json": "### Why do we suspect retention for this feature is low?\nThis section provides explanations for why the retention could be low. Řešení, které můžete navrhnout vyřeší některé nebo všechny problémy zjištěné v tomto poli."
-}}, {"typ": 1, "obsah": {"json": "### co je potenciální výhody pro vaši firmu, pokud zlepšení uchování pro tuto funkci? \nThis část vám pomůže pochopit vylepšení v měsíční aktivní uživatelé se zobrazí, pokud vaše uchování zvyšuje. Použití _RetentionGoal_ parametr k nastavení cílem pro uchování navrhované řešení. "
-} }, { "type": 9, "content": { "version": "KqlParameterItem/1.0", "query": "", "crossComponentResources": [], "parameters": [ { "id": "5d3b9f2b-ae31-41c1-a9c3-b540185fa7de", "version": "KqlParameterItem/1.0", "name": "RetentionGoal", "type": 1, "description": "The goal for Retention Rate expressed as percentage (0-100)", "isRequired": true, "query": "let timeRange = {TimeRange};\r\nlet monthDefinition = {RetentionPeriod};\r\nlet hlls = union customEvents, pageViews\r\n| where timestamp >= startofmonth(now() - timeRange - 2 * monthDefinition)\r\n| where name in ({Activities}) or '*' in ({Activities})\r\n| summarize Hlls = hll(user_Id) by bin(timestamp, 1d)\r\n| project DaysToMerge = timestamp, Hlls;\r\nlet churnSeriesWithHllsToInclude = materialize(range d from 0d to 0d step 1d\r\n| extend Day = startofday(now() - d)\r\n| extend R = range(0d, monthDefinition - 1d, 1d)\r\n| mvexpand R\r\n| extend ThisMonth = Day - totimespan(R)\r\n| extend LastMonth = Day - monthDefinition - totimespan(R)\r\n| project Day, ThisMonth, LastMonth);\r\nchurnSeriesWithHllsToInclude\r\n| extend DaysToMerge = ThisMonth\r\n| join kind= inner (hlls) on DaysToMerge \r\n| project Day, ThisMonthHlls = Hlls\r\n| union (\r\nchurnSeriesWithHllsToInclude\r\n| extend DaysToMerge = LastMonth\r\n| join kind= inner (hlls) on DaysToMerge\r\n| project Day, LastMonthHlls = Hlls)\r\n| summarize ThisMonth = hll_merge(ThisMonthHlls), LastMonth = hll_merge(LastMonthHlls) by Day\r\n| evaluate dcount_intersect(ThisMonth, LastMonth)\r\n| where Day >= startofday(now() - timeRange)\r\n| extend ChurnedUsers = (dcount_hll(LastMonth) - s1) // Last Months Users - Returning Users\r\n| project Retention = round(iff((s1 + ChurnedUsers) == 0, 0.0, 100.0 * s1 / (s1 + ChurnedUsers)) * 1.1, 1)\r\n| extend Retention = iff(Retention > 100, 100.0, Retention)\r\n" } ] } }, { "type": 3, "content": { "version": "KqlItem/1.0", "query": "let retentionRate = {RetentionGoal};\r\nlet timeRange = {TimeRange};\r\nlet monthDefinition = {RetentionPeriod};\r\nlet hlls = union customEvents, pageViews\r\n| where timestamp >= startofmonth(now() - timeRange - 2 * monthDefinition)\r\n| where name in ({Activities}) or '*' in ({Activities})\r\n| summarize Hlls = hll(user_Id) by bin(timestamp, 1d)\r\n| project DaysToMerge = timestamp, Hlls;\r\nlet churnSeriesWithHllsToInclude = materialize(range d from 0d to (timeRange) step 1d\r\n| extend Day = startofday(now() - d)\r\n| extend R = range(0d, monthDefinition - 1d, 1d)\r\n| mvexpand R\r\n| extend ThisMonth = Day - totimespan(R)\r\n| extend LastMonth = Day - monthDefinition - totimespan(R)\r\n| project Day, ThisMonth, LastMonth);\r\nchurnSeriesWithHllsToInclude\r\n| extend DaysToMerge = ThisMonth\r\n| join kind= inner (hlls) on DaysToMerge \r\n| project Day, ThisMonthHlls = Hlls\r\n| union (\r\nchurnSeriesWithHllsToInclude\r\n| extend DaysToMerge = LastMonth\r\n| join kind= inner (hlls) on DaysToMerge\r\n| project Day, LastMonthHlls = Hlls)\r\n| summarize ThisMonth = hll_merge(ThisMonthHlls), LastMonth = hll_merge(LastMonthHlls) by Day\r\n| evaluate dcount_intersect(ThisMonth, LastMonth)\r\n| where Day >= startofday(now() - timeRange)\r\n| extend NewUsers = s0 - s1\r\n| extend ChurnedUsers = (dcount_hll(LastMonth) - s1) // Last Months Users - Returning Users\r\n| project Day, [\"MAU at {RetentionGoal}% Retention\"] = (0.01 * retentionRate * s0) + NewUsers, [\"MAU\"] = s1 + NewUsers", "showQuery": false, "size": 0, "aggregation": 5, "showAnnotations": false, "visualization": "timechart" } }, { "type": 1, "content": { "json": "### What customer evidence do you have?\nAdd customer feedback that confirms that the existence of the problem and that your proposed solution will truly address it."
-}}, {"typ": 1, "obsah": {"json": "### jak jsou konkurence řešení tohoto problému? \nUse v této části ukazují, jak konkurence řešení tohoto problému v jejich apps.\n"}}, {"typ": 1, "obsah": {"json": "### otevřete Questions\nList všechny otázky nebo diskuse, které jsou stále nerozpoznané."
-}}, {"typ": 1, "obsah": {"json": "## možným řešením - _[řešení description]_ \nUse v této části popisují navrhované řešení. \n"}}, {"typ": 1, "obsah": {"json": "### proto bude fungovat? \nDescribe vaše teoreticky uživatele chování, které bude mít za následek tento návrh vede k větší uchování uživatele."
-}}, {"typ": 1, "obsah": {"json": "### Proč nefunguje? \nThink o a seznamu důvod, proč nemusí dojít k řešení ke splnění cílů jste nastavili – například alternativní teorií příčinu problému."
-}}, {"typ": 1, "obsah": {"json": "### ovlivní jiné scénáře? \nList další funkce a scénáře, které mohou být ovlivněna navrhované řešení. " } }, { "type": 1, "content": { "json": "## Expected outcome - User retention improves to {RetentionGoal}%\nThis section clearly lists out the measurable outcomes of implementing the proposed solution.\n\n" } }, { "type": 1, "content": { "json": "### Primary Goal - Retention Rate hits {RetentionGoal}%\n" } }, { "type": 3, "content": { "version": "KqlItem/1.0", "query": "let timeRange = {TimeRange};\nlet monthDefinition = {RetentionPeriod};\nlet hlls = union customEvents, pageViews\n| where timestamp >= startofmonth(now() - timeRange - 2 * monthDefinition)\n| where name in ({Activities}) or '*' in ({Activities})\n| summarize Hlls = hll(user_Id) by bin(timestamp, 1d)\n| project DaysToMerge = timestamp, Hlls;\nlet churnSeriesWithHllsToInclude = materialize(range d from 0d to (timeRange + monthDefinition) step 1d\n| extend Day = startofday(now() - d)\n| extend R = range(0d, monthDefinition - 1d, 1d)\n| mvexpand R\n| extend ThisMonth = Day - totimespan(R)\n| extend LastMonth = Day - monthDefinition - totimespan(R)\n| project Day, ThisMonth, LastMonth);\nchurnSeriesWithHllsToInclude\n| extend DaysToMerge = ThisMonth\n| join kind= inner (hlls) on DaysToMerge \n| project Day, ThisMonthHlls = Hlls\n| union (\nchurnSeriesWithHllsToInclude\n| extend DaysToMerge = LastMonth\n| join kind= inner (hlls) on DaysToMerge\n| project Day, LastMonthHlls = Hlls)\n| summarize ThisMonth = hll_merge(ThisMonthHlls), LastMonth = hll_merge(LastMonthHlls) by Day\n| evaluate dcount_intersect(ThisMonth, LastMonth)\n| where Day >= startofday(now() - timeRange)\n| extend ChurnedUsers = (dcount_hll(LastMonth) - s1) // Last Months Users - Returning Users\n| project Day, [\"Retention Rate\"] = iff((s1 + ChurnedUsers) == 0, 0.0, 100.0 * s1 / (s1 + ChurnedUsers)), Goal = {RetentionGoal}\n", "showQuery": false, "size": 0, "aggregation": 5, "showAnnotations": false, "visualization": "timechart" } }, { "type": 1, "content": { "json": "### Other Goals\nList any secondary goals you may have related to this effort. " } } ] }
+{
+    "$schema": "https://github.com/Microsoft/Application-Insights-Workbooks/blob/master/schema/workbook.json",
+    "version": "Notebook/1.0",
+    "items": [
+        {
+            "type": 1,
+            "content": {
+                "json": "# <a name=\"hypothesis---proposed-change-will-improve-user-retention-by-expected-improvement\"></a>Předpoklad - _[navrhované změny]_ zlepší udržení podle _[byl očekáván zlepšování]_\n---\nDobré hypotézy je srdcem rozhodování založeném na data. Hypotézy můžete zapnout informace o využití vašich zákazníků vaší aplikace do návrhu užitečné pro zlepšení. Použijte tento sešit si poradit hypotézy o vylepšování míry uchování vaši uživatelé."
+            }
+        },
+        {
+            "type": 1,
+            "content": {
+                "json": "## <a name=\"problem---problem-statement\"></a>Problém – _[formulace problému]_\nPřidáte souhrn problému v části. Souhrn by měl být stručné a ne více než několik věty dlouho. Jasně stav problému a vyhnout se nepotřebných podrobnosti. \n\n\n"
+            }
+        },
+        {
+            "type": 1,
+            "content": {
+                "json": "### <a name=\"whats-the-retention-problem\"></a>V čem je problém uchovávání informací?\nUpravte parametry shrnuje míra uchování aktivit, které analyzujete. Vaším cílem by mělo zvýrazňovat uchovávání problému ve vaší aplikaci."
+            }
+        },
+        {
+            "type": 9,
+            "content": {
+                "version": "KqlParameterItem/1.0",
+                "query": "",
+                "crossComponentResources": [],
+                "parameters": [
+                    {
+                        "id": "e552c6ce-183d-4b5d-8405-d60313b3eb8e",
+                        "version": "KqlParameterItem/1.0",
+                        "name": "Activities",
+                        "type": 2,
+                        "description": "",
+                        "isRequired": true,
+                        "multiSelect": true,
+                        "quote": "'",
+                        "delimiter": ",",
+                        "query": "union customEvents, pageViews\r\n| where timestamp >= ago(7d)\r\n| summarize count() by name\r\n| order by count_ desc\r\n| project Id=name, Title=name, Selected=false\r\n| union (\r\ndatatable(Id:string, Title:string, Selected:boolean)[\r\n'*', 'All Events and Page Views', true\r\n]\r\n)"
+                    },
+                    {
+                        "id": "68b8c1f5-9f24-401a-bea4-9739a7438069",
+                        "version": "KqlParameterItem/1.0",
+                        "name": "RetentionPeriod",
+                        "type": 2,
+                        "description": null,
+                        "isRequired": true,
+                        "multiSelect": null,
+                        "query": "datatable(key:string, display:string) \r\n[ \r\n\"1d\", \"Day over Day\", \r\n\"7d\", \"Week over Week\", \r\n\"28d\", \"Month over Month (28 days)\", \r\n\"30d\", \"Month over Month (30 days)\"\r\n] ",
+                        "value": "28d"
+                    },
+                    {
+                        "id": "7813b809-0b92-4531-ad05-90add0674de0",
+                        "version": "KqlParameterItem/1.0",
+                        "name": "TimeRange",
+                        "type": 2,
+                        "description": null,
+                        "isRequired": true,
+                        "multiSelect": null,
+                        "query": "datatable(key:string, display:string) \r\n[ \r\n\"7d\", \"Last 7 days\", \r\n\"14d\", \"Last 14 days\", \r\n\"30d\", \"Last 30 days\", \r\n] ",
+                        "value": "30d"
+                    }
+                ]
+            }
+        },
+        {
+            "type": 3,
+            "content": {
+                "version": "KqlItem/1.0",
+                "query": "let timeRange = {TimeRange};\r\nlet monthDefinition = {RetentionPeriod};\r\nlet hlls = union customEvents, pageViews\r\n| where timestamp >= startofmonth(now() - timeRange - 2 * monthDefinition)\r\n| where name in ({Activities}) or '*' in ({Activities})\r\n| summarize Hlls = hll(user_Id) by bin(timestamp, 1d)\r\n| project DaysToMerge = timestamp, Hlls;\r\nlet churnSeriesWithHllsToInclude = materialize(range d from 0d to (timeRange) step 1d\r\n| extend Day = startofday(now() - d)\r\n| extend R = range(0d, monthDefinition - 1d, 1d)\r\n| mvexpand R\r\n| extend ThisMonth = Day - totimespan(R)\r\n| extend LastMonth = Day - monthDefinition - totimespan(R)\r\n| project Day, ThisMonth, LastMonth);\r\nchurnSeriesWithHllsToInclude\r\n| extend DaysToMerge = ThisMonth\r\n| join kind= inner (hlls) on DaysToMerge \r\n| project Day, ThisMonthHlls = Hlls\r\n| union (\r\nchurnSeriesWithHllsToInclude\r\n| extend DaysToMerge = LastMonth\r\n| join kind= inner (hlls) on DaysToMerge\r\n| project Day, LastMonthHlls = Hlls)\r\n| summarize ThisMonth = hll_merge(ThisMonthHlls), LastMonth = hll_merge(LastMonthHlls) by Day\r\n| evaluate dcount_intersect(ThisMonth, LastMonth)\r\n| where Day >= startofday(now() - timeRange)\r\n| extend ChurnedUsers = (dcount_hll(LastMonth) - s1) // Last Months Users - Returning Users\r\n| project Day, [\"Retention Rate\"] = iff((s1 + ChurnedUsers) == 0, 0.0, 100.0 * s1 / (s1 + ChurnedUsers))\r\n",
+                "showQuery": false,
+                "size": 0,
+                "aggregation": 5,
+                "showAnnotations": false,
+                "visualization": "timechart"
+            }
+        },
+        {
+            "type": 1,
+            "content": {
+                "json": "### <a name=\"as-a-benchmark-whats-the-retention-rate-of-a-similar-feature\"></a>Jako srovnávací test co je míra uchování podobné funkce?\nPomocí této části můžete porovnat uchování vaše aktivity s podobnosti. To vám pomůže nastavit kontext vylepšeních, která se pokoušíte vytvořit."
+            }
+        },
+        {
+            "type": 9,
+            "content": {
+                "version": "KqlParameterItem/1.0",
+                "query": "",
+                "crossComponentResources": [],
+                "parameters": [
+                    {
+                        "id": "35df6f18-6009-4c8c-898a-3d47414ee7cd",
+                        "version": "KqlParameterItem/1.0",
+                        "name": "RelatedActivities",
+                        "type": 2,
+                        "description": "",
+                        "isRequired": true,
+                        "multiSelect": true,
+                        "quote": "'",
+                        "delimiter": ",",
+                        "query": "union customEvents, pageViews\r\n| where timestamp >= ago(7d)\r\n| summarize count() by name\r\n| order by count_ desc\r\n| project Id=name, Title=name, Selected=false\r\n| union (\r\ndatatable(Id:string, Title:string, Selected:boolean)[\r\n'*', 'All Events and Page Views', true\r\n]\r\n)"
+                    }
+                ]
+            }
+        },
+        {
+            "type": 3,
+            "content": {
+                "version": "KqlItem/1.0",
+                "query": "let timeRange = {TimeRange};\r\nlet monthDefinition = {RetentionPeriod};\r\nlet hlls = union customEvents, pageViews\r\n| where timestamp >= startofmonth(now() - timeRange - 2 * monthDefinition)\r\n| where name in ({RelatedActivities}) or '*' in ({RelatedActivities})\r\n| summarize Hlls = hll(user_Id) by bin(timestamp, 1d)\r\n| project DaysToMerge = timestamp, Hlls;\r\nlet churnSeriesWithHllsToInclude = materialize(range d from 0d to (timeRange) step 1d\r\n| extend Day = startofday(now() - d)\r\n| extend R = range(0d, monthDefinition - 1d, 1d)\r\n| mvexpand R\r\n| extend ThisMonth = Day - totimespan(R)\r\n| extend LastMonth = Day - monthDefinition - totimespan(R)\r\n| project Day, ThisMonth, LastMonth);\r\nchurnSeriesWithHllsToInclude\r\n| extend DaysToMerge = ThisMonth\r\n| join kind= inner (hlls) on DaysToMerge \r\n| project Day, ThisMonthHlls = Hlls\r\n| union (\r\nchurnSeriesWithHllsToInclude\r\n| extend DaysToMerge = LastMonth\r\n| join kind= inner (hlls) on DaysToMerge\r\n| project Day, LastMonthHlls = Hlls)\r\n| summarize ThisMonth = hll_merge(ThisMonthHlls), LastMonth = hll_merge(LastMonthHlls) by Day\r\n| evaluate dcount_intersect(ThisMonth, LastMonth)\r\n| where Day >= startofday(now() - timeRange)\r\n| extend ChurnedUsers = (dcount_hll(LastMonth) - s1) // Last Months Users - Returning Users\r\n| project Day, [\"Retention Rate\"] = iff((s1 + ChurnedUsers) == 0, 0.0, 100.0 * s1 / (s1 + ChurnedUsers))\r\n",
+                "showQuery": false,
+                "size": 0,
+                "aggregation": 5,
+                "showAnnotations": false,
+                "visualization": "timechart"
+            }
+        },
+        {
+            "type": 1,
+            "content": {
+                "json": "### <a name=\"why-do-we-suspect-retention-for-this-feature-is-low\"></a>Proč jsme podezření, že je doba uchování pro tuto funkci s nízkou?\nTato část obsahuje vysvětlení důvodů, proč může být s nízkou míru uchování. Řešení, se kterým můžete navrhnout bude zabývat některé nebo všechny problémy zjištěné v tomto poli."
+            }
+        },
+        {
+            "type": 1,
+            "content": {
+                "json": "### <a name=\"whats-the-potential-benefit-to-your-business-if-you-improve-retention-for-this-feature\"></a>Co je potenciální výhody pro vaši firmu, pokud zvyšujte pro tuto funkci?\nTato část vám pomůže pochopit vylepšení v aktivních uživatelů, které se zobrazí, je-li zvýšit vaše uchovávání informací. Použití _RetentionGoal_ parametr pro nastavení cíle pro ukládání navrhovaných řešení."
+            }
+        },
+        {
+            "type": 9,
+            "content": {
+                "version": "KqlParameterItem/1.0",
+                "query": "",
+                "crossComponentResources": [],
+                "parameters": [
+                    {
+                        "id": "5d3b9f2b-ae31-41c1-a9c3-b540185fa7de",
+                        "version": "KqlParameterItem/1.0",
+                        "name": "RetentionGoal",
+                        "type": 1,
+                        "description": "Cíl pro míra uchování vyjádřené v procentech (0 – 100)",
+                        "isRequired": true,
+                        "query": "let timeRange = {TimeRange};\r\nlet monthDefinition = {RetentionPeriod};\r\nlet hlls = union customEvents, pageViews\r\n| where timestamp >= startofmonth(now() - timeRange - 2 * monthDefinition)\r\n| where name in ({Activities}) or '*' in ({Activities})\r\n| summarize Hlls = hll(user_Id) by bin(timestamp, 1d)\r\n| project DaysToMerge = timestamp, Hlls;\r\nlet churnSeriesWithHllsToInclude = materialize(range d from 0d to 0d step 1d\r\n| extend Day = startofday(now() - d)\r\n| extend R = range(0d, monthDefinition - 1d, 1d)\r\n| mvexpand R\r\n| extend ThisMonth = Day - totimespan(R)\r\n| extend LastMonth = Day - monthDefinition - totimespan(R)\r\n| project Day, ThisMonth, LastMonth);\r\nchurnSeriesWithHllsToInclude\r\n| extend DaysToMerge = ThisMonth\r\n| join kind= inner (hlls) on DaysToMerge \r\n| project Day, ThisMonthHlls = Hlls\r\n| union (\r\nchurnSeriesWithHllsToInclude\r\n| extend DaysToMerge = LastMonth\r\n| join kind= inner (hlls) on DaysToMerge\r\n| project Day, LastMonthHlls = Hlls)\r\n| summarize ThisMonth = hll_merge(ThisMonthHlls), LastMonth = hll_merge(LastMonthHlls) by Day\r\n| evaluate dcount_intersect(ThisMonth, LastMonth)\r\n| where Day >= startofday(now() - timeRange)\r\n| extend ChurnedUsers = (dcount_hll(LastMonth) - s1) // Last Months Users - Returning Users\r\n| project Retention = round(iff((s1 + ChurnedUsers) == 0, 0.0, 100.0 * s1 / (s1 + ChurnedUsers)) * 1.1, 1)\r\n| extend Retention = iff(Retention > 100, 100.0, Retention)\r\n"
+                    }
+                ]
+            }
+        },
+        {
+            "type": 3,
+            "content": {
+                "version": "KqlItem/1.0",
+                "query": "let retentionRate = {RetentionGoal};\r\nlet timeRange = {TimeRange};\r\nlet monthDefinition = {RetentionPeriod};\r\nlet hlls = union customEvents, pageViews\r\n| where timestamp >= startofmonth(now() - timeRange - 2 * monthDefinition)\r\n| where name in ({Activities}) or '*' in ({Activities})\r\n| summarize Hlls = hll(user_Id) by bin(timestamp, 1d)\r\n| project DaysToMerge = timestamp, Hlls;\r\nlet churnSeriesWithHllsToInclude = materialize(range d from 0d to (timeRange) step 1d\r\n| extend Day = startofday(now() - d)\r\n| extend R = range(0d, monthDefinition - 1d, 1d)\r\n| mvexpand R\r\n| extend ThisMonth = Day - totimespan(R)\r\n| extend LastMonth = Day - monthDefinition - totimespan(R)\r\n| project Day, ThisMonth, LastMonth);\r\nchurnSeriesWithHllsToInclude\r\n| extend DaysToMerge = ThisMonth\r\n| join kind= inner (hlls) on DaysToMerge \r\n| project Day, ThisMonthHlls = Hlls\r\n| union (\r\nchurnSeriesWithHllsToInclude\r\n| extend DaysToMerge = LastMonth\r\n| join kind= inner (hlls) on DaysToMerge\r\n| project Day, LastMonthHlls = Hlls)\r\n| summarize ThisMonth = hll_merge(ThisMonthHlls), LastMonth = hll_merge(LastMonthHlls) by Day\r\n| evaluate dcount_intersect(ThisMonth, LastMonth)\r\n| where Day >= startofday(now() - timeRange)\r\n| extend NewUsers = s0 - s1\r\n| extend ChurnedUsers = (dcount_hll(LastMonth) - s1) // Last Months Users - Returning Users\r\n| project Day, [\"MAU at {RetentionGoal}% Retention\"] = (0.01 * retentionRate * s0) + NewUsers, [\"MAU\"] = s1 + NewUsers",
+                "showQuery": false,
+                "size": 0,
+                "aggregation": 5,
+                "showAnnotations": false,
+                "visualization": "timechart"
+            }
+        },
+        {
+            "type": 1,
+            "content": {
+                "json": "### <a name=\"what-customer-evidence-do-you-have\"></a>Jaké Zákaznické případové studie máte?\nPřidání zpětné vazby od zákazníků, který potvrdí, že existence problému a navrhované řešení se skutečně řešit."
+            }
+        },
+        {
+            "type": 1,
+            "content": {
+                "json": "### <a name=\"how-are-your-competitors-solving-this-problem\"></a>Jak jsou konkurencí řešení tohoto problému?\nPomocí této části ukazují, jak řešit tento problém ve svých aplikacích konkurenty.\n"
+            }
+        },
+        {
+            "type": 1,
+            "content": {
+                "json": "### <a name=\"open-questions\"></a>Otevřít dotazy\nVypsat všechny otázky nebo probíhající diskuse, která jsou stále nevyřešená."
+            }
+        },
+        {
+            "type": 1,
+            "content": {
+                "json": "## <a name=\"potential-solution---solution-description\"></a>Potenciální řešení – _[popis řešení]_\nUvedených v této části popisují navrhované řešení.\n"
+            }
+        },
+        {
+            "type": 1,
+            "content": {
+                "json": "### <a name=\"why-it-will-work\"></a>Proč budou fungovat?\nPopisují vaše teorie chování uživatelů, který bude mít za následek tento návrh, což vede k větší udržení uživatelů."
+            }
+        },
+        {
+            "type": 1,
+            "content": {
+                "json": "### <a name=\"why-might-it-not-work\"></a>Proč se nemusí fungovat?\nZamyslete a seznamu důvod, proč nemusí dojít k řešení v souladu s cíli, které jste nastavili - třeba alternativní teorií příčinu problému."
+            }
+        },
+        {
+            "type": 1,
+            "content": {
+                "json": "### <a name=\"will-it-affect-other-scenarios\"></a>Bude to mít vliv na další scénáře?\nSeznam dalších funkcích a scénáře, které by mohly být ovlivněny navrhované řešení. "
+            }
+        },
+        {
+            "type": 1,
+            "content": {
+                "json": "## <a name=\"expected-outcome---user-retention-improves-to-retentiongoal\"></a>Očekávaný výsledek - udržení vylepšuje {RetentionGoal} %\nTato část obsahuje seznam jasně si měřitelných výsledků implementace navrhované řešení.\n\n"
+            }
+        },
+        {
+            "type": 1,
+            "content": {
+                "json": "### <a name=\"primary-goal---retention-rate-hits-retentiongoal\"></a>Hlavním cílem – míra uchování narazí {RetentionGoal} %\n"
+            }
+        },
+        {
+            "type": 3,
+            "content": {
+                "version": "KqlItem/1.0",
+                "query": "let timeRange = {TimeRange};\nlet monthDefinition = {RetentionPeriod};\nlet hlls = union customEvents, pageViews\n| where timestamp >= startofmonth(now() - timeRange - 2 * monthDefinition)\n| where name in ({Activities}) or '*' in ({Activities})\n| summarize Hlls = hll(user_Id) by bin(timestamp, 1d)\n| project DaysToMerge = timestamp, Hlls;\nlet churnSeriesWithHllsToInclude = materialize(range d from 0d to (timeRange + monthDefinition) step 1d\n| extend Day = startofday(now() - d)\n| extend R = range(0d, monthDefinition - 1d, 1d)\n| mvexpand R\n| extend ThisMonth = Day - totimespan(R)\n| extend LastMonth = Day - monthDefinition - totimespan(R)\n| project Day, ThisMonth, LastMonth);\nchurnSeriesWithHllsToInclude\n| extend DaysToMerge = ThisMonth\n| join kind= inner (hlls) on DaysToMerge \n| project Day, ThisMonthHlls = Hlls\n| union (\nchurnSeriesWithHllsToInclude\n| extend DaysToMerge = LastMonth\n| join kind= inner (hlls) on DaysToMerge\n| project Day, LastMonthHlls = Hlls)\n| summarize ThisMonth = hll_merge(ThisMonthHlls), LastMonth = hll_merge(LastMonthHlls) by Day\n| evaluate dcount_intersect(ThisMonth, LastMonth)\n| where Day >= startofday(now() - timeRange)\n| extend ChurnedUsers = (dcount_hll(LastMonth) - s1) // Last Months Users - Returning Users\n| project Day, [\"Retention Rate\"] = iff((s1 + ChurnedUsers) == 0, 0.0, 100.0 * s1 / (s1 + ChurnedUsers)), Goal = {RetentionGoal}\n",
+                "showQuery": false,
+                "size": 0,
+                "aggregation": 5,
+                "showAnnotations": false,
+                "visualization": "timechart"
+            }
+        },
+        {
+            "type": 1,
+            "content": {
+                "json": "### <a name=\"other-goals\"></a>Další cíle\nVypsat všechny sekundární cíle, které mohou mít související s tohoto úsilí. "
+            }
+        }
+    ]
+}

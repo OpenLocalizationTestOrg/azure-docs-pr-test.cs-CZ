@@ -1,7 +1,7 @@
 {
     "$schema": "https://github.com/Microsoft/Application-Insights-Workbooks/blob/master/schema/settings.json",
-    "name": "Aktivnější ověřené uživatele – dnů použít",
-    "description": "Sem zadejte popis",
+    "name": "Znamenají angažovaní ověřeným uživatelům--dny, používá",
+    "description": "místo pro popis",
     "icon": "",
     "tags": [],
     "author": "Microsoft",

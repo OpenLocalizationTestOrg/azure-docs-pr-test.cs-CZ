@@ -1,6 +1,6 @@
 {
     "$schema": "https://github.com/Microsoft/Application-Insights-Workbooks/blob/master/schema/settings.json",
-    "name": "Zvýšení aktivní uživatelé",
+    "name": "Zvýšení aktivních uživatelů",
     "author": "Microsoft",
     "order": 200,
     "visibleInGallery": true
